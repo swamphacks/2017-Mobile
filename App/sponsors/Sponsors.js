@@ -15,7 +15,7 @@ let styles = {};
 class Sponsors extends Component {
   render () {
     return (
-      <ScrollView style={{backgroundColor: 'white'}}>
+      <ScrollView style={styles.scrollView}>
         <View style={styles.headingContainer}>
           <Text style={styles.heading}>Heron Tier</Text>
         </View>
@@ -55,7 +55,7 @@ styles = StyleSheet.create({
     margin: 15
   },
   headingContainer: {
-    marginTop: 40,
+    marginTop: 0,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -65,6 +65,10 @@ styles = StyleSheet.create({
     color: 'white',
     marginTop: 10,
     fontSize: 22
+  },
+  scrollView: {
+    marginTop: 60,
+    backgroundColor: colors.white
   }
 })
 
