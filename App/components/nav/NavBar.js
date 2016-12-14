@@ -2,24 +2,24 @@
  * @providesModule HSNavBar
  */
 
-import React from 'react'
-import { Platform, Navigator, StyleSheet, TouchableHighlight } from 'react-native'
-import NavTitleComponent from 'HSNavTitleComponent'
-import NavTitleIcon from 'HSNavTitleIcon'
-import colors from 'HSColors'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import React from 'react';
+import { Platform, Navigator, StyleSheet, TouchableHighlight } from 'react-native';
+import NavTitleComponent from 'HSNavTitleComponent';
+import NavTitleIcon from 'HSNavTitleIcon';
+import colors from 'HSColors';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-let styles = {}
+let styles = {};
 
 const NavigationBar = (toggleSideMenu) => {
-  const src = require('image!logo')
+  const src = require('image!logo');
   const LeftButton = (route, navigator, index, navState) => {
     if (route.name !== 'home') {
-      return null
+      return null;
     }
     if (index > 0) {
-      const leftAction = navigator.pop
-      const leftIcon = 'chevron-left'
+      const leftAction = navigator.pop;
+      const leftIcon = 'chevron-left';
       return (
         <Icon
           onPress={leftAction}
@@ -70,7 +70,7 @@ const NavigationBar = (toggleSideMenu) => {
 styles = StyleSheet.create({
   navBar: {
     height: 65,
-    backgroundColor: colors.grey1,
+    backgroundColor: colors.white,
     ...Platform.select({
       android: {
         height: 55

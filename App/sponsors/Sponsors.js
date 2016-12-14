@@ -8,6 +8,8 @@ import {
   Text
 } from 'react-native-elements';
 
+import Sponsor from "./Sponsor";
+
 let styles = {};
 
 class Sponsors extends Component {
@@ -15,31 +17,33 @@ class Sponsors extends Component {
     return (
       <ScrollView style={{backgroundColor: 'white'}}>
         <View style={styles.headingContainer}>
-          <Icon color='white' name='games' size={62} />
-          <Text style={styles.heading}>Pricing</Text>
+          <Text style={styles.heading}>Heron Tier</Text>
         </View>
         <View style={styles.container}>
-          <PricingCard
-            color={colors.primary}
-            title='Free'
-            price='$0'
-            info={['1 User', 'Basic Support', 'All Core Features']}
-            button={{ title: 'GET STARTED', icon: 'flight-takeoff' }}
-          />
-          <PricingCard
-            color={colors.secondary}
-            title='Starter'
-            price='$19'
-            info={['10 Users', 'Basic Support', 'All Core Features']}
-            button={{ title: 'GET STARTED', icon: 'flight-takeoff' }}
-          />
-          <PricingCard
-            color={colors.secondary2}
-            title='Enterprise'
-            price='$49'
-            info={['100 Users', 'One on One Support', 'All Core Features']}
-            button={{ title: 'GET STARTED', icon: 'flight-takeoff' }}
-          />
+          <Sponsor name='Infinite Energy' />
+          <Sponsor name='Facebook' />
+          <Sponsor name='StateFarm' />
+          <Sponsor name='Linode' />
+        </View>
+        <View style={styles.headingContainer}>
+          <Text style={styles.heading}>Turtle Tier</Text>
+        </View>
+        <View style={styles.container}>
+          <Sponsor name='GE' />
+          <Sponsor name='American Express' />
+          <Sponsor name='Clarifai' />
+        </View>
+        <View style={styles.headingContainer}>
+          <Text style={styles.heading}>Lilypad Tier</Text>
+        </View>
+        <View style={styles.container}>
+          <Sponsor name='Ultimate Software' />
+        </View>
+        <View style={styles.headingContainer}>
+          <Text style={styles.heading}>Partners</Text>
+        </View>
+        <View style={styles.container}>
+          <Sponsor name='MLH' />
         </View>
       </ScrollView>
     )
@@ -51,10 +55,10 @@ styles = StyleSheet.create({
     margin: 15
   },
   headingContainer: {
-    marginTop: 60,
+    marginTop: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 40,
+    padding: 20,
     backgroundColor: colors.grey2
   },
   heading: {

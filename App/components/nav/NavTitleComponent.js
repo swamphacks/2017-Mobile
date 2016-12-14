@@ -8,7 +8,7 @@ import { Text } from 'react-native-elements'
 
 const NavTitleComponent = () => (
   <View>
-    <Text>Hello from Nav</Text>
+    <Text>{this.props.title}</Text>
   </View>
 )
 
