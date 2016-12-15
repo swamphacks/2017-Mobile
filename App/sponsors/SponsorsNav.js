@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Navigator, Text, StyleSheet } from 'react-native';
+import { Navigator, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import Sponsors from './Sponsors';
 
-const initialRoute = {component: Sponsors};
+const initialRoute = {component: Sponsors, index: 0};
 
 class SponsorsNav extends Component {
   constructor () {
@@ -22,9 +22,15 @@ class SponsorsNav extends Component {
           {
             LeftButton: (route, navigator, index, navState) =>
             {
-              return (
-                <Text></Text>
-              );
+              if (route.index === 0) {
+                return null;
+              } else {
+                return (
+                  <TouchableHighlight onPress={() => navigator.pop()}>
+                    <Text>Back</Text>
+                  </TouchableHighlight>
+                );
+              }
             },
             RightButton: (route, navigator, index, navState) =>
             {
