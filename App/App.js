@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet, Platform, Navigator } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import colors from 'HSColors';
 import fonts from 'HSFonts';
@@ -28,7 +28,6 @@ class App extends Component {
     });
   }
   render () {
-    const { toggleSideMenu } = this.props;
     const { selectedTab } = this.state;
     return (
       <Tabs hidesTabTouch>
@@ -38,7 +37,7 @@ class App extends Component {
           selected={selectedTab === 'events'}
           title={selectedTab === 'events' ? 'EVENTS' : null}
           onPress={() => this.changeTab('events')}>
-          <Events toggleSideMenu={toggleSideMenu} />
+          <Events />
         </Tab>
         <Tab
           tabStyle={selectedTab !== 'announcements' && { marginBottom: -6 }}
@@ -74,7 +73,7 @@ class App extends Component {
           selected={selectedTab === 'profile'}
           title={selectedTab === 'profile' ? 'PROFILE' : null}
           onPress={() => this.changeTab('profile')}>
-          <Profile />
+          <Profile navigator={this.props.navigator}/>
         </Tab>
       </Tabs>
 

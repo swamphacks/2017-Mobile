@@ -9,11 +9,13 @@ class SponsorsNav extends Component {
     super();
     this.renderScene = this.renderScene.bind(this);
   }
+  
   renderScene (route, navigator) {
     return (
       <route.component navigator={navigator} {...route.passProps} />
     )
   }
+
   render () {
     return (
       <Navigator

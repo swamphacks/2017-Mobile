@@ -7,10 +7,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "apsl-react-native-button": "^3.0.2",
+    "firebase": "^3.6.4",
     "react": "15.4.1",
     "react-native": "0.39.2",
     "react-native-elements": "^0.7.1",
     "react-native-navbar": "^1.5.4",
+    "react-native-textinput-effects": "^0.3.0",
     "react-native-vector-icons": "^3.0.0",
     "react-redux": "^4.4.6",
     "redux": "^3.6.0"
