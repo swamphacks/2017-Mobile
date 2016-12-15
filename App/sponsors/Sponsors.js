@@ -5,7 +5,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Sponsor from "./Sponsor";
 import SponsorDetail from "./SponsorDetail";
-var herons = [ { name: "infinite", logo: "infinitelogo" }, { name: "facebook", logo: "fblogo" } ];
+import * as sponsors from "./SponsorInfo";
+
+var herons = sponsors.HERONS;
+var turtles = sponsors.TURTLES;
+var lilypads = sponsors.LILYPADS;
 
 class Sponsors extends Component {
   showSponsorDetail(sponsor) {
@@ -36,7 +40,11 @@ class Sponsors extends Component {
           <Text style={styles.heading}>Turtle Tier</Text>
         </View>
         <View style={styles.container}>
-          <Sponsor name='GE' />
+        <TouchableHighlight onPress={() => this.showSponsorDetail(turtles[0])}  underlayColor='#dddddd'>
+          <View>
+            <Sponsor name='GE' />
+          </View>
+        </TouchableHighlight>
           <Sponsor name='American Express' />
           <Sponsor name='Clarifai' />
         </View>
