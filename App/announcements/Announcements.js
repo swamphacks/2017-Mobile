@@ -3,12 +3,7 @@ import { View, StyleSheet, ScrollView, ListView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 let styles;
 
-import {
-  List,
-  ListItem,
-  Text,
-  SearchBar
-} from 'react-native-elements';
+import { List, ListItem, Text, SearchBar } from 'react-native-elements';
 
 const log = () => console.log('this is an example method');
 

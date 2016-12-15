@@ -13,8 +13,6 @@ import {
 
 import * as RNElements from 'react-native-elements';
 
-let styles = {};
-
 const users = [
   {
     name: 'brynn',
@@ -355,7 +353,7 @@ class Events extends Component {
   }
 }
 
-styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
     flex: 1
   },
