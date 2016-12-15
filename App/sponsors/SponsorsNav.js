@@ -4,8 +4,6 @@ import Sponsors from './Sponsors';
 
 const initialRoute = {component: Sponsors};
 
-let styles = {};
-
 class SponsorsNav extends Component {
   constructor () {
     super();

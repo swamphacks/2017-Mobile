@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
+import { ScrollView, View, StyleSheet, TouchableHighlight, Image, Text } from 'react-native';
 import colors from 'HSColors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {
-  PricingCard,
-  Text
-} from 'react-native-elements';
-
 import Sponsor from "./Sponsor";
-
-let styles = {};
+import SponsorDetail from "./SponsorDetail";
+var herons = [ { name: "infinite", logo: "infinitelogo" }, { name: "facebook", logo: "fblogo" } ];
 
 class Sponsors extends Component {
+  showSponsorDetail(sponsor) {
+    this.props.navigator.push({
+      title: sponsor.name,
+      component: SponsorDetail,
+      passProps: {sponsor}
+    });
+  }
+
   render () {
     return (
       <ScrollView style={styles.scrollView}>
@@ -20,7 +23,11 @@ class Sponsors extends Component {
           <Text style={styles.heading}>Heron Tier</Text>
         </View>
         <View style={styles.container}>
-          <Sponsor name='Infinite Energy' />
+          <TouchableHighlight onPress={() => this.showSponsorDetail(herons[0])}  underlayColor='#dddddd'>
+            <View>
+              <Sponsor name='Infinite Energy' />
+            </View>
+          </TouchableHighlight>
           <Sponsor name='Facebook' />
           <Sponsor name='StateFarm' />
           <Sponsor name='Linode' />
@@ -50,7 +57,7 @@ class Sponsors extends Component {
   }
 }
 
-styles = StyleSheet.create({
+let styles = StyleSheet.create({
   container: {
     margin: 15
   },
