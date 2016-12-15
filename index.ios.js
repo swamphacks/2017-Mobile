@@ -8,53 +8,38 @@ import Firebase from "./App/firebase/Firebase";
 class SwamphacksMobile1 extends Component {
   constructor(props) {
     super(props);
-
     Firebase.initialise();
-
     this.getInitialView();
-
     this.state = {
       userLoaded: false,
       initialView: null
     };
 
     this.getInitialView = this.getInitialView.bind(this);
-
   }
 
   getInitialView() {
-
     firebase.auth().onAuthStateChanged((user) => {
-
       let initialView = user ? "App" : "Login";
-
       this.setState({
         userLoaded: true,
         initialView: initialView
       })
     });
-
-
   }
 
   static renderScene(route, navigator) {
-
     switch (route.name) {
-
       case "App":
         return (<App navigator={navigator} />);
         break;
-
       case "Login":
         return (<Login navigator={navigator} />);
         break;
-
     }
-
   }
 
   static configureScene(route) {
-
     if (route.sceneConfig) {
       return (route.sceneConfig);
     } else {
@@ -63,13 +48,10 @@ class SwamphacksMobile1 extends Component {
         gestures: {}
       });
     }
-
   }
 
   render() {
-
     if (this.state.userLoaded) {
-
       return (
           <Navigator
               initialRoute={{name: this.state.initialView}}
@@ -79,7 +61,6 @@ class SwamphacksMobile1 extends Component {
     } else {
       return null;
     }
-
   }
 }
 
