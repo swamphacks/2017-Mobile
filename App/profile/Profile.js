@@ -2,29 +2,53 @@ import React, { Component } from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
 import colors from 'HSColors';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Button, Text, FormInput, FormLabel, CheckBox } from 'react-native-elements';
 
-import {
-  Button,
-  Text,
-  FormInput,
-  FormLabel,
-  CheckBox
-} from 'react-native-elements';
-
-let styles = {};
+import * as firebase from "firebase";
 
 class Profile extends Component {
+  constructor(props) {
+      super(props);
+
+      this.state = {
+          uid: "",
+          name: "",
+          email: "",
+          qr: ""
+      };
+  }
+
+  async componentDidMount() {
+      try {
+        let user = await firebase.auth().currentUser;
+
+        this.setState({
+            uid: user.uid,
+            email: user.email
+        });
+
+      } catch (error) {
+          console.log(error);
+      }
+    }
+
   render () {
     return (
-      <ScrollView style={{backgroundColor: 'white'}} keyboardShouldPersistTaps>
+      <ScrollView style={styles.scrollView} keyboardShouldPersistTaps>
         <View>
+          <Text>{this.state.email}</Text>
         </View>
       </ScrollView>
     )
   }
 }
 
-styles = StyleSheet.create({
+let styles = StyleSheet.create({
+  scrollView: {
+    marginTop: 65,
+    backgroundColor: 'white'
+  },
+
   headingContainer: {
     marginTop: 60,
     justifyContent: 'center',
