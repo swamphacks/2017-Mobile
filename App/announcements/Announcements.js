@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView, ListView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-let styles;
 
 import { List, ListItem, Text, SearchBar } from 'react-native-elements';
 
@@ -74,7 +73,7 @@ class Announcements extends Component {
   }
 }
 
-styles = StyleSheet.create({
+let styles = StyleSheet.create({
   scrollView: {
     backgroundColor: 'white',
     marginTop: 65

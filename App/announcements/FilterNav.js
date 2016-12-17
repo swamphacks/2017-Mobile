@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Navigator, StyleSheet, Text, TouchableHighlight } from 'react-native';
-import Announcements from './Announcements';
-import FilterNav from "./FilterNav";
+import Filter from './Filter';
 
-const initialRoute = {component: Announcements};
+const initialRoute = {component: Filter};
 
-class AnnouncementsNav extends Component {
+class FilterNav extends Component {
   constructor () {
     super();
     this.renderScene = this.renderScene.bind(this);
@@ -17,15 +16,12 @@ class AnnouncementsNav extends Component {
     )
   }
 
-  openFilter(navigator){
-    this.props.navigator.push({
-      title: 'filter',
-      component: FilterNav,
-      passProps: {navigator}
-    });
+  applyFilters(){
+    console.log('yee');
   }
 
   render () {
+    console.log('yeezy');
     return (
       <Navigator
         navigationBar = {
@@ -34,21 +30,23 @@ class AnnouncementsNav extends Component {
             LeftButton: (route, navigator, index, navState) =>
             {
               return (
-                <TouchableHighlight onPress={() => this.openFilter(navigator)}>
-                  <Text>Filter</Text>
+                <TouchableHighlight onPress={() => this.props.navigator.pop()}>
+                  <Text>Cancel</Text>
                 </TouchableHighlight>
               );
             },
             RightButton: (route, navigator, index, navState) =>
             {
                return (
-                 <Text></Text>
+                 <TouchableHighlight onPress={() => this.applyFilters()}>
+                   <Text>Apply</Text>
+                 </TouchableHighlight>
                );
             },
             Title: (route, navigator, index, navState) =>
             {
               return (
-                <Text style={styles.titleText}>Announcements</Text>
+                <Text style={styles.titleText}>Filter</Text>
               );
             },
           }
@@ -71,4 +69,4 @@ styles = StyleSheet.create({
   }
 })
 
-export default AnnouncementsNav
+export default FilterNav

@@ -46,7 +46,7 @@ class App extends Component {
           selected={selectedTab === 'announcements'}
           title={selectedTab === 'announcements' ? 'ANNOUNCEMENTS' : null}
           onPress={() => this.changeTab('announcements')}>
-          <Announcements />
+          <Announcements navigator={this.props.navigator}/>
         </Tab>
         <Tab
           tabStyle={selectedTab !== 'countdown' && { marginBottom: -6 }}
