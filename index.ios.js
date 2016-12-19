@@ -1,7 +1,9 @@
 import React, { Component }from 'react';
 import { AppRegistry, Navigator } from 'react-native';
+
 import App from './App/App';
-import Login from './App/login/Login'
+import Login from './App/login/Login';
+
 import * as firebase from "firebase";
 import Firebase from "./App/firebase/Firebase";
 
@@ -31,10 +33,10 @@ class SwamphacksMobile1 extends Component {
   static renderScene(route, navigator) {
     switch (route.name) {
       case "App":
-        return (<App navigator={navigator} />);
+        return (<App navigator={navigator} {...route.passProps}/>);
         break;
       case "Login":
-        return (<Login navigator={navigator} />);
+        return (<Login navigator={navigator} {...route.passProps}/>);
         break;
     }
   }

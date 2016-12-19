@@ -8,11 +8,9 @@ import Events from './events/EventsRootContainer';
 import Announcements from './announcements/AnnouncementsRootContainer';
 import Countdown from './countdown/CountdownRootContainer';
 import Sponsors from './sponsors/SponsorsRootContainer';
-import Profile from './profile/ProfileRootContainer';
+import Profile from './profile/hacker/ProfileRootContainer';
 
 import { Tabs, Tab } from 'react-native-elements';
-
-let styles = {};
 
 class App extends Component {
   constructor () {
@@ -46,7 +44,7 @@ class App extends Component {
           selected={selectedTab === 'announcements'}
           title={selectedTab === 'announcements' ? 'ANNOUNCEMENTS' : null}
           onPress={() => this.changeTab('announcements')}>
-          <Announcements />
+          <Announcements navigator={this.props.navigator}/>
         </Tab>
         <Tab
           tabStyle={selectedTab !== 'countdown' && { marginBottom: -6 }}
@@ -81,7 +79,7 @@ class App extends Component {
   }
 }
 
-styles = StyleSheet.create({
+let styles = StyleSheet.create({
   titleStyle: {
     ...Platform.select({
       ios: {
