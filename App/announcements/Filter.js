@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, ListView } from 'react-native';
+import { View, StyleSheet, ScrollView, ListView, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class Filter extends Component {
   render () {
-    console.log('yeeeezus');
     return (
       <ScrollView keyboardShouldPersistTaps style={styles.scrollView}>
         <Text>Filter</Text>
@@ -15,7 +14,7 @@ class Filter extends Component {
 
 let styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     marginTop: 65
   },
   container: {

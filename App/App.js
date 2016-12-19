@@ -12,8 +12,6 @@ import Profile from './profile/ProfileRootContainer';
 
 import { Tabs, Tab } from 'react-native-elements';
 
-let styles = {};
-
 class App extends Component {
   constructor () {
     super();
@@ -81,7 +79,7 @@ class App extends Component {
   }
 }
 
-styles = StyleSheet.create({
+let styles = StyleSheet.create({
   titleStyle: {
     ...Platform.select({
       ios: {

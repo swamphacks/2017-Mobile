@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Navigator, StyleSheet, Text, TouchableHighlight } from 'react-native';
 import Announcements from './Announcements';
-import FilterNav from "./FilterNav";
+import Filter from "./Filter";
 
-const initialRoute = {component: Announcements};
+const initialRoute = {component: Announcements, index: 0};
 
 class AnnouncementsNav extends Component {
   constructor () {
@@ -18,11 +18,15 @@ class AnnouncementsNav extends Component {
   }
 
   openFilter(navigator){
-    this.props.navigator.push({
-      title: 'filter',
-      component: FilterNav,
+    navigator.push({
+      title: 'Filter',
+      component: Filter,
       passProps: {navigator}
     });
+  }
+
+  applyFilters(){
+    console.log('yee');
   }
 
   render () {
@@ -33,23 +37,43 @@ class AnnouncementsNav extends Component {
           {
             LeftButton: (route, navigator, index, navState) =>
             {
-              return (
-                <TouchableHighlight onPress={() => this.openFilter(navigator)}>
-                  <Text>Filter</Text>
-                </TouchableHighlight>
-              );
+              if (route.index === 0){
+                return (
+                  <TouchableHighlight onPress={() => this.openFilter(navigator)}>
+                    <Text>Filter</Text>
+                  </TouchableHighlight>
+                );
+              } else {
+                return (
+                  <TouchableHighlight onPress={() => navigator.pop()}>
+                    <Text>Cancel</Text>
+                  </TouchableHighlight>
+                );
+              }
             },
             RightButton: (route, navigator, index, navState) =>
             {
-               return (
-                 <Text></Text>
-               );
+              if (route.index === 0){
+                return null;
+              } else {
+                return (
+                  <TouchableHighlight onPress={() => navigator.pop()}>
+                    <Text>Apply</Text>
+                  </TouchableHighlight>
+                );
+              }
             },
             Title: (route, navigator, index, navState) =>
             {
-              return (
-                <Text style={styles.titleText}>Announcements</Text>
-              );
+              if (route.index === 0){
+                return (
+                  <Text style={styles.titleText}>Announcements</Text>
+                );
+              } else {
+                return (
+                  <Text style={styles.titleText}>Filter</Text>
+                );
+              }
             },
           }
         }
