@@ -8,7 +8,7 @@ import Events from './events/EventsRootContainer';
 import Announcements from './announcements/AnnouncementsRootContainer';
 import Countdown from './countdown/CountdownRootContainer';
 import Sponsors from './sponsors/SponsorsRootContainer';
-import Profile from './profile/ProfileRootContainer';
+import Profile from './profile/hacker/ProfileRootContainer';
 
 import { Tabs, Tab } from 'react-native-elements';
 

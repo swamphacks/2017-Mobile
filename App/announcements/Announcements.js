@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView, ListView, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import FilterNav from "./FilterNav";
 
 import { List, ListItem, SearchBar } from 'react-native-elements';
 
