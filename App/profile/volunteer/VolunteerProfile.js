@@ -6,7 +6,7 @@ import { Button, Text, FormInput, FormLabel, CheckBox } from 'react-native-eleme
 
 import * as firebase from "firebase";
 
-class Profile extends Component {
+class VolunteerProfile extends Component {
   constructor(props) {
       super(props);
 
@@ -38,9 +38,6 @@ class Profile extends Component {
         <View>
           <Text>{this.state.email}</Text>
         </View>
-        <View>
-          <Text>{this.state.uid}</Text>
-        </View>
       </ScrollView>
     )
   }
@@ -69,4 +66,4 @@ let styles = StyleSheet.create({
   }
 })
 
-export default Profile
+export default VolunteerProfile
