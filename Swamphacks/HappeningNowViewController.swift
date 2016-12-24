@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HappeningNowViewController.swift
 //  Swamphacks
 //
 //  Created by Gonzalo Nunez on 12/23/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class HappeningNowViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()

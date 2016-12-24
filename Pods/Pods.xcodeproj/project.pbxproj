@@ -1,0 +1,736 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A347A16CF26C0220AA713A28F0707C1 /* CapturePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240DD006860FD9F22981FA36EB71CC78 /* CapturePreviewView.swift */; };
+		1CBB8CED35CD91ABB08DE41E7860BF14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84543A1CD1E3D7DEB7E46B329FAEA31 /* UIKit.framework */; };
+		1DA061A5EF4E88A3856B1AD30F4D43D2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407C70275CBA1EB15F353B8FB6907B89 /* AVFoundation.framework */; };
+		246384494C6138D42E243FA0875A76F8 /* CaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF704F27279DD576910D4C5343B1D37F /* CaptureManager.swift */; };
+		2C3B86F6A9005511D15C3C5618CEB74F /* GNCam-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E381D8BBE8523E874D7BF47C7D27CE1A /* GNCam-dummy.m */; };
+		3444D19CD851AA4C18CFF9B2294472B4 /* Pods-SwamphacksTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D0E1D5432A9DA3E98422FDFD1459F73 /* Pods-SwamphacksTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		430302C10E8CADA4F7D673E6428CEA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 068EB5D479F676020DB190970D473335 /* Assets.xcassets */; };
+		75B99EDD72BD0D073B8E44EF785FCE61 /* FocusIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B295F7C4D0DA72413D37A946CD77370 /* FocusIndicatorView.swift */; };
+		7B4A131AEBBBFD0030A8BD09D1FB0826 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49526A4D8624FB10CBDB65A69068C2FF /* CaptureViewController.swift */; };
+		8A3464C89C1938807811FF78B50018DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F77795FEB611D7ACECB6AC8055B20BC /* Foundation.framework */; };
+		9D91D641266F5B9C55F5ED5F0BED0092 /* Pods-Swamphacks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 51D91A30325C7C5500C3433C2BC52E39 /* Pods-Swamphacks-dummy.m */; };
+		C8D191652F0F66B50ECF2D3F6C855958 /* GNCam-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A3C8AA01D48B75A3FA89378611B2F37F /* GNCam-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1EC64873C33B173FFDCF14F5E7FB92A /* Pods-Swamphacks-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8269BF04D2EB9C99E1F4F408732C8C22 /* Pods-Swamphacks-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2129971A17D07624FFB304A2C63AB99 /* Pods-SwamphacksTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0158F8F90B842C1E2B41F574900F29AD /* Pods-SwamphacksTests-dummy.m */; };
+		DCD5F7ADF369C6948419EBE8632498D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F77795FEB611D7ACECB6AC8055B20BC /* Foundation.framework */; };
+		F5664EE1F4546E38D651742889133008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F77795FEB611D7ACECB6AC8055B20BC /* Foundation.framework */; };
+		FA004A63FC07401B07D65359CC4A5B17 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF925AC44F0C516B1757271ACCE9000 /* CoreMedia.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		335F4B75514B53ED8A09059863786143 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7ADEE39E75AE94BD9DBC77072DCFD72;
+			remoteInfo = GNCam;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0158F8F90B842C1E2B41F574900F29AD /* Pods-SwamphacksTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwamphacksTests-dummy.m"; sourceTree = "<group>"; };
+		05395D832BAD664013C7E990AF4DA58F /* Pods-Swamphacks-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Swamphacks-resources.sh"; sourceTree = "<group>"; };
+		068EB5D479F676020DB190970D473335 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = GNCam/Assets/Assets.xcassets; sourceTree = "<group>"; };
+		14C21F4767254A372900D6F7F33CD1F1 /* Pods-Swamphacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Swamphacks.debug.xcconfig"; sourceTree = "<group>"; };
+		1D0E1D5432A9DA3E98422FDFD1459F73 /* Pods-SwamphacksTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwamphacksTests-umbrella.h"; sourceTree = "<group>"; };
+		2260D57670B1CF9F1D72A7F38D3D9BF0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22A28ABA00A9E6A7FD8A60D98B31CCAD /* Pods-SwamphacksTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SwamphacksTests.modulemap"; sourceTree = "<group>"; };
+		240DD006860FD9F22981FA36EB71CC78 /* CapturePreviewView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CapturePreviewView.swift; path = GNCam/Source/CapturePreviewView.swift; sourceTree = "<group>"; };
+		2820DEC703FC90ECD32E6DCBE5B671E4 /* Pods-SwamphacksTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwamphacksTests-resources.sh"; sourceTree = "<group>"; };
+		2EF925AC44F0C516B1757271ACCE9000 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		2F77795FEB611D7ACECB6AC8055B20BC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3388304EB57ABBE71C1321BEF09129F6 /* GNCam.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GNCam.xcconfig; sourceTree = "<group>"; };
+		3B295F7C4D0DA72413D37A946CD77370 /* FocusIndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusIndicatorView.swift; path = GNCam/Source/FocusIndicatorView.swift; sourceTree = "<group>"; };
+		3E6266501B0BEBA40C881E383D5841C0 /* Pods-Swamphacks-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Swamphacks-acknowledgements.markdown"; sourceTree = "<group>"; };
+		407C70275CBA1EB15F353B8FB6907B89 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		47F3F4CD6461416308385E1731B24015 /* Pods-SwamphacksTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwamphacksTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		49526A4D8624FB10CBDB65A69068C2FF /* CaptureViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CaptureViewController.swift; path = GNCam/Source/CaptureViewController.swift; sourceTree = "<group>"; };
+		51D91A30325C7C5500C3433C2BC52E39 /* Pods-Swamphacks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Swamphacks-dummy.m"; sourceTree = "<group>"; };
+		524CB185FB9CC8239DC82AEF55AF4E83 /* GNCam-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GNCam-prefix.pch"; sourceTree = "<group>"; };
+		5981E4CE0A38AC84769291ACDDBC2843 /* Pods-SwamphacksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwamphacksTests.release.xcconfig"; sourceTree = "<group>"; };
+		59B952A5436F1865F55F712F6D2C6919 /* Pods_Swamphacks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Swamphacks.framework; path = "Pods-Swamphacks.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8269BF04D2EB9C99E1F4F408732C8C22 /* Pods-Swamphacks-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Swamphacks-umbrella.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A319718E764C681705E713C6FEB996C5 /* Pods-Swamphacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Swamphacks.release.xcconfig"; sourceTree = "<group>"; };
+		A3C8AA01D48B75A3FA89378611B2F37F /* GNCam-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GNCam-umbrella.h"; sourceTree = "<group>"; };
+		A41FC4B8148F2095191433609D471BF7 /* Pods-SwamphacksTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwamphacksTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		A937596532B28E6BB702060AD38A38F7 /* Pods-Swamphacks-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Swamphacks-frameworks.sh"; sourceTree = "<group>"; };
+		AEE319367980248E94628E6562109292 /* Pods-Swamphacks-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Swamphacks-acknowledgements.plist"; sourceTree = "<group>"; };
+		BBEB89018BB41003DA8F202B1CFDE8FD /* GNCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GNCam.framework; path = GNCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCA5DA06998D92D796D681140B008BD7 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwamphacksTests.framework; path = "Pods-SwamphacksTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6933B31CF4D311C5E09B16622D514CB /* Pods-SwamphacksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwamphacksTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C6C0810E2D06E14506D400113747FD32 /* Pods-SwamphacksTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwamphacksTests-frameworks.sh"; sourceTree = "<group>"; };
+		D7B3CFD26D21CD78F080F6ABD40E4704 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D84543A1CD1E3D7DEB7E46B329FAEA31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		DF704F27279DD576910D4C5343B1D37F /* CaptureManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CaptureManager.swift; path = GNCam/Source/CaptureManager.swift; sourceTree = "<group>"; };
+		DFA947ACC0244456E5F638CEFFA9A696 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E33E0810233CAA2AD6788FDB212FB82C /* GNCam.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GNCam.modulemap; sourceTree = "<group>"; };
+		E381D8BBE8523E874D7BF47C7D27CE1A /* GNCam-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GNCam-dummy.m"; sourceTree = "<group>"; };
+		FF4A183112D55FAC3183298A58370E3A /* Pods-Swamphacks.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Swamphacks.modulemap"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		36952A7BAE8402A6D29B53C80B432B06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCD5F7ADF369C6948419EBE8632498D0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		470EA961E09EB298952CE6E938A3A86F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DA061A5EF4E88A3856B1AD30F4D43D2 /* AVFoundation.framework in Frameworks */,
+				FA004A63FC07401B07D65359CC4A5B17 /* CoreMedia.framework in Frameworks */,
+				F5664EE1F4546E38D651742889133008 /* Foundation.framework in Frameworks */,
+				1CBB8CED35CD91ABB08DE41E7860BF14 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89EE34C5D8316426C1815D15C565A255 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A3464C89C1938807811FF78B50018DC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C0E41A2B84CDDE75D10C1AA97234EAB /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		43A7C1467F519EDEA57DE5924839068B /* Pods-Swamphacks */ = {
+			isa = PBXGroup;
+			children = (
+				DFA947ACC0244456E5F638CEFFA9A696 /* Info.plist */,
+				FF4A183112D55FAC3183298A58370E3A /* Pods-Swamphacks.modulemap */,
+				3E6266501B0BEBA40C881E383D5841C0 /* Pods-Swamphacks-acknowledgements.markdown */,
+				AEE319367980248E94628E6562109292 /* Pods-Swamphacks-acknowledgements.plist */,
+				51D91A30325C7C5500C3433C2BC52E39 /* Pods-Swamphacks-dummy.m */,
+				A937596532B28E6BB702060AD38A38F7 /* Pods-Swamphacks-frameworks.sh */,
+				05395D832BAD664013C7E990AF4DA58F /* Pods-Swamphacks-resources.sh */,
+				8269BF04D2EB9C99E1F4F408732C8C22 /* Pods-Swamphacks-umbrella.h */,
+				14C21F4767254A372900D6F7F33CD1F1 /* Pods-Swamphacks.debug.xcconfig */,
+				A319718E764C681705E713C6FEB996C5 /* Pods-Swamphacks.release.xcconfig */,
+			);
+			name = "Pods-Swamphacks";
+			path = "Target Support Files/Pods-Swamphacks";
+			sourceTree = "<group>";
+		};
+		65A9E6E8FAAA97531A0EC4451C0088EC /* GNCam */ = {
+			isa = PBXGroup;
+			children = (
+				DF704F27279DD576910D4C5343B1D37F /* CaptureManager.swift */,
+				240DD006860FD9F22981FA36EB71CC78 /* CapturePreviewView.swift */,
+				49526A4D8624FB10CBDB65A69068C2FF /* CaptureViewController.swift */,
+				3B295F7C4D0DA72413D37A946CD77370 /* FocusIndicatorView.swift */,
+				6E5153A25DFC45F3727C90157ABD4A5E /* Resources */,
+				B5D312D9E580F91B247EDDE58E5061F2 /* Support Files */,
+			);
+			name = GNCam;
+			path = GNCam;
+			sourceTree = "<group>";
+		};
+		662C90C792DAB64EBB29D1A2CB415D61 /* Pods-SwamphacksTests */ = {
+			isa = PBXGroup;
+			children = (
+				D7B3CFD26D21CD78F080F6ABD40E4704 /* Info.plist */,
+				22A28ABA00A9E6A7FD8A60D98B31CCAD /* Pods-SwamphacksTests.modulemap */,
+				47F3F4CD6461416308385E1731B24015 /* Pods-SwamphacksTests-acknowledgements.markdown */,
+				A41FC4B8148F2095191433609D471BF7 /* Pods-SwamphacksTests-acknowledgements.plist */,
+				0158F8F90B842C1E2B41F574900F29AD /* Pods-SwamphacksTests-dummy.m */,
+				C6C0810E2D06E14506D400113747FD32 /* Pods-SwamphacksTests-frameworks.sh */,
+				2820DEC703FC90ECD32E6DCBE5B671E4 /* Pods-SwamphacksTests-resources.sh */,
+				1D0E1D5432A9DA3E98422FDFD1459F73 /* Pods-SwamphacksTests-umbrella.h */,
+				C6933B31CF4D311C5E09B16622D514CB /* Pods-SwamphacksTests.debug.xcconfig */,
+				5981E4CE0A38AC84769291ACDDBC2843 /* Pods-SwamphacksTests.release.xcconfig */,
+			);
+			name = "Pods-SwamphacksTests";
+			path = "Target Support Files/Pods-SwamphacksTests";
+			sourceTree = "<group>";
+		};
+		6E5153A25DFC45F3727C90157ABD4A5E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				068EB5D479F676020DB190970D473335 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7B32704314FF7DD160DAA252F71C19AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				65A9E6E8FAAA97531A0EC4451C0088EC /* GNCam */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
+				7B32704314FF7DD160DAA252F71C19AB /* Pods */,
+				E250A50750F62ECE6DAD59E17F06C05D /* Products */,
+				CA066C9F355831CFBB42C104CDF0BC02 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8C0E41A2B84CDDE75D10C1AA97234EAB /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				407C70275CBA1EB15F353B8FB6907B89 /* AVFoundation.framework */,
+				2EF925AC44F0C516B1757271ACCE9000 /* CoreMedia.framework */,
+				2F77795FEB611D7ACECB6AC8055B20BC /* Foundation.framework */,
+				D84543A1CD1E3D7DEB7E46B329FAEA31 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		B5D312D9E580F91B247EDDE58E5061F2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E33E0810233CAA2AD6788FDB212FB82C /* GNCam.modulemap */,
+				3388304EB57ABBE71C1321BEF09129F6 /* GNCam.xcconfig */,
+				E381D8BBE8523E874D7BF47C7D27CE1A /* GNCam-dummy.m */,
+				524CB185FB9CC8239DC82AEF55AF4E83 /* GNCam-prefix.pch */,
+				A3C8AA01D48B75A3FA89378611B2F37F /* GNCam-umbrella.h */,
+				2260D57670B1CF9F1D72A7F38D3D9BF0 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GNCam";
+			sourceTree = "<group>";
+		};
+		CA066C9F355831CFBB42C104CDF0BC02 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				43A7C1467F519EDEA57DE5924839068B /* Pods-Swamphacks */,
+				662C90C792DAB64EBB29D1A2CB415D61 /* Pods-SwamphacksTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E250A50750F62ECE6DAD59E17F06C05D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBEB89018BB41003DA8F202B1CFDE8FD /* GNCam.framework */,
+				59B952A5436F1865F55F712F6D2C6919 /* Pods_Swamphacks.framework */,
+				BCA5DA06998D92D796D681140B008BD7 /* Pods_SwamphacksTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		DF63A014A3108899819927C9888EC515 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1EC64873C33B173FFDCF14F5E7FB92A /* Pods-Swamphacks-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3F1FCB432C113B3100C66A0F98B9A26 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3444D19CD851AA4C18CFF9B2294472B4 /* Pods-SwamphacksTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F21F4F64F3C8B78015E6525E075BB891 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8D191652F0F66B50ECF2D3F6C855958 /* GNCam-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		03C28198B0C341E43D8C96EB743834BE /* Pods-SwamphacksTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F0270A31FD34C230EF3E8C049D2B67C /* Build configuration list for PBXNativeTarget "Pods-SwamphacksTests" */;
+			buildPhases = (
+				EE9B9DCEB65CF8206EB05D2704C619A1 /* Sources */,
+				36952A7BAE8402A6D29B53C80B432B06 /* Frameworks */,
+				E3F1FCB432C113B3100C66A0F98B9A26 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SwamphacksTests";
+			productName = "Pods-SwamphacksTests";
+			productReference = BCA5DA06998D92D796D681140B008BD7 /* Pods_SwamphacksTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6F36FA2E798865E4EE934DB178AE3C1B /* Pods-Swamphacks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DFFFCC0DBE863FD0E0E4E6CAB44C05E /* Build configuration list for PBXNativeTarget "Pods-Swamphacks" */;
+			buildPhases = (
+				EDA73488542E538C677887EF57F9D782 /* Sources */,
+				89EE34C5D8316426C1815D15C565A255 /* Frameworks */,
+				DF63A014A3108899819927C9888EC515 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ACFFA8F9DDC317583C609B476757B69D /* PBXTargetDependency */,
+			);
+			name = "Pods-Swamphacks";
+			productName = "Pods-Swamphacks";
+			productReference = 59B952A5436F1865F55F712F6D2C6919 /* Pods_Swamphacks.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E7ADEE39E75AE94BD9DBC77072DCFD72 /* GNCam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECA89296A9BB0BA107A477E192A8A0A4 /* Build configuration list for PBXNativeTarget "GNCam" */;
+			buildPhases = (
+				ADB8215CE9C3D1A8FAD08E705947D9EE /* Sources */,
+				470EA961E09EB298952CE6E938A3A86F /* Frameworks */,
+				12AB6D31B4B1A5B46F459D6FC91C6A6C /* Resources */,
+				F21F4F64F3C8B78015E6525E075BB891 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GNCam;
+			productName = GNCam;
+			productReference = BBEB89018BB41003DA8F202B1CFDE8FD /* GNCam.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = E250A50750F62ECE6DAD59E17F06C05D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7ADEE39E75AE94BD9DBC77072DCFD72 /* GNCam */,
+				6F36FA2E798865E4EE934DB178AE3C1B /* Pods-Swamphacks */,
+				03C28198B0C341E43D8C96EB743834BE /* Pods-SwamphacksTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		12AB6D31B4B1A5B46F459D6FC91C6A6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				430302C10E8CADA4F7D673E6428CEA83 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ADB8215CE9C3D1A8FAD08E705947D9EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				246384494C6138D42E243FA0875A76F8 /* CaptureManager.swift in Sources */,
+				0A347A16CF26C0220AA713A28F0707C1 /* CapturePreviewView.swift in Sources */,
+				7B4A131AEBBBFD0030A8BD09D1FB0826 /* CaptureViewController.swift in Sources */,
+				75B99EDD72BD0D073B8E44EF785FCE61 /* FocusIndicatorView.swift in Sources */,
+				2C3B86F6A9005511D15C3C5618CEB74F /* GNCam-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDA73488542E538C677887EF57F9D782 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D91D641266F5B9C55F5ED5F0BED0092 /* Pods-Swamphacks-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE9B9DCEB65CF8206EB05D2704C619A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2129971A17D07624FFB304A2C63AB99 /* Pods-SwamphacksTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ACFFA8F9DDC317583C609B476757B69D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GNCam;
+			target = E7ADEE39E75AE94BD9DBC77072DCFD72 /* GNCam */;
+			targetProxy = 335F4B75514B53ED8A09059863786143 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		114CEB69D4A1934066C8ACBD15CEBA5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14C21F4767254A372900D6F7F33CD1F1 /* Pods-Swamphacks.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Swamphacks/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Swamphacks/Pods-Swamphacks.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Swamphacks;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		31027D907A8EA982A11CB470BF196EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A319718E764C681705E713C6FEB996C5 /* Pods-Swamphacks.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Swamphacks/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Swamphacks/Pods-Swamphacks.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Swamphacks;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		564243023B1ECBA3E09875A4FB394D22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5981E4CE0A38AC84769291ACDDBC2843 /* Pods-SwamphacksTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwamphacksTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwamphacksTests/Pods-SwamphacksTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwamphacksTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6C131817BC537486850F743ADE25E862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6933B31CF4D311C5E09B16622D514CB /* Pods-SwamphacksTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwamphacksTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwamphacksTests/Pods-SwamphacksTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwamphacksTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B5E592DC239EE84239A189D8D95C2226 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3388304EB57ABBE71C1321BEF09129F6 /* GNCam.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GNCam/GNCam-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GNCam/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GNCam/GNCam.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = GNCam;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E72E7977875C2D251FC62736BBDDC389 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F118EEDF5CDFCA54464E2F3E504CC4CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3388304EB57ABBE71C1321BEF09129F6 /* GNCam.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GNCam/GNCam-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GNCam/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GNCam/GNCam.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = GNCam;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F0270A31FD34C230EF3E8C049D2B67C /* Build configuration list for PBXNativeTarget "Pods-SwamphacksTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C131817BC537486850F743ADE25E862 /* Debug */,
+				564243023B1ECBA3E09875A4FB394D22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12914D756594D15C6F2CA12FE5F89F1B /* Debug */,
+				E72E7977875C2D251FC62736BBDDC389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DFFFCC0DBE863FD0E0E4E6CAB44C05E /* Build configuration list for PBXNativeTarget "Pods-Swamphacks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				114CEB69D4A1934066C8ACBD15CEBA5D /* Debug */,
+				31027D907A8EA982A11CB470BF196EC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECA89296A9BB0BA107A477E192A8A0A4 /* Build configuration list for PBXNativeTarget "GNCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F118EEDF5CDFCA54464E2F3E504CC4CA /* Debug */,
+				B5E592DC239EE84239A189D8D95C2226 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
