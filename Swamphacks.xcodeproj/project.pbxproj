@@ -22,6 +22,7 @@
 		AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2A9C1E0EC7BB00AF875C /* AnnouncementCell.xib */; };
 		AB5F2A9F1E0EC7E600AF875C /* AnnouncementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */; };
 		AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */; };
+		AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA21E106E6300AF875C /* Firebase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		AB5F2A9C1E0EC7BB00AF875C /* AnnouncementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementCell.xib; sourceTree = "<group>"; };
 		AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementCell.swift; sourceTree = "<group>"; };
 		AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Conveniences.swift"; sourceTree = "<group>"; };
+		AB5F2AA21E106E6300AF875C /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 		AB5F2A8E1E0D7D7F00AF875C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB5F2AA21E106E6300AF875C /* Firebase.swift */,
 				AB5F2A991E0D8A9900AF875C /* ModelTableViewController.swift */,
 				AB5F2A8F1E0D7E5500AF875C /* HappeningNowViewController.xib */,
 				AB5F2A701E0D7B3000AF875C /* HappeningNowViewController.swift */,
@@ -392,6 +395,7 @@
 				AB5F2A711E0D7B3000AF875C /* HappeningNowViewController.swift in Sources */,
 				AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */,
 				AB5F2A981E0D89E000AF875C /* Announcement.swift in Sources */,
+				AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */,
 				AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */,
 				AB5F2A951E0D888E00AF875C /* CellDescriptor.swift in Sources */,
 			);

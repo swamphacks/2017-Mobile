@@ -8,9 +8,9 @@
 
 import UIKit
 
-struct TableViewDescriptor {
-  let style: UITableViewStyle
-  let rowHeight: CGFloat
+enum RowHeight {
+  case absolute(CGFloat)
+  case automatic
 }
 
 final class ModelTableViewController<Model>: UITableViewController {
@@ -22,24 +22,26 @@ final class ModelTableViewController<Model>: UITableViewController {
   
   private var reuseIdentifiers = Set<String>()
   
-  let tableDescriptor: TableViewDescriptor
   let load: (([Model]) -> ()) -> ()
   
   let cellDescriptor: (Model) -> CellDescriptor
+  let rowHeight: (Model, IndexPath) -> RowHeight
   let didSelect: (Model) -> Void
   
-  init(tableDescriptor: TableViewDescriptor,
-       cellDescriptor: @escaping (Model) -> CellDescriptor,
+  init(style: UITableViewStyle = .plain,
        load: @escaping (([Model]) -> ()) -> (),
+       cellDescriptor: @escaping (Model) -> CellDescriptor,
+       rowHeight: @escaping (Model, IndexPath) -> RowHeight,
        didSelect: @escaping (Model) -> Void)
   {
-    self.tableDescriptor = tableDescriptor
-    self.cellDescriptor = cellDescriptor
     
     self.load = load
+    
+    self.cellDescriptor = cellDescriptor
+    self.rowHeight = rowHeight
     self.didSelect = didSelect
     
-    super.init(style: tableDescriptor.style)
+    super.init(style: style)
     
     let refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -54,6 +56,7 @@ final class ModelTableViewController<Model>: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    //TODO: loading indicator? empty state?
     load { [weak self] items in
       self?.items = items
     }
@@ -81,7 +84,14 @@ final class ModelTableViewController<Model>: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return tableDescriptor.rowHeight
+    let item = items[indexPath.row]
+    let height = rowHeight(item, indexPath)
+    switch height {
+    case .absolute(let h):
+      return h
+    case .automatic:
+      return UITableViewAutomaticDimension
+    }
   }
   
   //MARK: UITableViewDelegate
@@ -94,6 +104,7 @@ final class ModelTableViewController<Model>: UITableViewController {
   //MARK: Actions
   
   @objc fileprivate func refresh(sender: UIRefreshControl?) {
+    //TODO: loading indicator? empty state?
     load { [weak self] items in
       self?.items = items
       sender?.endRefreshing()

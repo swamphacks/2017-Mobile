@@ -20,24 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //******************************************
     
     let announcementLoader = { (completionHandler: (([Announcement]) -> ())) in
-      // load announcements from database...
-      let announcements = [Announcement(title: "Title", description: "Description", dateString: "Sat 9:00am"),
+      // load announcements from Firebase...
+      let announcements = [Announcement(title: "Title", description: "This is a really long description. Watch out! There's a bear on the loose. He is taking mentorship requests and passing out a couple of snacks.", dateString: "Sat 9:00am"),
                            Announcement(title: "Hacker Registration", description: "There's a bear!", dateString: "Sat 3:00pm")] 
       
       completionHandler(announcements)
     }
     
-    let announcementSelected = { (announcement: Announcement) in
-      // show next VC...
-    }
-    
-    let tableDescriptor = TableViewDescriptor(style: .plain, rowHeight: 70)
-    
-    let announcementsVC = ModelTableViewController(tableDescriptor: tableDescriptor,
+    let announcementsVC = ModelTableViewController(load: announcementLoader,
                                                    cellDescriptor: { $0.cellDescriptor },
-                                                   load: announcementLoader,
-                                                   didSelect: announcementSelected)
+                                                   rowHeight: { _,_ in .automatic },
+                                                   didSelect: { _ in })
     
+    // Need this for .automatic rowHeight to work. Should probably throw error if we don't have it when we need it.
+    announcementsVC.tableView.estimatedRowHeight = 90
+    
+    announcementsVC.view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
     announcementsVC.tableView.separatorStyle = .none
     announcementsVC.tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
     

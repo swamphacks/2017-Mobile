@@ -50,26 +50,27 @@
                             <constraint firstItem="yeS-Y9-U7n" firstAttribute="trailing" secondItem="5SE-P3-SDt" secondAttribute="trailing" id="2oj-gg-Tn0"/>
                             <constraint firstItem="5SE-P3-SDt" firstAttribute="top" secondItem="Gft-mP-JWQ" secondAttribute="bottom" constant="8" id="2yo-Tr-DDR"/>
                             <constraint firstItem="yeS-Y9-U7n" firstAttribute="bottom" secondItem="Gft-mP-JWQ" secondAttribute="bottom" id="4tc-mK-YY7"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5SE-P3-SDt" secondAttribute="bottom" constant="4" id="KaU-Vb-hiQ"/>
-                            <constraint firstItem="e6c-W2-HAQ" firstAttribute="trailing" secondItem="5SE-P3-SDt" secondAttribute="trailing" id="MMA-Hv-df9"/>
+                            <constraint firstItem="e6c-W2-HAQ" firstAttribute="top" secondItem="5SE-P3-SDt" secondAttribute="bottom" constant="8" id="767-VQ-hqA"/>
+                            <constraint firstItem="Gft-mP-JWQ" firstAttribute="top" secondItem="Obw-ib-ePq" secondAttribute="top" constant="10" id="NZX-EJ-yus"/>
                             <constraint firstItem="5SE-P3-SDt" firstAttribute="leading" secondItem="EHD-PL-ZBa" secondAttribute="trailing" constant="8" id="QHQ-K5-6QU"/>
+                            <constraint firstAttribute="trailing" secondItem="e6c-W2-HAQ" secondAttribute="trailing" id="S8v-dn-Trn"/>
                             <constraint firstItem="yeS-Y9-U7n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gft-mP-JWQ" secondAttribute="trailing" constant="4" id="WPX-ZL-mHt"/>
-                            <constraint firstItem="Gft-mP-JWQ" firstAttribute="top" secondItem="EHD-PL-ZBa" secondAttribute="top" id="ZkE-YC-Tr6"/>
                             <constraint firstAttribute="trailing" secondItem="5SE-P3-SDt" secondAttribute="trailing" constant="8" id="aJo-Ia-mvj"/>
-                            <constraint firstItem="EHD-PL-ZBa" firstAttribute="top" secondItem="Obw-ib-ePq" secondAttribute="top" constant="4" id="cQR-Lr-vr7"/>
+                            <constraint firstItem="EHD-PL-ZBa" firstAttribute="top" secondItem="Obw-ib-ePq" secondAttribute="top" id="cQR-Lr-vr7"/>
                             <constraint firstItem="Gft-mP-JWQ" firstAttribute="leading" secondItem="EHD-PL-ZBa" secondAttribute="trailing" constant="8" id="ixV-hW-xVt"/>
                             <constraint firstItem="e6c-W2-HAQ" firstAttribute="leading" secondItem="EHD-PL-ZBa" secondAttribute="leading" id="nqv-sP-KmB"/>
-                            <constraint firstItem="EHD-PL-ZBa" firstAttribute="leading" secondItem="Obw-ib-ePq" secondAttribute="leading" constant="8" id="uur-fr-fE9"/>
-                            <constraint firstAttribute="bottom" secondItem="EHD-PL-ZBa" secondAttribute="bottom" constant="4" id="wUd-Wj-wiq"/>
+                            <constraint firstItem="EHD-PL-ZBa" firstAttribute="leading" secondItem="Obw-ib-ePq" secondAttribute="leading" id="uur-fr-fE9"/>
+                            <constraint firstAttribute="bottom" secondItem="EHD-PL-ZBa" secondAttribute="bottom" id="wUd-Wj-wiq"/>
                             <constraint firstItem="e6c-W2-HAQ" firstAttribute="bottom" secondItem="EHD-PL-ZBa" secondAttribute="bottom" id="zuu-wb-mfg"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Obw-ib-ePq" secondAttribute="trailing" id="7zi-np-QQx"/>
-                    <constraint firstItem="Obw-ib-ePq" firstAttribute="top" secondItem="HBG-is-nfS" secondAttribute="top" id="CsC-En-TV4"/>
-                    <constraint firstAttribute="bottom" secondItem="Obw-ib-ePq" secondAttribute="bottom" id="Vc8-Q4-ppl"/>
-                    <constraint firstItem="Obw-ib-ePq" firstAttribute="leading" secondItem="HBG-is-nfS" secondAttribute="leading" id="pwo-k5-Pej"/>
+                    <constraint firstAttribute="trailing" secondItem="Obw-ib-ePq" secondAttribute="trailing" constant="8" id="7zi-np-QQx"/>
+                    <constraint firstItem="Obw-ib-ePq" firstAttribute="top" secondItem="HBG-is-nfS" secondAttribute="top" constant="4" id="CsC-En-TV4"/>
+                    <constraint firstAttribute="bottom" secondItem="Obw-ib-ePq" secondAttribute="bottom" constant="4" id="Vc8-Q4-ppl"/>
+                    <constraint firstItem="Obw-ib-ePq" firstAttribute="leading" secondItem="HBG-is-nfS" secondAttribute="leading" constant="8" id="pwo-k5-Pej"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
