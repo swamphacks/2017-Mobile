@@ -11,17 +11,14 @@ import UIKit
 struct Announcement {
   let title: String
   let description: String
-  let date: Date
-}
-
-//TODO: Create AnnouncementCell.xib, wire up the outlets and implement `configureCell(_ cell:)`
-final class AnnouncementCell: UITableViewCell {
-
+  let dateString: String
 }
 
 extension Announcement {
   func configureCell(_ cell: AnnouncementCell) {
-    cell.textLabel?.text = title
+    cell.titleLabel?.text = title
+    cell.descriptionLabel?.text = description
+    cell.dateLabel?.text = dateString
   }
 }
 

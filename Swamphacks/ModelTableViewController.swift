@@ -8,9 +8,13 @@
 
 import UIKit
 
+struct TableViewDescriptor {
+  let style: UITableViewStyle
+  let rowHeight: CGFloat
+}
+
 final class ModelTableViewController<Model>: UITableViewController {
-  
-  private var items: [Model] = [] {
+  fileprivate var items: [Model] = [] {
     didSet {
       tableView.reloadData()
     }
@@ -18,17 +22,24 @@ final class ModelTableViewController<Model>: UITableViewController {
   
   private var reuseIdentifiers = Set<String>()
   
+  let tableDescriptor: TableViewDescriptor
   let load: (([Model]) -> ()) -> ()
   
-  let descriptor: (Model) -> CellDescriptor
+  let cellDescriptor: (Model) -> CellDescriptor
   let didSelect: (Model) -> Void
   
-  init(load: @escaping (([Model]) -> ()) -> (), descriptor: @escaping (Model) -> CellDescriptor, didSelect: @escaping (Model) -> Void) {
+  init(tableDescriptor: TableViewDescriptor,
+       cellDescriptor: @escaping (Model) -> CellDescriptor,
+       load: @escaping (([Model]) -> ()) -> (),
+       didSelect: @escaping (Model) -> Void)
+  {
+    self.tableDescriptor = tableDescriptor
+    self.cellDescriptor = cellDescriptor
+    
     self.load = load
-    self.descriptor = descriptor
     self.didSelect = didSelect
     
-    super.init(style: .plain)
+    super.init(style: tableDescriptor.style)
     
     let refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -48,17 +59,19 @@ final class ModelTableViewController<Model>: UITableViewController {
     }
   }
   
+  //MARK: UITableViewDataSource
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let item = items[indexPath.row]
-    let cellDescriptor = descriptor(item)
+    let descriptor = cellDescriptor(item)
     
-    if !reuseIdentifiers.contains(cellDescriptor.reuseIdentifier) {
-      register(descriptor: cellDescriptor, in: tableView)
-      reuseIdentifiers.insert(cellDescriptor.reuseIdentifier)
+    if !reuseIdentifiers.contains(descriptor.reuseIdentifier) {
+      register(descriptor: descriptor, in: tableView)
+      reuseIdentifiers.insert(descriptor.reuseIdentifier)
     }
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: cellDescriptor.reuseIdentifier, for: indexPath)
-    cellDescriptor.configure(cell)
+    let cell = tableView.dequeueReusableCell(withIdentifier: descriptor.reuseIdentifier, for: indexPath)
+    descriptor.configure(cell)
     
     return cell
   }
@@ -67,10 +80,27 @@ final class ModelTableViewController<Model>: UITableViewController {
     return items.count
   }
   
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return tableDescriptor.rowHeight
+  }
+  
+  //MARK: UITableViewDelegate
+  
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let item = items[indexPath.row]
     didSelect(item)
   }
+  
+  //MARK: Actions
+  
+  @objc fileprivate func refresh(sender: UIRefreshControl?) {
+    load { [weak self] items in
+      self?.items = items
+      sender?.endRefreshing()
+    }
+  }
+  
+  //MARK: Helpers
   
   fileprivate func register(descriptor: CellDescriptor, in tableView: UITableView) {
     switch descriptor.registerMode {
@@ -78,13 +108,6 @@ final class ModelTableViewController<Model>: UITableViewController {
       tableView.register(descriptor.cellClass, forCellReuseIdentifier: descriptor.reuseIdentifier)
     case .withNib(let nib):
       tableView.register(nib, forCellReuseIdentifier: descriptor.reuseIdentifier)
-    }
-  }
-  
-  @objc fileprivate func refresh(sender: UIRefreshControl?) {
-    load { [weak self] items in
-      self?.items = items
-      sender?.endRefreshing()
     }
   }
   

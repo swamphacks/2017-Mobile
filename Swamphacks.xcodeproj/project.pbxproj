@@ -19,6 +19,9 @@
 		AB5F2A951E0D888E00AF875C /* CellDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2A941E0D888E00AF875C /* CellDescriptor.swift */; };
 		AB5F2A981E0D89E000AF875C /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2A971E0D89E000AF875C /* Announcement.swift */; };
 		AB5F2A9A1E0D8A9900AF875C /* ModelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2A991E0D8A9900AF875C /* ModelTableViewController.swift */; };
+		AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2A9C1E0EC7BB00AF875C /* AnnouncementCell.xib */; };
+		AB5F2A9F1E0EC7E600AF875C /* AnnouncementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */; };
+		AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		AB5F2A941E0D888E00AF875C /* CellDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellDescriptor.swift; sourceTree = "<group>"; };
 		AB5F2A971E0D89E000AF875C /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		AB5F2A991E0D8A9900AF875C /* ModelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTableViewController.swift; sourceTree = "<group>"; };
+		AB5F2A9C1E0EC7BB00AF875C /* AnnouncementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnouncementCell.xib; sourceTree = "<group>"; };
+		AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementCell.swift; sourceTree = "<group>"; };
+		AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Conveniences.swift"; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -112,6 +118,7 @@
 				AB5F2A6E1E0D7B3000AF875C /* AppDelegate.swift */,
 				AB5F2A911E0D7FCE00AF875C /* Utilities */,
 				AB5F2A961E0D89CC00AF875C /* Models */,
+				AB5F2A9B1E0EC78700AF875C /* Views */,
 				AB5F2A8E1E0D7D7F00AF875C /* Controllers */,
 			);
 			path = Swamphacks;
@@ -141,6 +148,7 @@
 			children = (
 				AB5F2A921E0D7FDE00AF875C /* NibLoadable.swift */,
 				AB5F2A941E0D888E00AF875C /* CellDescriptor.swift */,
+				AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -151,6 +159,15 @@
 				AB5F2A971E0D89E000AF875C /* Announcement.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		AB5F2A9B1E0EC78700AF875C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB5F2A9C1E0EC7BB00AF875C /* AnnouncementCell.xib */,
+				AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F8640BAD7A39425752B6E378 /* Pods */ = {
@@ -255,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */,
 				AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */,
 				AB5F2A901E0D7E5500AF875C /* HappeningNowViewController.xib in Resources */,
 				AB5F2A761E0D7B3000AF875C /* Assets.xcassets in Resources */,
@@ -369,10 +387,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB5F2A931E0D7FDE00AF875C /* NibLoadable.swift in Sources */,
+				AB5F2A9F1E0EC7E600AF875C /* AnnouncementCell.swift in Sources */,
 				AB5F2A9A1E0D8A9900AF875C /* ModelTableViewController.swift in Sources */,
 				AB5F2A711E0D7B3000AF875C /* HappeningNowViewController.swift in Sources */,
 				AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */,
 				AB5F2A981E0D89E000AF875C /* Announcement.swift in Sources */,
+				AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */,
 				AB5F2A951E0D888E00AF875C /* CellDescriptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

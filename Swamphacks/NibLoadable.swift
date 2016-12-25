@@ -14,6 +14,7 @@ protocol NibLoadable: class {
 }
 
 extension NibLoadable {
+  
   static var defaultNibName: String {
     return String(describing: self)
   }
@@ -22,12 +23,7 @@ extension NibLoadable {
   static var nib: UINib {
     return UINib(nibName: defaultNibName, bundle: Bundle(for: self))
   }
+  
 }
 
-extension UITableViewCell: NibLoadable { }
-
-extension UIViewController: NibLoadable { }
-
-func controllerFromNib<T: UIViewController>() -> T where T: NibLoadable {
-  return T(nibName: T.defaultNibName, bundle: Bundle(for: T.self))
-}
+extension UIView: NibLoadable { }
