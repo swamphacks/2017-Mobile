@@ -25,6 +25,7 @@
 		AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA21E106E6300AF875C /* Firebase.swift */; };
 		AB5F2AA51E10728900AF875C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */; };
 		AB5F2AA61E10728900AF875C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */; };
+		AB5F2AA81E109E1B00AF875C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA71E109E1B00AF875C /* App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Conveniences.swift"; sourceTree = "<group>"; };
 		AB5F2AA21E106E6300AF875C /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB5F2AA71E109E1B00AF875C /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -142,7 +144,7 @@
 		AB5F2A8E1E0D7D7F00AF875C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AB5F2AA21E106E6300AF875C /* Firebase.swift */,
+				AB5F2AA71E109E1B00AF875C /* App.swift */,
 				AB5F2A991E0D8A9900AF875C /* ModelTableViewController.swift */,
 				AB5F2A8F1E0D7E5500AF875C /* HappeningNowViewController.xib */,
 				AB5F2A701E0D7B3000AF875C /* HappeningNowViewController.swift */,
@@ -163,6 +165,7 @@
 		AB5F2A961E0D89CC00AF875C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AB5F2AA21E106E6300AF875C /* Firebase.swift */,
 				AB5F2A971E0D89E000AF875C /* Announcement.swift */,
 			);
 			name = Models;
@@ -398,6 +401,7 @@
 				AB5F2A931E0D7FDE00AF875C /* NibLoadable.swift in Sources */,
 				AB5F2A9F1E0EC7E600AF875C /* AnnouncementCell.swift in Sources */,
 				AB5F2A9A1E0D8A9900AF875C /* ModelTableViewController.swift in Sources */,
+				AB5F2AA81E109E1B00AF875C /* App.swift in Sources */,
 				AB5F2A711E0D7B3000AF875C /* HappeningNowViewController.swift in Sources */,
 				AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */,
 				AB5F2A981E0D89E000AF875C /* Announcement.swift in Sources */,

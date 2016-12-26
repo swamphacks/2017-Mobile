@@ -42,7 +42,6 @@ struct FirebaseResource<A> {
 }
 
 extension FirebaseResource {
-  
   init(path: String, parseJSON: @escaping (JSONDictionary) -> A?) {
     self.path = path
     self.parse = { snapshot in
@@ -50,14 +49,26 @@ extension FirebaseResource {
       return json.flatMap(parseJSON)
     }
   }
-  
+}
+
+extension FirebaseResource where A: RangeReplaceableCollection {
+  init(path: String, parseElement: @escaping (JSONDictionary) -> A.Iterator.Element?) throws {
+    self = FirebaseResource(path: path, parse: { snapshot in
+      guard let jsonDicts = snapshot.value as? [JSONDictionary] else { return nil }
+      let result = jsonDicts.flatMap(parseElement)
+      return A(result)
+    })
+  }
 }
 
 final class FirebaseManager {
   
   static let shared = FirebaseManager()
   
-  func load<A>(_ resource: FirebaseResource<A>, queryEventType: (FIRDatabaseReference) -> (FIRDatabaseQuery, FIRDataEventType), completion: @escaping (Result<A>) -> Void) {
+  func load<A>(_ resource: FirebaseResource<A>,
+            queryEventType: (FIRDatabaseReference) -> (FIRDatabaseQuery, FIRDataEventType),
+            completion: @escaping (Result<A>) -> Void)
+  {
     let ref = FIRDatabase.database().reference().child(resource.path)
     let (query, eventType) = queryEventType(ref)
     
@@ -69,7 +80,10 @@ final class FirebaseManager {
     })
   }
   
-  func observe<A>(_ resource: FirebaseResource<A>, queryEventType: (FIRDatabaseReference) -> (FIRDatabaseQuery, FIRDataEventType), completion: @escaping (Result<A>) -> Void) -> UInt {
+  func observe<A>(_ resource: FirebaseResource<A>,
+               queryEventType: (FIRDatabaseReference) -> (FIRDatabaseQuery, FIRDataEventType),
+               completion: @escaping (Result<A>) -> Void) -> UInt
+  {
     let ref = FIRDatabase.database().reference().child(resource.path)
     let (query, eventType) = queryEventType(ref)
     
