@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11201"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="lyI-P9-Dih"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IH0-3u-fTO">
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkU-fL-aEM">
+                            <color key="backgroundColor" red="0.45028340820000001" green="0.84761947390000003" blue="0.88266187910000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="4" id="UAs-kA-yyI"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.53591132159999999" green="0.88699299099999995" blue="0.90950196979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="IH0-3u-fTO" secondAttribute="height" multiplier="75:92" id="1AQ-iX-Lxd"/>
+                        <constraint firstAttribute="trailing" secondItem="JkU-fL-aEM" secondAttribute="trailing" id="MpU-F1-lcH"/>
+                        <constraint firstAttribute="bottom" secondItem="JkU-fL-aEM" secondAttribute="bottom" id="dLf-V3-xOG"/>
+                        <constraint firstItem="JkU-fL-aEM" firstAttribute="leading" secondItem="IH0-3u-fTO" secondAttribute="leading" id="lDv-QW-1uH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="IH0-3u-fTO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nu7-eL-h2h"/>
+                <constraint firstAttribute="trailing" secondItem="IH0-3u-fTO" secondAttribute="trailing" id="avH-VW-tuB"/>
+                <constraint firstItem="IH0-3u-fTO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vji-yt-iY8"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

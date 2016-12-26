@@ -15,15 +15,15 @@ final class HappeningNowViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    //TODO: add the table view down here and get the most recent event. Wait for a reponse in the Slack w/ regards to the date...
     progressView.padding = 16
     progressView.lineWidth = 32
     progressView.setProgress(0.85, animated: false)
     
   }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 
 

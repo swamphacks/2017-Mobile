@@ -48,7 +48,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yeS-Y9-U7n" firstAttribute="trailing" secondItem="5SE-P3-SDt" secondAttribute="trailing" id="2oj-gg-Tn0"/>
-                            <constraint firstItem="5SE-P3-SDt" firstAttribute="top" secondItem="Gft-mP-JWQ" secondAttribute="bottom" constant="8" id="2yo-Tr-DDR"/>
+                            <constraint firstItem="5SE-P3-SDt" firstAttribute="top" secondItem="Gft-mP-JWQ" secondAttribute="bottom" id="2yo-Tr-DDR"/>
                             <constraint firstItem="yeS-Y9-U7n" firstAttribute="bottom" secondItem="Gft-mP-JWQ" secondAttribute="bottom" id="4tc-mK-YY7"/>
                             <constraint firstItem="e6c-W2-HAQ" firstAttribute="top" secondItem="5SE-P3-SDt" secondAttribute="bottom" constant="8" id="767-VQ-hqA"/>
                             <constraint firstItem="Gft-mP-JWQ" firstAttribute="top" secondItem="Obw-ib-ePq" secondAttribute="top" constant="10" id="NZX-EJ-yus"/>

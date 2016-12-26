@@ -10,7 +10,7 @@ import UIKit
 
 func root() -> UIViewController {
   let tabController = UITabBarController()
-  tabController.viewControllers = [announcementsVC(), happeningNowVC()]
+  tabController.viewControllers = [announcementsVC(), happeningNowVC(), profileVC()]
   return tabController
 }
 
@@ -40,6 +40,12 @@ fileprivate func announcementsVC() -> UIViewController {
 
 fileprivate func happeningNowVC() -> UIViewController {
   let happeningNowVC = HappeningNowViewController(nibName: String(describing: HappeningNowViewController.self), bundle: nil).rooted()
+  happeningNowVC.isNavigationBarHidden = true
+  return happeningNowVC
+}
+
+fileprivate func profileVC() -> UIViewController {
+  let happeningNowVC = ProfileViewController(nibName: String(describing: ProfileViewController.self), bundle: nil).rooted()
   happeningNowVC.isNavigationBarHidden = true
   return happeningNowVC
 }

@@ -64,6 +64,10 @@ final class ModelTableViewController<Model>: UITableViewController {
     }
   }
   
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
+  
   //MARK: UITableViewDataSource
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

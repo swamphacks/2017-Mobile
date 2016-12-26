@@ -15,12 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     FIRApp.configure()
+    setUpUI()
     
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.rootViewController = root()
     window?.makeKeyAndVisible()
     
     return true
+  }
+  
+  fileprivate func setUpUI() {
+    UINavigationBar.appearance().isTranslucent = false
+    UINavigationBar.appearance().barTintColor = UIColor.turquoise
+    UINavigationBar.appearance().backgroundColor = UIColor.turquoise
+    
   }
 
 }

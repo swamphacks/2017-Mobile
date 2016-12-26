@@ -20,19 +20,27 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3R6-hK-Are">
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Srv-9z-h5t" customClass="CircularProgressView" customModule="Swamphacks" customModuleProvider="target">
-                            <color key="backgroundColor" red="0.80784313730000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Srv-9z-h5t" customClass="CircularProgressView" customModule="Swamphacks" customModuleProvider="target">
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Srv-9z-h5t" secondAttribute="height" multiplier="1:1" id="xLz-AF-xD8"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUc-Hb-k20">
+                            <color key="backgroundColor" red="0.45028340816497803" green="0.84761947393417358" blue="0.88266187906265259" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="4" id="rH4-JO-krE"/>
+                            </constraints>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.31118056178092957" green="0.85087728500366211" blue="0.93169361352920532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.53591132164001465" green="0.88699299097061157" blue="0.90950196981430054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="IUc-Hb-k20" secondAttribute="trailing" id="5Ct-px-0jq"/>
                         <constraint firstAttribute="trailing" secondItem="Srv-9z-h5t" secondAttribute="trailing" constant="16" id="7fF-au-Zh1"/>
                         <constraint firstItem="Srv-9z-h5t" firstAttribute="centerY" secondItem="3R6-hK-Are" secondAttribute="centerY" id="BFU-zi-h7C"/>
                         <constraint firstAttribute="width" secondItem="3R6-hK-Are" secondAttribute="height" multiplier="75:92" id="Eq6-NR-a1Z"/>
+                        <constraint firstItem="IUc-Hb-k20" firstAttribute="leading" secondItem="3R6-hK-Are" secondAttribute="leading" id="OD1-Nw-3YB"/>
                         <constraint firstItem="Srv-9z-h5t" firstAttribute="leading" secondItem="3R6-hK-Are" secondAttribute="leading" constant="16" id="PUD-h4-vHm"/>
+                        <constraint firstAttribute="bottom" secondItem="IUc-Hb-k20" secondAttribute="bottom" id="d07-02-emM"/>
                     </constraints>
                 </view>
             </subviews>
