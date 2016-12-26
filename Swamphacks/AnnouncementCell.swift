@@ -12,5 +12,4 @@ final class AnnouncementCell: UITableViewCell {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
-  
 }

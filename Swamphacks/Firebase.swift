@@ -7,8 +7,14 @@
 //
 
 import Foundation
+import Firebase
 
 typealias JSONDictionary = [String: Any]
+
+public enum DataError: Error {
+  case snapshotError
+  case jsonError
+}
 
 public enum Result<A> {
   case success(A)
@@ -32,21 +38,49 @@ extension Result {
 
 struct FirebaseResource<A> {
   let path: String
-  let parse: (JSONDictionary) -> A?
-
-  init(path: String, parse: @escaping (JSONDictionary) -> A?) {
-    self.path = path
-    self.parse = parse
-  }
+  let parse: (FIRDataSnapshot) -> A?
 }
 
-struct Firebase {
-  let url: URL
+extension FirebaseResource {
   
-  func load<A>(_ resource: FirebaseResource<A>, completion: @escaping (Result<A>) -> Void) {
-    let resourceURL = url.appendingPathComponent(resource.path)
+  init(path: String, parseJSON: @escaping (JSONDictionary) -> A?) {
+    self.path = path
+    self.parse = { snapshot in
+      let json = snapshot.value as? JSONDictionary
+      return json.flatMap(parseJSON)
+    }
+  }
+  
+}
+
+final class FirebaseManager {
+  
+  static let shared = FirebaseManager()
+  
+  func load<A>(_ resource: FirebaseResource<A>, queryEventType: (FIRDatabaseReference) -> (FIRDatabaseQuery, FIRDataEventType), completion: @escaping (Result<A>) -> Void) {
+    let ref = FIRDatabase.database().reference().child(resource.path)
+    let (query, eventType) = queryEventType(ref)
     
+    query.observeSingleEvent(of: eventType, with: { (snapshot) in
+      let parsed = resource.parse(snapshot)
+      let result = Result<A>(parsed, or: DataError.jsonError)
+      
+      DispatchQueue.main.async { completion(result) }
+    })
+  }
+  
+  func observe<A>(_ resource: FirebaseResource<A>, queryEventType: (FIRDatabaseReference) -> (FIRDatabaseQuery, FIRDataEventType), completion: @escaping (Result<A>) -> Void) -> UInt {
+    let ref = FIRDatabase.database().reference().child(resource.path)
+    let (query, eventType) = queryEventType(ref)
     
+    let handle = query.observe(eventType, with: { (snapshot) in
+      let parsed = resource.parse(snapshot)
+      let result = Result<A>(parsed, or: DataError.jsonError)
+      
+      DispatchQueue.main.async { completion(result) }
+    })
+    
+    return handle
   }
 
 }

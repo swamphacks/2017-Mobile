@@ -14,27 +14,29 @@ enum RowHeight {
 }
 
 final class ModelTableViewController<Model>: UITableViewController {
-  fileprivate var items: [Model] = [] {
+  fileprivate(set) var items: [Model] = [] {
     didSet {
       tableView.reloadData()
     }
   }
   
-  private var reuseIdentifiers = Set<String>()
+  fileprivate var reuseIdentifiers = Set<String>()
+  var isIncremental: Bool
   
-  let load: (([Model]) -> ()) -> ()
+  let load: (@escaping ([Model]) -> ()) -> ()
   
   let cellDescriptor: (Model) -> CellDescriptor
   let rowHeight: (Model, IndexPath) -> RowHeight
   let didSelect: (Model) -> Void
   
   init(style: UITableViewStyle = .plain,
-       load: @escaping (([Model]) -> ()) -> (),
+       isIncremental: Bool = false, // Do we replace the array each time or simply append to it? This only exists bc Firebase.
+       load: @escaping (@escaping ([Model]) -> ()) -> (),
        cellDescriptor: @escaping (Model) -> CellDescriptor,
        rowHeight: @escaping (Model, IndexPath) -> RowHeight,
        didSelect: @escaping (Model) -> Void)
   {
-    
+    self.isIncremental = isIncremental
     self.load = load
     
     self.cellDescriptor = cellDescriptor
@@ -58,7 +60,7 @@ final class ModelTableViewController<Model>: UITableViewController {
     
     //TODO: loading indicator? empty state?
     load { [weak self] items in
-      self?.items = items
+      self?.reload(items: items)
     }
   }
   
@@ -104,14 +106,22 @@ final class ModelTableViewController<Model>: UITableViewController {
   //MARK: Actions
   
   @objc fileprivate func refresh(sender: UIRefreshControl?) {
-    //TODO: loading indicator? empty state?
+    items.removeAll()
     load { [weak self] items in
-      self?.items = items
       sender?.endRefreshing()
+      self?.reload(items: items)
     }
   }
   
   //MARK: Helpers
+  
+  fileprivate func reload(items: [Model]) {
+    if isIncremental {
+      self.items.append(contentsOf: items)
+    } else {
+      self.items = items
+    }
+  }
   
   fileprivate func register(descriptor: CellDescriptor, in tableView: UITableView) {
     switch descriptor.registerMode {

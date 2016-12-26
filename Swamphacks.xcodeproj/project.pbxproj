@@ -23,6 +23,8 @@
 		AB5F2A9F1E0EC7E600AF875C /* AnnouncementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */; };
 		AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */; };
 		AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA21E106E6300AF875C /* Firebase.swift */; };
+		AB5F2AA51E10728900AF875C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */; };
+		AB5F2AA61E10728900AF875C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 		AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementCell.swift; sourceTree = "<group>"; };
 		AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Conveniences.swift"; sourceTree = "<group>"; };
 		AB5F2AA21E106E6300AF875C /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,6 +120,7 @@
 				AB5F2A771E0D7B3000AF875C /* LaunchScreen.storyboard */,
 				AB5F2A751E0D7B3000AF875C /* Assets.xcassets */,
 				AB5F2A7A1E0D7B3000AF875C /* Info.plist */,
+				AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */,
 				AB5F2A6E1E0D7B3000AF875C /* AppDelegate.swift */,
 				AB5F2A911E0D7FCE00AF875C /* Utilities */,
 				AB5F2A961E0D89CC00AF875C /* Models */,
@@ -277,6 +281,7 @@
 			files = (
 				AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */,
 				AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */,
+				AB5F2AA51E10728900AF875C /* GoogleService-Info.plist in Resources */,
 				AB5F2A901E0D7E5500AF875C /* HappeningNowViewController.xib in Resources */,
 				AB5F2A761E0D7B3000AF875C /* Assets.xcassets in Resources */,
 			);
@@ -286,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB5F2AA61E10728900AF875C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +538,7 @@
 				DEVELOPMENT_TEAM = BG3Y5KSHNC;
 				INFOPLIST_FILE = Swamphacks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ZenunSoftware.Swamphacks;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swamphacks.SwampHacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -546,7 +552,7 @@
 				DEVELOPMENT_TEAM = BG3Y5KSHNC;
 				INFOPLIST_FILE = Swamphacks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ZenunSoftware.Swamphacks;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swamphacks.SwampHacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

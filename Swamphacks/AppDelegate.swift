@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,19 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     window = UIWindow(frame: UIScreen.main.bounds)
     
+    FIRApp.configure()
+    
     let happeningNowVC = HappeningNowViewController(nibName: String(describing: HappeningNowViewController.self), bundle: nil)
     
     //******************************************
     
-    let announcementLoader = { (completionHandler: (([Announcement]) -> ())) in
-      // load announcements from Firebase...
-      let announcements = [Announcement(title: "Title", description: "This is a really long description. Watch out! There's a bear on the loose. He is taking mentorship requests and passing out a couple of snacks.", dateString: "Sat 9:00am"),
-                           Announcement(title: "Hacker Registration", description: "There's a bear!", dateString: "Sat 3:00pm")] 
-      
-      completionHandler(announcements)
+    let announcements = { (completion: @escaping ([Announcement]) -> ()) in
+      let resource = FirebaseResource<Announcement>(path: "announcements", parseJSON: Announcement.init)
+      _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0.queryOrderedByKey(), .childAdded) }) { result in
+        guard let announcement = result.value else { return }
+        completion([announcement])
+      }
     }
     
-    let announcementsVC = ModelTableViewController(load: announcementLoader,
+    let announcementsVC = ModelTableViewController(isIncremental: true,
+                                                   load: announcements,
                                                    cellDescriptor: { $0.cellDescriptor },
                                                    rowHeight: { _,_ in .automatic },
                                                    didSelect: { _ in })
