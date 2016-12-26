@@ -9,9 +9,16 @@
 import UIKit
 
 final class HappeningNowViewController: UIViewController {
+  
+  @IBOutlet weak fileprivate var progressView: CircularProgressView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    progressView.padding = 16
+    progressView.lineWidth = 32
+    progressView.setProgress(0.85, animated: false)
+    
   }
 
   override func didReceiveMemoryWarning() {

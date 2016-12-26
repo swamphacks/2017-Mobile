@@ -2,12 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11201"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HappeningNowViewController" customModule="Swamphacks" customModuleProvider="target">
             <connections>
+                <outlet property="progressView" destination="Srv-9z-h5t" id="VSY-WF-Kif"/>
                 <outlet property="view" destination="0wQ-Y2-caR" id="vyO-8Y-ziy"/>
             </connections>
         </placeholder>
@@ -15,8 +17,32 @@
         <view contentMode="scaleToFill" id="0wQ-Y2-caR">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3R6-hK-Are">
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Srv-9z-h5t" customClass="CircularProgressView" customModule="Swamphacks" customModuleProvider="target">
+                            <color key="backgroundColor" red="0.80784313730000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Srv-9z-h5t" secondAttribute="height" multiplier="1:1" id="xLz-AF-xD8"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.31118056178092957" green="0.85087728500366211" blue="0.93169361352920532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Srv-9z-h5t" secondAttribute="trailing" constant="16" id="7fF-au-Zh1"/>
+                        <constraint firstItem="Srv-9z-h5t" firstAttribute="centerY" secondItem="3R6-hK-Are" secondAttribute="centerY" id="BFU-zi-h7C"/>
+                        <constraint firstAttribute="width" secondItem="3R6-hK-Are" secondAttribute="height" multiplier="75:92" id="Eq6-NR-a1Z"/>
+                        <constraint firstItem="Srv-9z-h5t" firstAttribute="leading" secondItem="3R6-hK-Are" secondAttribute="leading" constant="16" id="PUD-h4-vHm"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="122" y="-10"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3R6-hK-Are" secondAttribute="trailing" id="EPY-b5-gNZ"/>
+                <constraint firstItem="3R6-hK-Are" firstAttribute="top" secondItem="0wQ-Y2-caR" secondAttribute="top" id="KNq-ZQ-Rfw"/>
+                <constraint firstItem="3R6-hK-Are" firstAttribute="leading" secondItem="0wQ-Y2-caR" secondAttribute="leading" id="N2f-Yx-RtK"/>
+            </constraints>
+            <point key="canvasLocation" x="121.5" y="-10.5"/>
         </view>
     </objects>
 </document>

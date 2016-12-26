@@ -26,6 +26,7 @@
 		AB5F2AA51E10728900AF875C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */; };
 		AB5F2AA61E10728900AF875C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */; };
 		AB5F2AA81E109E1B00AF875C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA71E109E1B00AF875C /* App.swift */; };
+		AB5F2AAA1E10A56300AF875C /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA91E10A56300AF875C /* CircularProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		AB5F2AA21E106E6300AF875C /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB5F2AA71E109E1B00AF875C /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		AB5F2AA91E10A56300AF875C /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 		AB5F2A9B1E0EC78700AF875C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AB5F2AA91E10A56300AF875C /* CircularProgressView.swift */,
 				AB5F2A9C1E0EC7BB00AF875C /* AnnouncementCell.xib */,
 				AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */,
 			);
@@ -248,6 +251,7 @@
 					AB5F2A6A1E0D7B3000AF875C = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = BG3Y5KSHNC;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					AB5F2A7E1E0D7B3100AF875C = {
@@ -408,6 +412,7 @@
 				AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */,
 				AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */,
 				AB5F2A951E0D888E00AF875C /* CellDescriptor.swift in Sources */,
+				AB5F2AAA1E10A56300AF875C /* CircularProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

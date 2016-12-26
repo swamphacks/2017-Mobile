@@ -10,15 +10,11 @@ import UIKit
 
 func root() -> UIViewController {
   let tabController = UITabBarController()
-  tabController.viewControllers = [announcementsVC().rooted(), happeningNowVC()]
+  tabController.viewControllers = [announcementsVC(), happeningNowVC()]
   return tabController
 }
 
-func happeningNowVC() -> HappeningNowViewController {
-  return HappeningNowViewController(nibName: String(describing: HappeningNowViewController.self), bundle: nil)
-}
-
-func announcementsVC() -> UIViewController {
+fileprivate func announcementsVC() -> UIViewController {
   let announcements = { (completion: @escaping ([Announcement]) -> ()) in
     let resource = FirebaseResource<Announcement>(path: "announcements", parseJSON: Announcement.init)
     _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0, .childAdded) }) { result in
@@ -39,5 +35,11 @@ func announcementsVC() -> UIViewController {
   announcementsVC.tableView.separatorStyle = .none
   announcementsVC.tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
   
-  return announcementsVC
+  return announcementsVC.rooted()
+}
+
+fileprivate func happeningNowVC() -> UIViewController {
+  let happeningNowVC = HappeningNowViewController(nibName: String(describing: HappeningNowViewController.self), bundle: nil).rooted()
+  happeningNowVC.isNavigationBarHidden = true
+  return happeningNowVC
 }
