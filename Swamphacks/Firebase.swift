@@ -69,32 +69,42 @@ final class FirebaseManager {
             queryEventType: (FIRDatabaseReference) -> (FIRDatabaseQuery, FIRDataEventType),
             completion: @escaping (Result<A>) -> Void)
   {
-    let ref = FIRDatabase.database().reference().child(resource.path)
-    let (query, eventType) = queryEventType(ref)
-    
-    query.observeSingleEvent(of: eventType, with: { (snapshot) in
-      let parsed = resource.parse(snapshot)
-      let result = Result<A>(parsed, or: DataError.jsonError)
-      
-      DispatchQueue.main.async { completion(result) }
-    })
+    return query(resource, queryEventType: queryEventType, query: _load, completion: completion)
   }
   
   func observe<A>(_ resource: FirebaseResource<A>,
                queryEventType: (FIRDatabaseReference) -> (FIRDatabaseQuery, FIRDataEventType),
-               completion: @escaping (Result<A>) -> Void) -> UInt
+               completion: @escaping (Result<A>) -> Void) -> Void
+  {
+    return query(resource, queryEventType: queryEventType, query: _observe, completion: completion)
+  }
+  
+  fileprivate func query<A>(_ resource: FirebaseResource<A>,
+                         queryEventType: (FIRDatabaseReference) -> (FIRDatabaseQuery, FIRDataEventType),
+                         query: (FIRDatabaseQuery, FIRDataEventType, @escaping (FIRDataSnapshot) -> Void) -> Void,
+                         completion: @escaping (Result<A>) -> Void) -> Void
   {
     let ref = FIRDatabase.database().reference().child(resource.path)
-    let (query, eventType) = queryEventType(ref)
-    
-    let handle = query.observe(eventType, with: { (snapshot) in
+    let (q, eventType) = queryEventType(ref)
+    query(q, eventType) { (snapshot) in
       let parsed = resource.parse(snapshot)
       let result = Result<A>(parsed, or: DataError.jsonError)
-      
       DispatchQueue.main.async { completion(result) }
-    })
-    
-    return handle
+    }
   }
-
+  
+  // Soooooo I can't (entirely) functionally remove the duplicate code here that's up there ▲ because of ambiguity on Firebase's end...
+  // They seem to define an observe(eventType:with:) function (and others) for both references and queries (which I still don't know why they do, but it sucks)
+  // Stopped me from passing in those function handlers as parameters. Had to wrap some Firebase functions because of this but it removed the duplicate code.
+  
+  //MARK: Wrappers
+  
+  fileprivate func _load(query: FIRDatabaseQuery, eventType: FIRDataEventType, completion: @escaping (FIRDataSnapshot) -> Void) -> Void {
+    query.observeSingleEvent(of: eventType, with: completion)
+  }
+  
+  fileprivate func _observe(query: FIRDatabaseQuery, eventType: FIRDataEventType, completion: @escaping (FIRDataSnapshot) -> Void) -> Void {
+    query.observe(eventType, with: completion)
+  }
+  
 }
