@@ -52,7 +52,9 @@ extension Announcement {
 
 extension Announcement {
   var cellDescriptor: CellDescriptor {
-    return CellDescriptor(reuseIdentifier: "announcementCell", registerMode: .withNib(AnnouncementCell.nib), configure: configureCell)
+    return CellDescriptor(reuseIdentifier: "announcementCell",
+                          registerMode: .withNib(AnnouncementCell.nib),
+                          configure: configureCell)
   }
 }
 

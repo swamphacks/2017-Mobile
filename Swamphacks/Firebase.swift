@@ -12,7 +12,6 @@ import Firebase
 typealias JSONDictionary = [String: Any]
 
 public enum DataError: Error {
-  case snapshotError
   case jsonError
 }
 

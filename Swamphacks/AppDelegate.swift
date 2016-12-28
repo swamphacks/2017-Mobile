@@ -27,8 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   fileprivate func setUpUI() {
     UINavigationBar.appearance().isTranslucent = false
     UINavigationBar.appearance().barTintColor = UIColor.turquoise
-    UINavigationBar.appearance().backgroundColor = UIColor.turquoise
-    
+    UINavigationBar.appearance().shadowImage = nil
+    UINavigationBar.appearance().setBackgroundImage(nil, for: .default)
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
   }
 
 }
