@@ -37,15 +37,13 @@ fileprivate func announcementsVC() -> UIViewController {
   let announcementsVC = ModelTableViewController(isIncremental: true,
                                                  load: announcements,
                                                  cellDescriptor: { $0.cellDescriptor },
-                                                 rowHeight: { _,_ in .automatic },
-                                                 didSelect: { _ in })
+                                                 rowHeight: { _,_ in .automatic })
   
-  announcementsVC.tableView.estimatedRowHeight = 90 // Need this for .automatic rowHeight to work. Want better way to do this w/ ModelTableVC.
+
+  prepare(tableVC: announcementsVC)
+  announcementsVC.tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
   
   announcementsVC.title = "Announcements"
-  announcementsVC.view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-  announcementsVC.tableView.separatorStyle = .none
-  announcementsVC.tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
   
   let navController = announcementsVC.rooted()
   
@@ -67,14 +65,9 @@ fileprivate func happeningNowVC() -> UIViewController {
   let happeningNowVC = ModelTableViewController(isIncremental: true,
                                                 load: events,
                                                 cellDescriptor: { $0.cellDescriptor },
-                                                rowHeight: { _,_ in .automatic },
-                                                didSelect: { _ in })
+                                                rowHeight: { _,_ in .automatic })
   
-  happeningNowVC.tableView.estimatedRowHeight = 90
-  
-  happeningNowVC.view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-  happeningNowVC.tableView.separatorStyle = .none
-  happeningNowVC.tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+  prepare(tableVC: happeningNowVC)
 
   let navController = happeningNowVC.rooted()
   navController.isNavigationBarHidden = true
@@ -82,11 +75,14 @@ fileprivate func happeningNowVC() -> UIViewController {
   let image = UIImage(named: "clock")!
   navController.tabBarItem = tabBarItem(title: "Now", image: image)
   
-  /*
-  progressView.padding = 16
-  progressView.lineWidth = 32
-  progressView.setProgress(0.85, animated: false)
-  */
+  let countdownView = Bundle.main.loadNibNamed(CountdownView.defaultNibName,
+                                               owner: happeningNowVC,
+                                               options: nil)?.first as! CountdownView
+  
+  countdownView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 440)
+  happeningNowVC.tableView.tableHeaderView = countdownView
+
+  //TODO: Fix the little top hole of grey somehow :(
   
   return navController.styled()
 }
@@ -105,4 +101,11 @@ fileprivate func tabBarItem(title: String, image: UIImage) -> UITabBarItem {
  return UITabBarItem(title: title,
                      image: image,
                      selectedImage: image)
+}
+
+fileprivate func prepare<T>(tableVC: ModelTableViewController<T>) {
+  // Need this for .automatic rowHeight to work. Want better way to do this w/ ModelTableVC.
+  tableVC.tableView.estimatedRowHeight = 90
+  tableVC.view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+  tableVC.tableView.separatorStyle = .none
 }

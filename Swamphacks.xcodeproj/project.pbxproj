@@ -32,6 +32,8 @@
 		AB5F2AB51E14731E00AF875C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AB41E14731E00AF875C /* Event.swift */; };
 		AB5F2AB71E14749E00AF875C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AB61E14749E00AF875C /* EventCell.swift */; };
 		AB5F2AB91E1474BD00AF875C /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2AB81E1474BD00AF875C /* EventCell.xib */; };
+		AB5F2ABB1E147E6200AF875C /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2ABA1E147E6200AF875C /* CountdownView.xib */; };
+		AB5F2ABD1E147EFD00AF875C /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		AB5F2AB41E14731E00AF875C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AB5F2AB61E14749E00AF875C /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		AB5F2AB81E1474BD00AF875C /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		AB5F2ABA1E147E6200AF875C /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
+		AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -190,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				AB5F2AA91E10A56300AF875C /* CircularProgressView.swift */,
+				AB5F2ABA1E147E6200AF875C /* CountdownView.xib */,
+				AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */,
 				AB5F2A9C1E0EC7BB00AF875C /* AnnouncementCell.xib */,
 				AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */,
 				AB5F2AB81E1474BD00AF875C /* EventCell.xib */,
@@ -301,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB5F2ABB1E147E6200AF875C /* CountdownView.xib in Resources */,
 				AB5F2AB31E10BDDA00AF875C /* ProfileViewController.xib in Resources */,
 				AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */,
 				AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */,
@@ -428,6 +435,7 @@
 				AB5F2AB71E14749E00AF875C /* EventCell.swift in Sources */,
 				AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */,
 				AB5F2A981E0D89E000AF875C /* Announcement.swift in Sources */,
+				AB5F2ABD1E147EFD00AF875C /* CountdownView.swift in Sources */,
 				AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */,
 				AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */,
 				AB5F2A951E0D888E00AF875C /* CellDescriptor.swift in Sources */,

@@ -27,21 +27,21 @@ final class ModelTableViewController<Model>: UITableViewController {
   
   let cellDescriptor: (Model) -> CellDescriptor
   let rowHeight: (Model, IndexPath) -> RowHeight
-  let didSelect: (Model) -> Void
+  
+  var header: (Int) -> (RowHeight, UIView?) = { _ in (.automatic, nil) }
+  var didSelect: (Model) -> Void = { _ in }
   
   init(style: UITableViewStyle = .plain,
        isIncremental: Bool = false, // Do we replace the array each time or simply append to it? This only exists bc Firebase.
        load: @escaping (@escaping ([Model]) -> ()) -> (),
        cellDescriptor: @escaping (Model) -> CellDescriptor,
-       rowHeight: @escaping (Model, IndexPath) -> RowHeight,
-       didSelect: @escaping (Model) -> Void)
+       rowHeight: @escaping (Model, IndexPath) -> RowHeight)
   {
     self.isIncremental = isIncremental
     self.load = load
     
     self.cellDescriptor = cellDescriptor
     self.rowHeight = rowHeight
-    self.didSelect = didSelect
     
     super.init(style: style)
     
@@ -98,6 +98,20 @@ final class ModelTableViewController<Model>: UITableViewController {
     case .automatic:
       return UITableViewAutomaticDimension
     }
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    let height = header(section).0
+    switch height {
+    case .absolute(let h):
+      return h
+    case .automatic:
+      return UITableViewAutomaticDimension
+    }
+  }
+  
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    return header(section).1
   }
   
   //MARK: UITableViewDelegate

@@ -9,10 +9,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="RmT-iT-3my" customClass="AnnouncementCell" customModule="Swamphacks" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="500" height="98"/>
+            <rect key="frame" x="0.0" y="0.0" width="500" height="106"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RmT-iT-3my" id="HBG-is-nfS">
-                <frame key="frameInset" width="500" height="97"/>
+                <frame key="frameInset" width="500" height="105"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Obw-ib-ePq">
@@ -51,7 +51,7 @@
                             <constraint firstItem="5SE-P3-SDt" firstAttribute="top" secondItem="Gft-mP-JWQ" secondAttribute="bottom" id="2yo-Tr-DDR"/>
                             <constraint firstItem="yeS-Y9-U7n" firstAttribute="bottom" secondItem="Gft-mP-JWQ" secondAttribute="bottom" id="4tc-mK-YY7"/>
                             <constraint firstItem="e6c-W2-HAQ" firstAttribute="top" secondItem="5SE-P3-SDt" secondAttribute="bottom" constant="16" id="767-VQ-hqA"/>
-                            <constraint firstItem="Gft-mP-JWQ" firstAttribute="top" secondItem="Obw-ib-ePq" secondAttribute="top" constant="10" id="NZX-EJ-yus"/>
+                            <constraint firstItem="Gft-mP-JWQ" firstAttribute="top" secondItem="Obw-ib-ePq" secondAttribute="top" constant="16" id="NZX-EJ-yus"/>
                             <constraint firstItem="5SE-P3-SDt" firstAttribute="leading" secondItem="EHD-PL-ZBa" secondAttribute="trailing" constant="8" id="QHQ-K5-6QU"/>
                             <constraint firstAttribute="trailing" secondItem="e6c-W2-HAQ" secondAttribute="trailing" id="S8v-dn-Trn"/>
                             <constraint firstItem="yeS-Y9-U7n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gft-mP-JWQ" secondAttribute="trailing" constant="4" id="WPX-ZL-mHt"/>

@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11201"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,15 +19,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IH0-3u-fTO">
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkU-fL-aEM">
-                            <color key="backgroundColor" red="0.45028340820000001" green="0.84761947390000003" blue="0.88266187910000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.34643919025025466" green="0.79329380443592468" blue="0.86059030029877293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="4" id="UAs-kA-yyI"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.53591132159999999" green="0.88699299099999995" blue="0.90950196979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.3803921569" green="0.86282253269999998" blue="0.93115442989999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="IH0-3u-fTO" secondAttribute="height" multiplier="75:92" id="1AQ-iX-Lxd"/>
+                        <constraint firstAttribute="height" constant="460" id="BVs-xt-fQh"/>
                         <constraint firstAttribute="trailing" secondItem="JkU-fL-aEM" secondAttribute="trailing" id="MpU-F1-lcH"/>
                         <constraint firstAttribute="bottom" secondItem="JkU-fL-aEM" secondAttribute="bottom" id="dLf-V3-xOG"/>
                         <constraint firstItem="JkU-fL-aEM" firstAttribute="leading" secondItem="IH0-3u-fTO" secondAttribute="leading" id="lDv-QW-1uH"/>
