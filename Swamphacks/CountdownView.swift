@@ -50,13 +50,19 @@ final class CountdownView: UIView {
     let diff = start.timeIntervalSince(baseline)
     let totalDiff = end.timeIntervalSince(baseline)
     
-    //TODO: something's wrong with this percentage...
+    //TODO: need to pick a good baseline for this percetange... Waiting on Takashi
     let perc = CGFloat(diff)/CGFloat(totalDiff)
     progressView.setProgress(perc, animated: true)
     
     let components = CountdownView.calendar.components([.hour, .minute, .second], from: start, to: end, options: [])
+    
+    countdownLabel.attributedText = attributedString(for: components)
+    countdownLabel.textAlignment = .center
+  }
+  
+  fileprivate func attributedString(for components: DateComponents) -> NSAttributedString? {
     guard let hour = components.hour, let minute = components.minute, let second = components.second else {
-      return
+      return nil
     }
     
     func formatted(time: Int) -> String {
@@ -84,8 +90,7 @@ final class CountdownView: UIView {
     countdownText.append(numMinSec)
     countdownText.append(minSec)
     
-    countdownLabel.attributedText = countdownText
-    countdownLabel.textAlignment = .center
+    return countdownText
   }
   
 }

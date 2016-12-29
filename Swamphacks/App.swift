@@ -8,7 +8,7 @@
 
 import UIKit
 
-//TODO: Add SponsorsVC and CalendarVC
+//TODO: Add LoginVC, SponsorsVC and CalendarVC
 
 func root() -> UIViewController {
   let tabController = UITabBarController()
@@ -61,20 +61,22 @@ fileprivate func happeningNowVC() -> UIViewController {
                                                owner: nil,
                                                options: nil)!.first as! CountdownView
   
+  func timeEventIfNeeded(_ event: Event, date: Date) {
+    if let e = countdownView.event {
+      if event.startTime.timeIntervalSince(date) < e.startTime.timeIntervalSince(date) {
+        countdownView.startTiming(for: event)
+      }
+    } else {
+      countdownView.startTiming(for: event)
+    }
+  }
+  
   let events = { (completion: @escaping ([Event]) -> ()) in
     let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
     _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0, .childAdded) }) { result in
       let now = Date()
       guard let event = result.value, event.startTime.timeIntervalSince(now) > 0 else { return }
-
-      if let e = countdownView.event {
-        if event.startTime.timeIntervalSince(now) < e.startTime.timeIntervalSince(now) {
-          countdownView.startTiming(for: event)
-        }
-      } else {
-        countdownView.startTiming(for: event)
-      }
-      
+      timeEventIfNeeded(event, date: now)
       completion([event])
     }
   }

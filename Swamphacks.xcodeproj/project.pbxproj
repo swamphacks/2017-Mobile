@@ -34,6 +34,7 @@
 		AB5F2AB91E1474BD00AF875C /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2AB81E1474BD00AF875C /* EventCell.xib */; };
 		AB5F2ABB1E147E6200AF875C /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2ABA1E147E6200AF875C /* CountdownView.xib */; };
 		AB5F2ABD1E147EFD00AF875C /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */; };
+		AB5F2ABF1E15ACC300AF875C /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		AB5F2AB81E1474BD00AF875C /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		AB5F2ABA1E147E6200AF875C /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
 		AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 				AB5F2A991E0D8A9900AF875C /* ModelTableViewController.swift */,
 				AB5F2AB21E10BDDA00AF875C /* ProfileViewController.xib */,
 				AB5F2AB01E10BDC900AF875C /* ProfileViewController.swift */,
+				AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				AB5F2AB11E10BDC900AF875C /* ProfileViewController.swift in Sources */,
 				AB5F2AAF1E10BD1300AF875C /* UINavigationController+StatusBarStyle.swift in Sources */,
 				AB5F2AAD1E10B92F00AF875C /* UIColor+AppColors.swift in Sources */,
+				AB5F2ABF1E15ACC300AF875C /* ScanViewController.swift in Sources */,
 				AB5F2AB71E14749E00AF875C /* EventCell.swift in Sources */,
 				AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */,
 				AB5F2A981E0D89E000AF875C /* Announcement.swift in Sources */,
