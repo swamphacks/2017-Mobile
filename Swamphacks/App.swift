@@ -8,6 +8,8 @@
 
 import UIKit
 
+//TODO: Add SponsorsVC and CalendarVC
+
 func root() -> UIViewController {
   let tabController = UITabBarController()
   tabController.viewControllers = [announcementsVC(), happeningNowVC(), profileVC()]
@@ -54,10 +56,25 @@ fileprivate func announcementsVC() -> UIViewController {
 }
 
 fileprivate func happeningNowVC() -> UIViewController {
+  
+  let countdownView = Bundle.main.loadNibNamed(CountdownView.defaultNibName,
+                                               owner: nil,
+                                               options: nil)!.first as! CountdownView
+  
   let events = { (completion: @escaping ([Event]) -> ()) in
     let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
     _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0, .childAdded) }) { result in
-      guard let event = result.value else { return }
+      let now = Date()
+      guard let event = result.value, event.startTime.timeIntervalSince(now) > 0 else { return }
+
+      if let e = countdownView.event {
+        if event.startTime.timeIntervalSince(now) < e.startTime.timeIntervalSince(now) {
+          countdownView.startTiming(for: event)
+        }
+      } else {
+        countdownView.startTiming(for: event)
+      }
+      
       completion([event])
     }
   }
@@ -66,37 +83,35 @@ fileprivate func happeningNowVC() -> UIViewController {
                                                 load: events,
                                                 cellDescriptor: { $0.cellDescriptor },
                                                 rowHeight: { _,_ in .automatic })
-  
   prepare(tableVC: happeningNowVC)
-
+  
   let navController = happeningNowVC.rooted()
   navController.isNavigationBarHidden = true
-
+  
   let image = UIImage(named: "clock")!
   navController.tabBarItem = tabBarItem(title: "Now", image: image)
-  
-  let countdownView = Bundle.main.loadNibNamed(CountdownView.defaultNibName,
-                                               owner: happeningNowVC,
-                                               options: nil)?.first as! CountdownView
   
   countdownView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 250)
   happeningNowVC.tableView.tableHeaderView = countdownView
 
-  let v = UIView(frame: .zero)
-  v.tag = -500
-  v.backgroundColor = countdownView.backgroundColor
-  v.translatesAutoresizingMaskIntoConstraints = false
+  func addCoverView() {
+    // Cover the top hole up with another UIView (sorry not sorry)
+    let v = UIView(frame: .zero)
+    v.backgroundColor = countdownView.backgroundColor
+    v.translatesAutoresizingMaskIntoConstraints = false
+    
+    countdownView.clipsToBounds = false
+    countdownView.addSubview(v)
+    
+    let bottom  = v.bottomAnchor.constraint(equalTo: countdownView.topAnchor)
+    let centerX = v.centerXAnchor.constraint(equalTo: countdownView.centerXAnchor)
+    let width   = v.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+    let height  = v.heightAnchor.constraint(equalToConstant: 20)
+    
+    NSLayoutConstraint.activate([bottom, centerX, width, height])
+  }
   
-  countdownView.clipsToBounds = false
-  countdownView.addSubview(v)
-  
-  let bottom  = v.bottomAnchor.constraint(equalTo: countdownView.topAnchor)
-  let centerX = v.centerXAnchor.constraint(equalTo: countdownView.centerXAnchor)
-  let width   = v.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
-  let height  = v.heightAnchor.constraint(equalToConstant: 20)
-  
-  NSLayoutConstraint.activate([bottom, centerX, width, height])
-  
+  addCoverView()
   return navController.styled()
 }
 
@@ -111,7 +126,9 @@ fileprivate func profileVC() -> UIViewController {
 //MARK: Helpers
 
 fileprivate func tabBarItem(title: String, image: UIImage) -> UITabBarItem {
- return UITabBarItem(title: title,
+  //TODO: change the images in .xcassets to be whatever color I want the unselected ones to be.
+  // Then set image: here to image.applying(alpha: 0.7).withRenderingMode(.alwaysOriginal)
+  return UITabBarItem(title: title,
                      image: image,
                      selectedImage: image)
 }
@@ -119,6 +136,7 @@ fileprivate func tabBarItem(title: String, image: UIImage) -> UITabBarItem {
 fileprivate func prepare<T>(tableVC: ModelTableViewController<T>) {
   // Need this for .automatic rowHeight to work. Want better way to do this w/ ModelTableVC.
   tableVC.tableView.estimatedRowHeight = 90
+  
   tableVC.view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
   tableVC.tableView.separatorStyle = .none
 }

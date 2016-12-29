@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,9 +14,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zs4-Ea-pxL" customClass="CircularProgressView" customModule="Swamphacks" customModuleProvider="target">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Sc-Vo-sIA">
+                            <attributedString key="attributedText"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" red="0.3803921569" green="0.86282253269999998" blue="0.93115442989999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="4Sc-Vo-sIA" firstAttribute="centerY" secondItem="zs4-Ea-pxL" secondAttribute="centerY" id="UqE-Pl-wJu"/>
                         <constraint firstAttribute="width" secondItem="zs4-Ea-pxL" secondAttribute="height" multiplier="1:1" id="h6Y-c8-mys"/>
+                        <constraint firstItem="4Sc-Vo-sIA" firstAttribute="centerX" secondItem="zs4-Ea-pxL" secondAttribute="centerX" id="ksP-qr-spr"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAo-n2-pls">
@@ -37,6 +45,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="countdownLabel" destination="4Sc-Vo-sIA" id="ARU-m1-kR2"/>
                 <outlet property="progressView" destination="zs4-Ea-pxL" id="KQV-hN-kfb"/>
             </connections>
         </view>
