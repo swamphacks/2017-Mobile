@@ -19,12 +19,21 @@
                         <constraint firstAttribute="width" secondItem="zs4-Ea-pxL" secondAttribute="height" multiplier="1:1" id="h6Y-c8-mys"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAo-n2-pls">
+                    <color key="backgroundColor" red="0.34643919029999998" green="0.79329380439999997" blue="0.86059030030000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="4" id="dbT-cc-ilS"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.3803921569" green="0.86282253269999998" blue="0.93115442989999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="zs4-Ea-pxL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4kb-rB-HzC"/>
                 <constraint firstItem="zs4-Ea-pxL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BWc-Hk-lsK"/>
                 <constraint firstAttribute="trailing" secondItem="zs4-Ea-pxL" secondAttribute="trailing" constant="16" id="BuW-sy-AxM"/>
+                <constraint firstItem="sAo-n2-pls" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ONI-1o-ahM"/>
+                <constraint firstAttribute="trailing" secondItem="sAo-n2-pls" secondAttribute="trailing" id="e8P-j5-3Gc"/>
+                <constraint firstAttribute="bottom" secondItem="sAo-n2-pls" secondAttribute="bottom" id="k7i-DV-3I7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IH0-3u-fTO">
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkU-fL-aEM">
-                            <color key="backgroundColor" red="0.34643919025025466" green="0.79329380443592468" blue="0.86059030029877293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.34509803921568627" green="0.79329380443592468" blue="0.86059030029877293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="4" id="UAs-kA-yyI"/>
                             </constraints>
@@ -27,19 +27,29 @@
                     </subviews>
                     <color key="backgroundColor" red="0.3803921569" green="0.86282253269999998" blue="0.93115442989999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="460" id="BVs-xt-fQh"/>
                         <constraint firstAttribute="trailing" secondItem="JkU-fL-aEM" secondAttribute="trailing" id="MpU-F1-lcH"/>
                         <constraint firstAttribute="bottom" secondItem="JkU-fL-aEM" secondAttribute="bottom" id="dLf-V3-xOG"/>
                         <constraint firstItem="JkU-fL-aEM" firstAttribute="leading" secondItem="IH0-3u-fTO" secondAttribute="leading" id="lDv-QW-1uH"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmz-Pe-E2L">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="210" id="g6A-Pm-zyo"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="fmz-Pe-E2L" secondAttribute="bottom" id="JBS-Y2-9Rw"/>
                 <constraint firstItem="IH0-3u-fTO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nu7-eL-h2h"/>
+                <constraint firstItem="fmz-Pe-E2L" firstAttribute="top" secondItem="IH0-3u-fTO" secondAttribute="bottom" id="T15-mz-ydF"/>
                 <constraint firstAttribute="trailing" secondItem="IH0-3u-fTO" secondAttribute="trailing" id="avH-VW-tuB"/>
+                <constraint firstItem="fmz-Pe-E2L" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gcy-AK-Pf8"/>
                 <constraint firstItem="IH0-3u-fTO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vji-yt-iY8"/>
+                <constraint firstAttribute="trailing" secondItem="fmz-Pe-E2L" secondAttribute="trailing" id="zz9-UY-z4g"/>
             </constraints>
+            <point key="canvasLocation" x="33.5" y="79.5"/>
         </view>
     </objects>
 </document>

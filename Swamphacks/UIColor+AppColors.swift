@@ -14,6 +14,6 @@ extension UIColor {
   }
   
   class var darkTurquoise: UIColor {
-    return UIColor(red: 116/255, green: 210/255, blue: 227/255, alpha: 1)
+    return UIColor(red: 88/255, green: 202/255, blue: 219/255, alpha: 1)
   }
 }

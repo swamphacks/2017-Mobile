@@ -79,10 +79,23 @@ fileprivate func happeningNowVC() -> UIViewController {
                                                owner: happeningNowVC,
                                                options: nil)?.first as! CountdownView
   
-  countdownView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 440)
+  countdownView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 250)
   happeningNowVC.tableView.tableHeaderView = countdownView
 
-  //TODO: Fix the little top hole of grey somehow :(
+  let v = UIView(frame: .zero)
+  v.tag = -500
+  v.backgroundColor = countdownView.backgroundColor
+  v.translatesAutoresizingMaskIntoConstraints = false
+  
+  countdownView.clipsToBounds = false
+  countdownView.addSubview(v)
+  
+  let bottom  = v.bottomAnchor.constraint(equalTo: countdownView.topAnchor)
+  let centerX = v.centerXAnchor.constraint(equalTo: countdownView.centerXAnchor)
+  let width   = v.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+  let height  = v.heightAnchor.constraint(equalToConstant: 20)
+  
+  NSLayoutConstraint.activate([bottom, centerX, width, height])
   
   return navController.styled()
 }

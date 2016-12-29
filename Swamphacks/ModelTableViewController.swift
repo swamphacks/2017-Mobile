@@ -63,7 +63,7 @@ final class ModelTableViewController<Model>: UITableViewController {
       self?.reload(items: items)
     }
   }
-  
+    
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
