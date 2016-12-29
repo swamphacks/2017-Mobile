@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController, ScanningDelegate {
   
   //MARK: ScanningDelegate
   
-  func controller(vc: ScanViewController, didScan metadata: AVMetadataMachineReadableCodeObject) {
-    print("SCANNED QR CODE: \(metadata.stringValue)")
+  func controller(vc: ScanViewController, didScan metadata: String?) {
+    print("SCANNED QR CODE: \(metadata!)")
   }
 }

@@ -12,7 +12,7 @@ import AVFoundation
 import GNCam
 
 protocol ScanningDelegate: class {
-  func controller(vc: ScanViewController, didScan metadata: AVMetadataMachineReadableCodeObject)
+  func controller(vc: ScanViewController, didScan metadata: String?)
 }
 
 final class ScanViewController: UIViewController, VideoPreviewLayerProvider, MetadataOutputDelegate {
@@ -111,7 +111,7 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
           let barcode = previewLayer.transformedMetadataObject(for: metadata) else { return }
     
     reactToBarcode(.showing(barcode.bounds))
-    scanningDelegate?.controller(vc: self, didScan: metadata)
+    scanningDelegate?.controller(vc: self, didScan: metadata.stringValue)
   }
   
   //MARK: Helpers
