@@ -13,7 +13,7 @@ enum RowHeight {
   case automatic
 }
 
-final class ModelTableViewController<Model>: UITableViewController {
+class ModelTableViewController<Model>: UITableViewController {
   fileprivate(set) var items: [Model] = [] {
     didSet {
       tableView.reloadData()
@@ -30,6 +30,8 @@ final class ModelTableViewController<Model>: UITableViewController {
   
   var header: (Int) -> (RowHeight, UIView?) = { _ in (.automatic, nil) }
   var didSelect: (Model) -> Void = { _ in }
+  
+  var didScroll: (UIScrollView) -> Void = { _ in }
   
   init(style: UITableViewStyle = .plain,
        isIncremental: Bool = false, // Do we replace the array each time or simply append to it? This only exists bc Firebase.
@@ -119,6 +121,12 @@ final class ModelTableViewController<Model>: UITableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let item = items[indexPath.row]
     didSelect(item)
+  }
+  
+  //MARK: UIScrollViewDelegate
+  
+  override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    didScroll(scrollView)
   }
   
   //MARK: Actions

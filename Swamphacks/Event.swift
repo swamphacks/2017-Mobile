@@ -32,7 +32,9 @@ extension Event {
       let attendees = json["numAttendees"] as? Int,
       let rating = json["avgRating"] as? Double,
       let type = json["type"] as? String
-      else { return nil }
+      else {
+        return nil
+    }
     
     self.title = title
     self.description = description
@@ -50,7 +52,7 @@ extension Event {
 extension Event {
   func configureCell(_ cell: EventCell) {
     cell.titleLabel?.text = title
-    cell.locationLabel?.text = description
+    cell.locationLabel?.text = location
   }
 }
 

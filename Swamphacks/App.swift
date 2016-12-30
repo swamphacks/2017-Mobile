@@ -60,23 +60,13 @@ fileprivate func happeningNowVC() -> UIViewController {
   let countdownView = Bundle.main.loadNibNamed(CountdownView.defaultNibName,
                                                owner: nil,
                                                options: nil)!.first as! CountdownView
-  
-  func timeEventIfNeeded(_ event: Event, date: Date) {
-    if let e = countdownView.event {
-      if event.startTime.timeIntervalSince(date) < e.startTime.timeIntervalSince(date) {
-        countdownView.startTiming(for: event)
-      }
-    } else {
-      countdownView.startTiming(for: event)
-    }
-  }
+  countdownView.clipsToBounds = true
   
   let events = { (completion: @escaping ([Event]) -> ()) in
     let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
-    _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0, .childAdded) }) { result in
+    _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0.queryOrdered(byChild: "startTime"), .childAdded) }) { result in
       let now = Date()
-      guard let event = result.value, event.startTime.timeIntervalSince(now) > 0 else { return }
-      timeEventIfNeeded(event, date: now)
+      guard let event = result.value, now.compare(event.startTime) == .orderedAscending else { return }
       completion([event])
     }
   }
@@ -93,8 +83,28 @@ fileprivate func happeningNowVC() -> UIViewController {
   let image = UIImage(named: "clock")!
   navController.tabBarItem = tabBarItem(title: "Now", image: image)
   
-  countdownView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 250)
-  happeningNowVC.tableView.tableHeaderView = countdownView
+  let headerHeight = UIScreen.main.bounds.height - 250
+  let headerWidth = happeningNowVC.tableView.bounds.width
+  
+  countdownView.frame = CGRect(x: 0, y: -headerHeight, width: headerWidth, height: headerHeight)
+  happeningNowVC.tableView.addSubview(countdownView)
+  
+  func updateHeaderView() {
+    let tableView = happeningNowVC.tableView!
+    var rect = CGRect(x: 0, y: -headerHeight, width: headerWidth, height: headerHeight)
+    if tableView.contentOffset.y < -headerHeight {
+      rect = CGRect(x: 0, y: tableView.contentOffset.y, width: headerWidth, height: -tableView.contentOffset.y)
+    }
+    countdownView.frame = rect
+  }
+  
+  happeningNowVC.tableView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
+  happeningNowVC.tableView.contentOffset = CGPoint(x: 0, y: -headerHeight)
+  updateHeaderView()
+  
+  happeningNowVC.didScroll = { tableView in
+    updateHeaderView()
+  }
 
   func addCoverView() {
     // Cover the top hole up with another UIView (sorry not sorry)

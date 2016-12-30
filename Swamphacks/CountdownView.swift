@@ -13,9 +13,6 @@ final class CountdownView: UIView {
   fileprivate static let calendar = NSCalendar(calendarIdentifier: .gregorian)!
   fileprivate weak var timer: Timer?
   
-  private(set) var baselineDate: Date?
-  private(set) var event: Event?
-  
   @IBOutlet weak private var progressView: CircularProgressView!
   @IBOutlet weak private var countdownLabel: UILabel!
   
@@ -28,33 +25,31 @@ final class CountdownView: UIView {
     progressView.padding = 16
     progressView.lineWidth = 32
     progressView.setProgress(0.85, animated: false)
-  }
-  
-  func startTiming(for event: Event) {
-    timer?.invalidate()
     
-    let _timer = Timer(timeInterval: 1, repeats: true, block: updateCountdown)
-    self.event = event
-    baselineDate = Date()
+    self.timer?.invalidate()
     
-    RunLoop.main.add(_timer, forMode: .defaultRunLoopMode)
+    let timer = Timer(timeInterval: 1, repeats: true, block: updateCountdown)
+    RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
     
-    timer = _timer
+    self.timer = timer
   }
   
   fileprivate func updateCountdown(_: Timer) {
-    guard let event = event, let baseline = baselineDate else { return }
-    let start = Date()
-    let end = event.startTime
+    var now = Date()
+    let hackathonStart = Date(timeIntervalSince1970: 1484967600)
+    let hackathonEnd = Date(timeIntervalSince1970: 1485097200)
     
-    let diff = start.timeIntervalSince(baseline)
-    let totalDiff = end.timeIntervalSince(baseline)
+    if (now.compare(hackathonStart) == .orderedAscending) {
+      now = hackathonStart
+    }
     
-    //TODO: need to pick a good baseline for this percetange... Waiting on Takashi
+    let diff = hackathonEnd.timeIntervalSince(now)
+    let totalDiff = hackathonEnd.timeIntervalSince(hackathonStart)
+    
     let perc = CGFloat(diff)/CGFloat(totalDiff)
     progressView.setProgress(perc, animated: true)
     
-    let components = CountdownView.calendar.components([.hour, .minute, .second], from: start, to: end, options: [])
+    let components = CountdownView.calendar.components([.hour, .minute, .second], from: now, to: hackathonEnd, options: [])
     
     countdownLabel.attributedText = attributedString(for: components)
     countdownLabel.textAlignment = .center
