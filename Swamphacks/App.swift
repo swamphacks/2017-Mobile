@@ -22,7 +22,7 @@ func root() -> UIViewController {
   tabController.tabBar.backgroundColor = nil
   tabController.tabBar.shadowImage = nil
   
-  return tabController.styled()
+  return tabController //.styled()
 }
 
 //MARK: View Controllers
@@ -40,11 +40,8 @@ fileprivate func announcementsVC() -> UIViewController {
                                                  load: announcements,
                                                  cellDescriptor: { $0.cellDescriptor },
                                                  rowHeight: { _,_ in .automatic })
-  
-
   prepare(tableVC: announcementsVC)
-  announcementsVC.tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
-  
+  announcementsVC.tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
   announcementsVC.title = "Announcements"
   
   let navController = announcementsVC.rooted()
@@ -56,7 +53,6 @@ fileprivate func announcementsVC() -> UIViewController {
 }
 
 fileprivate func happeningNowVC() -> UIViewController {
-  
   let countdownView = Bundle.main.loadNibNamed(CountdownView.defaultNibName,
                                                owner: nil,
                                                options: nil)!.first as! CountdownView
@@ -76,6 +72,7 @@ fileprivate func happeningNowVC() -> UIViewController {
                                                 cellDescriptor: { $0.cellDescriptor },
                                                 rowHeight: { _,_ in .automatic })
   prepare(tableVC: happeningNowVC)
+  happeningNowVC.refreshable = false
   
   let navController = happeningNowVC.rooted()
   navController.isNavigationBarHidden = true
@@ -105,25 +102,7 @@ fileprivate func happeningNowVC() -> UIViewController {
   happeningNowVC.didScroll = { tableView in
     updateHeaderView()
   }
-
-  func addCoverView() {
-    // Cover the top hole up with another UIView (sorry not sorry)
-    let v = UIView(frame: .zero)
-    v.backgroundColor = countdownView.backgroundColor
-    v.translatesAutoresizingMaskIntoConstraints = false
     
-    countdownView.clipsToBounds = false
-    countdownView.addSubview(v)
-    
-    let bottom  = v.bottomAnchor.constraint(equalTo: countdownView.topAnchor)
-    let centerX = v.centerXAnchor.constraint(equalTo: countdownView.centerXAnchor)
-    let width   = v.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
-    let height  = v.heightAnchor.constraint(equalToConstant: 20)
-    
-    NSLayoutConstraint.activate([bottom, centerX, width, height])
-  }
-  
-  addCoverView()
   return navController.styled()
 }
 

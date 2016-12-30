@@ -22,15 +22,17 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     case hidden
   }
   
+  fileprivate let previewView: CapturePreviewView!
+  
   //TODO: Customize detectorView? Just change border?
   fileprivate lazy var detectorView: UIView = {
     let view = UIView()
     view.backgroundColor = .clear
-    view.layer.borderWidth = 2
+    view.layer.borderWidth = 4
     return view
   }()
   
-  public var detectorViewBorderColor: UIColor = .darkTurquoise {
+  public var detectorViewBorderColor: UIColor = .turquoise {
     didSet {
       detectorView.layer.borderColor = detectorViewBorderColor.cgColor
     }
@@ -43,13 +45,28 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   fileprivate var detectorViewWidth: NSLayoutConstraint!
   fileprivate var detectorViewHeight: NSLayoutConstraint!
   
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    previewView = CapturePreviewView(frame: .zero)
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  }
+  
   override open func viewDidLoad() {
     super.viewDidLoad()
+    title = "Scan"
     setUp()
   }
   
-  override open func loadView() {
-    view = CapturePreviewView()
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    captureManager.startRunning()
+  }
+  
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
   
   //MARK: Set Up
@@ -64,13 +81,24 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   }
   
   fileprivate func setUpViews() {
+    view.addSubview(previewView)
+    previewView.translatesAutoresizingMaskIntoConstraints = false
+    
+    let top     = previewView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
+    let bottom  = previewView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    let left    = previewView.leftAnchor.constraint(equalTo: view.leftAnchor)
+    let right   = previewView.rightAnchor.constraint(equalTo: view.rightAnchor)
+    
+    NSLayoutConstraint.activate([top, bottom, left, right])
+    
     setUpDetectorView()
   }
   
   fileprivate func setUpDetectorView() {
-    detectorView.translatesAutoresizingMaskIntoConstraints = false
-    detectorView.alpha = 0
     detectorView.layer.borderColor = detectorViewBorderColor.cgColor
+    detectorView.alpha = 0
+    
+    detectorView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(detectorView)
     
     detectorViewCenterX = detectorView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -91,13 +119,12 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     }
     
     captureManager.metadataOutputDelegate = self
-    captureManager.startRunning()
   }
   
   //MARK: VideoPreviewLayerProvider
   
   var previewLayer: AVCaptureVideoPreviewLayer {
-    return view.layer as! AVCaptureVideoPreviewLayer
+    return previewView.layer as! AVCaptureVideoPreviewLayer
   }
   
   //MARK: MetadataOutputDelegate
@@ -118,6 +145,7 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   //MARK: Helpers
   
   @objc fileprivate func handleCloseButton(_ button: UIBarButtonItem?) {
+    captureManager.stopRunning()
     dismiss(animated: true, completion: nil)
   }
   
@@ -125,7 +153,7 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     switch mode {
     case .showing(let bounds):
       detectorViewCenterX.constant = bounds.midX - view.center.x
-      detectorViewCenterY.constant = bounds.midY - view.center.y
+      detectorViewCenterY.constant = bounds.midY + 64 - view.center.y
       detectorViewWidth.constant   = bounds.width
       detectorViewHeight.constant  = bounds.height
       

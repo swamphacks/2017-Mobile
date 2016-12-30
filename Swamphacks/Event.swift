@@ -10,7 +10,6 @@ import UIKit
 
 struct Event {
   let title: String
-  let description: String
   let startTime: Date
   let endTime: Date
   let location: String
@@ -18,26 +17,26 @@ struct Event {
   let rating: Double
   let type: String
   
+  let description: String?
   //let map: UIImage?
 }
 
 extension Event {
   init?(json: JSONDictionary) {
     guard let title = json["name"] as? String,
-      let description = json["description"] as? String,
       let startEpoch = json["startTime"] as? TimeInterval,
       let endEpoch = json["endTime"] as? TimeInterval,
       let location = json["location"] as? String,
-      //let mapImage = json["map"] as? String,
       let attendees = json["numAttendees"] as? Int,
       let rating = json["avgRating"] as? Double,
       let type = json["type"] as? String
+      //let mapImage = json["map"] as? String
       else {
+        print("Failed to load Event from json: \(json)")
         return nil
     }
     
     self.title = title
-    self.description = description
     self.startTime = Date(timeIntervalSince1970: startEpoch)
     self.endTime = Date(timeIntervalSince1970: endEpoch)
     self.location = location
@@ -45,6 +44,7 @@ extension Event {
     self.rating = rating
     self.type = type
     
+    self.description = json["description"] as? String
     //TODO: load base-64 encoded map image from string
   }
 }

@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 
-//TODO: Make sure ScanViewController flow works out, exit button is there and works etc...
 //TODO: Toggle view based on volunteer vs hacker. Make QRCode for hackers and cache locally.
 class ProfileViewController: UIViewController, ScanningDelegate {
   fileprivate lazy var scanVC: UIViewController = {

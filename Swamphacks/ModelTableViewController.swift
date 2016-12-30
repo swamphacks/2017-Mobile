@@ -21,7 +21,24 @@ class ModelTableViewController<Model>: UITableViewController {
   }
   
   fileprivate var reuseIdentifiers = Set<String>()
+  
   var isIncremental: Bool
+  
+  var refreshable: Bool = true {
+    didSet {
+      if !refreshable {
+        refreshControl = nil
+        return
+      }
+      addRefreshControl()
+    }
+  }
+  
+  fileprivate func addRefreshControl() {
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    self.refreshControl = refreshControl
+  }
   
   let load: (@escaping ([Model]) -> ()) -> ()
   
@@ -47,10 +64,7 @@ class ModelTableViewController<Model>: UITableViewController {
     
     super.init(style: style)
     
-    let refreshControl = UIRefreshControl()
-    refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-    
-    self.refreshControl = refreshControl
+    addRefreshControl()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -64,6 +78,11 @@ class ModelTableViewController<Model>: UITableViewController {
     load { [weak self] items in
       self?.reload(items: items)
     }
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    didScroll(tableView) // Fixes tiny little bug w/ the sticky header
   }
     
   override var preferredStatusBarStyle: UIStatusBarStyle {
