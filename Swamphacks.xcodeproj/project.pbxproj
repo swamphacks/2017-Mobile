@@ -35,6 +35,7 @@
 		AB5F2ABB1E147E6200AF875C /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2ABA1E147E6200AF875C /* CountdownView.xib */; };
 		AB5F2ABD1E147EFD00AF875C /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */; };
 		AB5F2ABF1E15ACC300AF875C /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */; };
+		ABD68E0A1E1738FB00833333 /* Builders.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD68E091E1738FB00833333 /* Builders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		AB5F2ABA1E147E6200AF875C /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
 		AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		ABD68E091E1738FB00833333 /* Builders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builders.swift; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				AB5F2AA71E109E1B00AF875C /* App.swift */,
+				ABD68E091E1738FB00833333 /* Builders.swift */,
 				AB5F2A991E0D8A9900AF875C /* ModelTableViewController.swift */,
 				AB5F2AB21E10BDDA00AF875C /* ProfileViewController.xib */,
 				AB5F2AB01E10BDC900AF875C /* ProfileViewController.swift */,
@@ -441,6 +444,7 @@
 				AB5F2A981E0D89E000AF875C /* Announcement.swift in Sources */,
 				AB5F2ABD1E147EFD00AF875C /* CountdownView.swift in Sources */,
 				AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */,
+				ABD68E0A1E1738FB00833333 /* Builders.swift in Sources */,
 				AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */,
 				AB5F2A951E0D888E00AF875C /* CellDescriptor.swift in Sources */,
 				AB5F2AB51E14731E00AF875C /* Event.swift in Sources */,

@@ -60,11 +60,6 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     setUp()
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    captureManager.startRunning()
-  }
-  
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     captureManager.stopRunning()
@@ -124,6 +119,7 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     }
     
     captureManager.metadataOutputDelegate = self
+    captureManager.startRunning()
   }
   
   //MARK: VideoPreviewLayerProvider

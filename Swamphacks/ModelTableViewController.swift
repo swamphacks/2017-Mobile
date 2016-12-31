@@ -48,8 +48,6 @@ class ModelTableViewController<Model>: UITableViewController {
   var header: (Int) -> (RowHeight, UIView?) = { _ in (.automatic, nil) }
   var didSelect: (Model) -> Void = { _ in }
   
-  var didScroll: (UIScrollView) -> Void = { _ in }
-  
   init(style: UITableViewStyle = .plain,
        isIncremental: Bool = false, // Do we replace the array each time or simply append to it? This only exists bc Firebase.
        load: @escaping (@escaping ([Model]) -> ()) -> (),
@@ -82,7 +80,7 @@ class ModelTableViewController<Model>: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    didScroll(tableView) // Fixes tiny little bug w/ the sticky header
+    updateHeaderViewIfNeeded()
   }
     
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -145,7 +143,7 @@ class ModelTableViewController<Model>: UITableViewController {
   //MARK: UIScrollViewDelegate
   
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    didScroll(scrollView)
+    updateHeaderViewIfNeeded()
   }
   
   //MARK: Actions
@@ -156,6 +154,52 @@ class ModelTableViewController<Model>: UITableViewController {
       sender?.endRefreshing()
       self?.reload(items: items)
     }
+  }
+  
+  //MARK: Sticky Header
+  
+  fileprivate var _stickyHeader: UIView?
+  fileprivate var headerHeight: Height = 0
+  fileprivate var headerWidth: Width = 0
+  
+  typealias Height = CGFloat
+  typealias Width = CGFloat
+  
+  var stickyHeader: (UIView, Height, Width)? {
+    didSet {
+      guard let (view, height, width) = stickyHeader else {
+        _stickyHeader?.removeFromSuperview()
+        _stickyHeader = nil
+        
+        headerHeight = 0
+        headerWidth = 0
+        
+        tableView.contentInset = .zero
+        tableView.contentOffset = .zero
+        return
+      }
+      
+      _stickyHeader = view
+      headerHeight = height
+      headerWidth = width
+      
+      view.frame = CGRect(x: 0, y: -headerHeight, width: headerWidth, height: headerHeight)
+      tableView.addSubview(view)
+
+      tableView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
+      tableView.contentOffset = CGPoint(x: 0, y: -headerHeight)
+      
+      updateHeaderViewIfNeeded()
+    }
+  }
+  
+  fileprivate func updateHeaderViewIfNeeded() {
+    guard let tableView = tableView, let headerView = _stickyHeader else { return }
+    var rect = CGRect(x: 0, y: -headerHeight, width: headerWidth, height: headerHeight)
+    if tableView.contentOffset.y < -headerHeight {
+      rect = CGRect(x: 0, y: tableView.contentOffset.y, width: headerWidth, height: -tableView.contentOffset.y)
+    }
+    headerView.frame = rect
   }
   
   //MARK: Helpers

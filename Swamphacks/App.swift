@@ -18,10 +18,6 @@ func root() -> UIViewController {
   tabController.tabBar.isTranslucent = false
   tabController.tabBar.barTintColor = .white
   
-  tabController.tabBar.backgroundImage = nil
-  tabController.tabBar.backgroundColor = nil
-  tabController.tabBar.shadowImage = nil
-  
   return tabController //.styled()
 }
 
@@ -40,9 +36,8 @@ fileprivate func announcementsVC() -> UIViewController {
                                                  load: announcements,
                                                  cellDescriptor: { $0.cellDescriptor },
                                                  rowHeight: { _,_ in .automatic })
-  prepare(tableVC: announcementsVC)
-  announcementsVC.tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
-  announcementsVC.title = "Announcements"
+  
+  announcementsTableVCBuilder.build(announcementsVC)
   
   let navController = announcementsVC.rooted()
   
@@ -53,10 +48,6 @@ fileprivate func announcementsVC() -> UIViewController {
 }
 
 fileprivate func happeningNowVC() -> UIViewController {
-  let countdownView = Bundle.main.loadNibNamed(CountdownView.defaultNibName,
-                                               owner: nil,
-                                               options: nil)!.first as! CountdownView
-  countdownView.clipsToBounds = true
   
   let events = { (completion: @escaping ([Event]) -> ()) in
     let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
@@ -71,8 +62,8 @@ fileprivate func happeningNowVC() -> UIViewController {
                                                 load: events,
                                                 cellDescriptor: { $0.cellDescriptor },
                                                 rowHeight: { _,_ in .automatic })
-  prepare(tableVC: happeningNowVC)
-  happeningNowVC.refreshable = false
+  
+  happeningNowTableVCBuilder.build(happeningNowVC)
   
   let navController = happeningNowVC.rooted()
   navController.isNavigationBarHidden = true
@@ -80,29 +71,6 @@ fileprivate func happeningNowVC() -> UIViewController {
   let image = UIImage(named: "clock")!
   navController.tabBarItem = tabBarItem(title: "Now", image: image)
   
-  let headerHeight = UIScreen.main.bounds.height - 250
-  let headerWidth = happeningNowVC.tableView.bounds.width
-  
-  countdownView.frame = CGRect(x: 0, y: -headerHeight, width: headerWidth, height: headerHeight)
-  happeningNowVC.tableView.addSubview(countdownView)
-  
-  func updateHeaderView() {
-    let tableView = happeningNowVC.tableView!
-    var rect = CGRect(x: 0, y: -headerHeight, width: headerWidth, height: headerHeight)
-    if tableView.contentOffset.y < -headerHeight {
-      rect = CGRect(x: 0, y: tableView.contentOffset.y, width: headerWidth, height: -tableView.contentOffset.y)
-    }
-    countdownView.frame = rect
-  }
-  
-  happeningNowVC.tableView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
-  happeningNowVC.tableView.contentOffset = CGPoint(x: 0, y: -headerHeight)
-  updateHeaderView()
-  
-  happeningNowVC.didScroll = { tableView in
-    updateHeaderView()
-  }
-    
   return navController.styled()
 }
 
