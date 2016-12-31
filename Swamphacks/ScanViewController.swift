@@ -60,9 +60,14 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     setUp()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     captureManager.startRunning()
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    captureManager.stopRunning()
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -145,7 +150,6 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   //MARK: Helpers
   
   @objc fileprivate func handleCloseButton(_ button: UIBarButtonItem?) {
-    captureManager.stopRunning()
     dismiss(animated: true, completion: nil)
   }
   

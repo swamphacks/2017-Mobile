@@ -9,6 +9,7 @@
 import UIKit
 
 final class EventCell: UITableViewCell {
+  @IBOutlet weak var typeIndicatorView: UIView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
 }

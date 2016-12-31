@@ -21,6 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window!.rootViewController = root()
     window!.makeKeyAndVisible()
     
+    addStatusBarView()
+    
+    return true
+  }
+  
+  fileprivate func setUpUI() {
+    UINavigationBar.appearance().isTranslucent = false
+    UINavigationBar.appearance().barTintColor = .turquoise
+    UINavigationBar.appearance().tintColor = .white
+    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+  }
+  
+  fileprivate func addStatusBarView() {
     let statusBarView = UIView(frame: .zero)
     statusBarView.backgroundColor = .turquoise
     
@@ -33,15 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let height = statusBarView.heightAnchor.constraint(equalToConstant: 20)
     
     NSLayoutConstraint.activate([top, left, right, height])
-    
-    return true
-  }
-  
-  fileprivate func setUpUI() {
-    UINavigationBar.appearance().isTranslucent = false
-    UINavigationBar.appearance().barTintColor = .turquoise
-    UINavigationBar.appearance().tintColor = .white
-    UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
   }
 
 }

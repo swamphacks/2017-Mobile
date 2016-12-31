@@ -47,6 +47,7 @@ extension Announcement {
     cell.titleLabel?.text = title
     cell.descriptionLabel?.text = description
     cell.dateLabel?.text = dateString
+    //TODO: typeIndicatorView backgroundColor based on type
   }
 }
 
