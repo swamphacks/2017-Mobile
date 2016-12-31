@@ -12,18 +12,23 @@ import UIKit
 
 func root() -> UIViewController {
   let tabController = UITabBarController()
-  tabController.viewControllers = [announcementsVC(), happeningNowVC(), profileVC()]
-  
   tabController.tabBar.tintColor = .turquoise
   tabController.tabBar.isTranslucent = false
   tabController.tabBar.barTintColor = .white
+  
+  tabController.viewControllers = [announcementsVC(), happeningNowVC(), profileVC()].map { (vcTitleImage) -> UIViewController in
+    vcTitleImage.0.topViewController?.title = vcTitleImage.1
+    vcTitleImage.0.tabBarItem = tabBarItem(title: vcTitleImage.1, image: vcTitleImage.2)
+    return vcTitleImage.0.styled()
+  }
   
   return tabController //.styled()
 }
 
 //MARK: View Controllers
 
-fileprivate func announcementsVC() -> UIViewController {
+fileprivate func announcementsVC() -> (UINavigationController, String, UIImage) {
+  
   let announcements = { (completion: @escaping ([Announcement]) -> ()) in
     let resource = FirebaseResource<Announcement>(path: "announcements", parseJSON: Announcement.init)
     _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0, .childAdded) }) { result in
@@ -40,14 +45,12 @@ fileprivate func announcementsVC() -> UIViewController {
   announcementsTableVCBuilder.build(announcementsVC)
   
   let navController = announcementsVC.rooted()
-  
   let image = UIImage(named: "announcement")!
-  navController.tabBarItem = tabBarItem(title: announcementsVC.title!, image: image)
   
-  return navController.styled()
+  return (navController, "Announcements", image)
 }
 
-fileprivate func happeningNowVC() -> UIViewController {
+fileprivate func happeningNowVC() -> (UINavigationController, String, UIImage) {
   
   let events = { (completion: @escaping ([Event]) -> ()) in
     let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
@@ -66,20 +69,20 @@ fileprivate func happeningNowVC() -> UIViewController {
   happeningNowTableVCBuilder.build(happeningNowVC)
   
   let navController = happeningNowVC.rooted()
+  let image = UIImage(named: "clock")!
+  
   navController.isNavigationBarHidden = true
   
-  let image = UIImage(named: "clock")!
-  navController.tabBarItem = tabBarItem(title: "Now", image: image)
-  
-  return navController.styled()
+  return (navController, "Now", image)
 }
 
-fileprivate func profileVC() -> UIViewController {
-  let profileVC = ProfileViewController(nibName: String(describing: ProfileViewController.self), bundle: nil).rooted()
+fileprivate func profileVC() -> (UINavigationController, String, UIImage) {
+  let profileVC = ProfileViewController(nibName: String(describing: ProfileViewController.self),
+                                        bundle: nil).rooted()
   profileVC.isNavigationBarHidden = true
+  
   let image = UIImage(named: "person")!
-  profileVC.tabBarItem = tabBarItem(title: "Profile", image: image)
-  return profileVC.styled()
+  return (profileVC, "Profile", image)
 }
 
 //MARK: Helpers
@@ -90,12 +93,4 @@ fileprivate func tabBarItem(title: String, image: UIImage) -> UITabBarItem {
   return UITabBarItem(title: title,
                      image: image,
                      selectedImage: image)
-}
-
-fileprivate func prepare<T>(tableVC: ModelTableViewController<T>) {
-  // Need this for .automatic rowHeight to work. Want better way to do this w/ ModelTableVC.
-  tableVC.tableView.estimatedRowHeight = 90
-  
-  tableVC.view.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-  tableVC.tableView.separatorStyle = .none
 }

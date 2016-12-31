@@ -13,6 +13,11 @@ enum RowHeight {
   case automatic
 }
 
+enum Header {
+  case title(String)
+  case view(UIView)
+}
+
 class ModelTableViewController<Model>: UITableViewController {
   fileprivate(set) var items: [Model] = [] {
     didSet {
@@ -45,7 +50,7 @@ class ModelTableViewController<Model>: UITableViewController {
   let cellDescriptor: (Model) -> CellDescriptor
   let rowHeight: (Model, IndexPath) -> RowHeight
   
-  var header: (Int) -> (RowHeight, UIView?) = { _ in (.automatic, nil) }
+  var header: (Int) -> (RowHeight, Header?) = { _ in (.automatic, nil) }
   var didSelect: (Model) -> Void = { _ in }
   
   init(style: UITableViewStyle = .plain,
@@ -130,7 +135,13 @@ class ModelTableViewController<Model>: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return header(section).1
+    guard case .view(let v)? = header(section).1 else { return nil }
+    return v
+  }
+  
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    guard case .title(let t)? = header(section).1 else { return nil }
+    return t
   }
   
   //MARK: UITableViewDelegate

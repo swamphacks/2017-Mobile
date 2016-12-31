@@ -25,7 +25,6 @@ struct ModelTableViewControllerBuilder<T> {
 
 let announcementsTableVCBuilder = ModelTableViewControllerBuilder<Announcement> { vc in
   vc.tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
-  vc.title = "Announcements"
 }
 
 let happeningNowTableVCBuilder = ModelTableViewControllerBuilder<Event> { vc in
@@ -38,7 +37,7 @@ let happeningNowTableVCBuilder = ModelTableViewControllerBuilder<Event> { vc in
                                                owner: nil,
                                                options: nil)!.first as! CountdownView
   countdownView.clipsToBounds = true
-  
   vc.stickyHeader = (countdownView, headerHeight, headerWidth)
-
 }
+
+//TODO: make the other builders

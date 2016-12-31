@@ -36,6 +36,8 @@
 		AB5F2ABD1E147EFD00AF875C /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */; };
 		AB5F2ABF1E15ACC300AF875C /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */; };
 		ABD68E0A1E1738FB00833333 /* Builders.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD68E091E1738FB00833333 /* Builders.swift */; };
+		ABD68E0C1E18450400833333 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD68E0B1E18450400833333 /* EventViewController.swift */; };
+		ABD68E0E1E18451B00833333 /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD68E0D1E18451B00833333 /* EventViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		ABD68E091E1738FB00833333 /* Builders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builders.swift; sourceTree = "<group>"; };
+		ABD68E0B1E18450400833333 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		ABD68E0D1E18451B00833333 /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +174,8 @@
 				AB5F2AB21E10BDDA00AF875C /* ProfileViewController.xib */,
 				AB5F2AB01E10BDC900AF875C /* ProfileViewController.swift */,
 				AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */,
+				ABD68E0D1E18451B00833333 /* EventViewController.xib */,
+				ABD68E0B1E18450400833333 /* EventViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB5F2ABB1E147E6200AF875C /* CountdownView.xib in Resources */,
+				ABD68E0E1E18451B00833333 /* EventViewController.xib in Resources */,
 				AB5F2AB31E10BDDA00AF875C /* ProfileViewController.xib in Resources */,
 				AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */,
 				AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */,
@@ -436,6 +443,7 @@
 				AB5F2A9A1E0D8A9900AF875C /* ModelTableViewController.swift in Sources */,
 				AB5F2AA81E109E1B00AF875C /* App.swift in Sources */,
 				AB5F2AB11E10BDC900AF875C /* ProfileViewController.swift in Sources */,
+				ABD68E0C1E18450400833333 /* EventViewController.swift in Sources */,
 				AB5F2AAF1E10BD1300AF875C /* UINavigationController+StatusBarStyle.swift in Sources */,
 				AB5F2AAD1E10B92F00AF875C /* UIColor+AppColors.swift in Sources */,
 				AB5F2ABF1E15ACC300AF875C /* ScanViewController.swift in Sources */,
