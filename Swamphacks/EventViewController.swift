@@ -42,10 +42,13 @@ struct ViewPair {
 final class EventViewController: UIViewController {
   fileprivate let event: Event
   
+  //TODO: correct font for all of these labels. See their set up functions
   fileprivate let titleLabel: UILabel
   fileprivate let typeLabel: PaddedLabel
   fileprivate let descriptionLabel: UILabel
   fileprivate let dateLabel: UILabel
+  fileprivate let locationLabel: UILabel
+  fileprivate let mapImageView: UIImageView
   
   fileprivate static let dayFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -67,6 +70,8 @@ final class EventViewController: UIViewController {
     self.typeLabel = PaddedLabel(frame: .zero)
     self.descriptionLabel = UILabel(frame: .zero)
     self.dateLabel = UILabel(frame: .zero)
+    self.locationLabel = UILabel(frame: .zero)
+    self.mapImageView = UIImageView(frame: .zero)
 
     super.init(nibName: String(describing: EventViewController.self), bundle: nil)
   }
@@ -98,19 +103,23 @@ final class EventViewController: UIViewController {
     return .lightContent
   }
   
+  //MARK: Set Up
+  
   fileprivate func setUpViews() {
     setUpTypeLabel()
     setUpTitleLabel()
     setUpDescriptionLabel()
     setUpDateLabel()
+    setUpLocationLabel()
+    setUpMapImageView()
   }
   
   fileprivate func setUpTypeLabel() {
     typeLabel.text = event.type.capitalized
     typeLabel.textColor = .white
-    
-    //TODO: correct font and color(for: event)
     typeLabel.font = UIFont.systemFont(ofSize: 14)
+
+    //TODO: color(for: event)
     typeLabel.backgroundColor = UIColor(red: 255/255,
                                         green: 188/255,
                                         blue: 129/255,
@@ -126,17 +135,16 @@ final class EventViewController: UIViewController {
   }
   
   fileprivate func setUpTitleLabel() {
-    titleLabel.text = event.title.capitalized
+    titleLabel.text = event.title
     titleLabel.textColor = .black
     titleLabel.adjustsFontSizeToFitWidth = true
 
-    //TODO: correct font
     titleLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightBold)
     
     setUp(subview: titleLabel, in: view) { viewPair in
       let centerY = viewPair.subview.centerYAnchor.constraint(equalTo: typeLabel.centerYAnchor)
       let left = viewPair.subview.leftAnchor.constraint(equalTo: viewPair.superview.leftAnchor, constant: 16)
-      let right = viewPair.subview.rightAnchor.constraint(lessThanOrEqualTo: typeLabel.leftAnchor, constant: -4)
+      let right = viewPair.subview.rightAnchor.constraint(lessThanOrEqualTo: typeLabel.leftAnchor, constant: -8)
       return [centerY, left, right]
     }
   }
@@ -160,7 +168,7 @@ final class EventViewController: UIViewController {
       setUp(subview: dateLabel, in: view) { viewPair in
         let top = viewPair.subview.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16)
         let left = viewPair.subview.leftAnchor.constraint(equalTo: viewPair.superview.leftAnchor, constant: 16)
-        let right = viewPair.subview.rightAnchor.constraint(greaterThanOrEqualTo: typeLabel.rightAnchor, constant: 16)
+        let right = viewPair.subview.rightAnchor.constraint(greaterThanOrEqualTo: typeLabel.rightAnchor)
         return [top, left, right]
       }
     }
@@ -208,6 +216,35 @@ final class EventViewController: UIViewController {
     dateLabel.attributedText = attributedDate
     
     addDateLabel()
+  }
+  
+  fileprivate func setUpLocationLabel() {
+    locationLabel.text = event.location
+    locationLabel.textColor = .black
+    locationLabel.font = UIFont.systemFont(ofSize: 20)
+    locationLabel.adjustsFontSizeToFitWidth = true
+    
+    setUp(subview: locationLabel, in: view) { viewPair in
+      let top = viewPair.subview.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 16)
+      let left = viewPair.subview.leftAnchor.constraint(equalTo: viewPair.superview.leftAnchor, constant: 16)
+      let right = viewPair.subview.rightAnchor.constraint(greaterThanOrEqualTo: typeLabel.rightAnchor)
+      return [top, left, right]
+    }
+  }
+  
+  fileprivate func setUpMapImageView() {
+    //TODO: mapImageView.image = event.mapImage
+    mapImageView.backgroundColor = .lightGray
+    mapImageView.contentMode = .scaleAspectFit
+    mapImageView.clipsToBounds = true
+    
+    setUp(subview: mapImageView, in: view) { viewPair in
+      let top = viewPair.subview.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 8)
+      let left = viewPair.subview.leftAnchor.constraint(equalTo: locationLabel.leftAnchor)
+      let right = viewPair.subview.rightAnchor.constraint(equalTo: typeLabel.rightAnchor)
+      let aspect = viewPair.subview.heightAnchor.constraint(equalTo: viewPair.subview.widthAnchor, multiplier: 9/16)
+      return [top, left, right, aspect]
+    }
   }
   
   //MARK: Helpers
