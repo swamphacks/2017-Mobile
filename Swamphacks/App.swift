@@ -8,7 +8,7 @@
 
 import UIKit
 
-//TODO: Add LoginVC, SponsorsVC and CalendarVC
+//TODO: Add LoginVC, CalendarVC, EventVC, SponsorsVC
 
 func root() -> UIViewController {
   let tabController = UITabBarController()
@@ -72,6 +72,11 @@ fileprivate func happeningNowVC() -> (UINavigationController, String, UIImage) {
   let image = UIImage(named: "clock")!
   
   navController.isNavigationBarHidden = true
+  
+  happeningNowVC.didSelect = { event in
+    let eventVC = EventViewController(event: event)
+    navController.pushViewController(eventVC, animated: true)
+  }
   
   return (navController, "Now", image)
 }

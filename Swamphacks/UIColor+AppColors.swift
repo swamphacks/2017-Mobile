@@ -10,10 +10,10 @@ import UIKit
 
 extension UIColor {
   class var turquoise: UIColor {
-    return UIColor(red: 87/255, green: 220/255, blue: 237/255, alpha: 1)
+    return UIColor(red: 110/255, green: 222/255, blue: 235/255, alpha: 1)
   }
   
   class var darkTurquoise: UIColor {
-    return UIColor(red: 88/255, green: 202/255, blue: 219/255, alpha: 1)
+    return UIColor(red: 114/255, green: 216/255, blue: 225/255, alpha: 1)
   }
 }

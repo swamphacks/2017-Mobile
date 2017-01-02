@@ -9,7 +9,8 @@
 import UIKit
 import AVFoundation
 
-//TODO: Toggle view based on volunteer vs hacker. Make QRCode for hackers and cache locally.
+//TODO: Toggle view based on volunteer vs hacker. Make QRCode for hackers and cache locally. Finish layout.
+
 class ProfileViewController: UIViewController, ScanningDelegate {
   fileprivate lazy var scanVC: UIViewController = {
     let vc = ScanViewController()

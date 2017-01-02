@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,28 +17,28 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IH0-3u-fTO">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="486"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="387"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkU-fL-aEM">
-                            <rect key="frame" x="0.0" y="482" width="375" height="4"/>
-                            <color key="backgroundColor" red="0.34509803921568627" green="0.79329380443592468" blue="0.86059030029877293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="0.0" y="383" width="320" height="4"/>
+                            <color key="backgroundColor" red="0.44705882352941173" green="0.84705882352941175" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="4" id="UAs-kA-yyI"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tM-bY-HWH">
-                            <rect key="frame" x="319" y="28" width="48" height="48"/>
+                            <rect key="frame" x="264" y="28" width="48" height="48"/>
                             <state key="normal" image="camera"/>
                             <connections>
                                 <action selector="handleCameraButton:" destination="-1" eventType="touchUpInside" id="D7e-al-nmm"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.3803921569" green="0.86282253269999998" blue="0.93115442989999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.43137254899999999" green="0.87058823529999996" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="JkU-fL-aEM" secondAttribute="trailing" id="MpU-F1-lcH"/>
                         <constraint firstAttribute="trailing" secondItem="0tM-bY-HWH" secondAttribute="trailing" constant="8" id="S8M-7A-Fll"/>
@@ -48,7 +48,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmz-Pe-E2L">
-                    <rect key="frame" x="0.0" y="486" width="375" height="181"/>
+                    <rect key="frame" x="0.0" y="387" width="320" height="181"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="181" id="g6A-Pm-zyo"/>

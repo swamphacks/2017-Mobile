@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,14 +16,15 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zs4-Ea-pxL" customClass="CircularProgressView" customModule="Swamphacks" customModuleProvider="target">
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zs4-Ea-pxL" customClass="CircularProgressView" customModule="Swamphacks" customModuleProvider="target">
+                    <rect key="frame" x="16" y="28.5" width="343" height="343"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Sc-Vo-sIA">
+                            <rect key="frame" x="171.5" y="171.5" width="0.0" height="0.0"/>
                             <attributedString key="attributedText"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.3803921569" green="0.86282253269999998" blue="0.93115442989999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="4Sc-Vo-sIA" firstAttribute="centerY" secondItem="zs4-Ea-pxL" secondAttribute="centerY" id="UqE-Pl-wJu"/>
                         <constraint firstAttribute="width" secondItem="zs4-Ea-pxL" secondAttribute="height" multiplier="1:1" id="h6Y-c8-mys"/>
@@ -28,13 +32,14 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAo-n2-pls">
-                    <color key="backgroundColor" red="0.34643919029999998" green="0.79329380439999997" blue="0.86059030030000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="0.0" y="396" width="375" height="4"/>
+                    <color key="backgroundColor" red="0.44705882352941173" green="0.84705882352941175" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="4" id="dbT-cc-ilS"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.3803921569" green="0.86282253269999998" blue="0.93115442989999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.43137254901960786" green="0.87058823529411766" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="zs4-Ea-pxL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4kb-rB-HzC"/>
                 <constraint firstItem="zs4-Ea-pxL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BWc-Hk-lsK"/>
