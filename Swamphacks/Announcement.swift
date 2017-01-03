@@ -30,10 +30,13 @@ struct Announcement {
 extension Announcement {
   init?(json: JSONDictionary) {
     guard let title = json["name"] as? String,
-      let description = json["description"] as? String,
-      let epoch = json["time"] as? TimeInterval,
-      let type = json["type"] as? String
-      else { return nil }
+          let description = json["description"] as? String,
+          let epoch = json["time"] as? TimeInterval,
+          let type = json["type"] as? String
+    else {
+      print("Failed to load Announcement from json: \(json)")
+      return nil
+    }
 
     self.title = title
     self.description = description

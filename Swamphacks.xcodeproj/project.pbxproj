@@ -11,6 +11,9 @@
 		60B520234DF0601E1B4A73AB /* Pods_SwamphacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */; };
 		AB0AAD761E1ACDFE00ECBEC2 /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD751E1ACDFE00ECBEC2 /* EventViewController.xib */; };
 		AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */; };
+		AB0AAD7A1E1C114200ECBEC2 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */; };
+		AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */; };
+		AB0AAD7E1E1C144700ECBEC2 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD7D1E1C144700ECBEC2 /* Sponsor.swift */; };
 		AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2A6E1E0D7B3000AF875C /* AppDelegate.swift */; };
 		AB5F2A761E0D7B3000AF875C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2A751E0D7B3000AF875C /* Assets.xcassets */; };
 		AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2A771E0D7B3000AF875C /* LaunchScreen.storyboard */; };
@@ -59,6 +62,9 @@
 		6D245F24CA276536977095C0 /* Pods-Swamphacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.release.xcconfig"; sourceTree = "<group>"; };
 		AB0AAD751E1ACDFE00ECBEC2 /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
 		AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
+		AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorCell.xib; sourceTree = "<group>"; };
+		AB0AAD7D1E1C144700ECBEC2 /* Sponsor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
 		AB5F2A6B1E0D7B3000AF875C /* Swamphacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swamphacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5F2A6E1E0D7B3000AF875C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5F2A751E0D7B3000AF875C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -201,6 +207,7 @@
 				AB5F2AA21E106E6300AF875C /* Firebase.swift */,
 				AB5F2A971E0D89E000AF875C /* Announcement.swift */,
 				AB5F2AB41E14731E00AF875C /* Event.swift */,
+				AB0AAD7D1E1C144700ECBEC2 /* Sponsor.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -215,6 +222,8 @@
 				AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */,
 				AB5F2AB81E1474BD00AF875C /* EventCell.xib */,
 				AB5F2AB61E14749E00AF875C /* EventCell.swift */,
+				AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */,
+				AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -326,6 +335,7 @@
 				AB0AAD761E1ACDFE00ECBEC2 /* EventViewController.xib in Resources */,
 				AB5F2AB31E10BDDA00AF875C /* ProfileViewController.xib in Resources */,
 				AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */,
+				AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */,
 				AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */,
 				AB5F2AA51E10728900AF875C /* GoogleService-Info.plist in Resources */,
 				AB5F2AB91E1474BD00AF875C /* EventCell.xib in Resources */,
@@ -455,10 +465,12 @@
 				AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */,
 				AB5F2A981E0D89E000AF875C /* Announcement.swift in Sources */,
 				AB5F2ABD1E147EFD00AF875C /* CountdownView.swift in Sources */,
+				AB0AAD7E1E1C144700ECBEC2 /* Sponsor.swift in Sources */,
 				AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */,
 				ABD68E0A1E1738FB00833333 /* Builders.swift in Sources */,
 				AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */,
 				AB5F2A951E0D888E00AF875C /* CellDescriptor.swift in Sources */,
+				AB0AAD7A1E1C114200ECBEC2 /* SponsorCell.swift in Sources */,
 				AB5F2AB51E14731E00AF875C /* Event.swift in Sources */,
 				AB5F2AAA1E10A56300AF875C /* CircularProgressView.swift in Sources */,
 			);

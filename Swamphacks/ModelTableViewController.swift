@@ -50,13 +50,38 @@ class ModelTableViewController<Model>: UITableViewController {
   let cellDescriptor: (Model) -> CellDescriptor
   let rowHeight: (Model, IndexPath) -> RowHeight
   
-  var header: (Int) -> (RowHeight, Header?) = { _ in (.automatic, nil) }
+  var itemForIndexPath: ((IndexPath) -> Model?)! {
+    didSet {
+      tableView.reloadData()
+    }
+  }
+  
   var didSelect: (Model) -> Void = { _ in }
+  
+  var sections: (ModelTableViewController<Model>) -> Int = { _ in 1 } {
+    didSet {
+      tableView.reloadData()
+    }
+  }
+  
+  var rowsInSection: ((Int) -> Int)! {
+    didSet {
+      tableView.reloadData()
+    }
+  }
+  
+  var header: (Int) -> (RowHeight, Header?) = { _ in (.automatic, nil) } {
+    didSet {
+      tableView.reloadData()
+    }
+  }
   
   init(style: UITableViewStyle = .plain,
        isIncremental: Bool = false, // Do we replace the array each time or simply append to it? This only exists bc Firebase.
        load: @escaping (@escaping ([Model]) -> ()) -> (),
        cellDescriptor: @escaping (Model) -> CellDescriptor,
+       itemForIndexPath: ((IndexPath) -> Model)? = nil,
+       rowsInSection: ((Int) -> Int)? = nil,
        rowHeight: @escaping (Model, IndexPath) -> RowHeight)
   {
     self.isIncremental = isIncremental
@@ -66,6 +91,9 @@ class ModelTableViewController<Model>: UITableViewController {
     self.rowHeight = rowHeight
     
     super.init(style: style)
+    
+    self.itemForIndexPath = itemForIndexPath ?? { self.items[$0.row] }
+    self.rowsInSection = rowsInSection ?? { _ in self.items.count }
     
     addRefreshControl()
   }
@@ -95,7 +123,7 @@ class ModelTableViewController<Model>: UITableViewController {
   //MARK: UITableViewDataSource
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let item = items[indexPath.row]
+    let item = itemForIndexPath(indexPath)!
     let descriptor = cellDescriptor(item)
     
     if !reuseIdentifiers.contains(descriptor.reuseIdentifier) {
@@ -110,11 +138,15 @@ class ModelTableViewController<Model>: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return items.count
+    return rowsInSection(section)
+  }
+  
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return sections(self)
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    let item = items[indexPath.row]
+    let item = itemForIndexPath(indexPath)!
     let height = rowHeight(item, indexPath)
     switch height {
     case .absolute(let h):
@@ -147,7 +179,7 @@ class ModelTableViewController<Model>: UITableViewController {
   //MARK: UITableViewDelegate
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let item = items[indexPath.row]
+    let item = itemForIndexPath(indexPath)!
     didSelect(item)
   }
   

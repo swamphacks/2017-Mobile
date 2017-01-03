@@ -8,7 +8,7 @@
 
 import UIKit
 
-//TODO: Add LoginVC, CalendarVC, EventVC, SponsorsVC
+//TODO: Add LoginVC, CalendarVC, SponsorsVC
 
 func root() -> UIViewController {
   let tabController = UITabBarController()
@@ -16,7 +16,7 @@ func root() -> UIViewController {
   tabController.tabBar.isTranslucent = false
   tabController.tabBar.barTintColor = .white
   
-  tabController.viewControllers = [announcementsVC(), happeningNowVC(), profileVC()].map { (vcTitleImage) -> UIViewController in
+  tabController.viewControllers = [announcementsVC(), happeningNowVC(), sponsorsVC(), profileVC()].map { (vcTitleImage) -> UIViewController in
     vcTitleImage.0.topViewController?.title = vcTitleImage.1
     vcTitleImage.0.tabBarItem = tabBarItem(title: vcTitleImage.1, image: vcTitleImage.2)
     return vcTitleImage.0.styled()
@@ -28,11 +28,10 @@ func root() -> UIViewController {
 //MARK: View Controllers
 
 fileprivate func announcementsVC() -> (UINavigationController, String, UIImage) {
-  
   let announcements = { (completion: @escaping ([Announcement]) -> ()) in
     let resource = FirebaseResource<Announcement>(path: "announcements", parseJSON: Announcement.init)
     _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0, .childAdded) }) { result in
-      guard let announcement = result.value else { return }
+      guard let announcement = result.value else { completion([]); return }
       completion([announcement])
     }
   }
@@ -53,12 +52,11 @@ fileprivate func announcementsVC() -> (UINavigationController, String, UIImage) 
 }
 
 fileprivate func happeningNowVC() -> (UINavigationController, String, UIImage) {
-  
   let events = { (completion: @escaping ([Event]) -> ()) in
     let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
     _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0.queryOrdered(byChild: "startTime"), .childAdded) }) { result in
       let now = Date()
-      guard let event = result.value, now.compare(event.startTime) == .orderedAscending else { return }
+      guard let event = result.value, now.compare(event.startTime) == .orderedAscending else { completion([]); return }
       completion([event])
     }
   }
@@ -81,6 +79,32 @@ fileprivate func happeningNowVC() -> (UINavigationController, String, UIImage) {
   }
   
   return (navController, "Now", image)
+}
+
+fileprivate func sponsorsVC() -> (UINavigationController, String, UIImage) {
+  let sponsors = { (completion: @escaping ([Sponsor]) -> ()) in
+    let resource = FirebaseResource<Sponsor>(path: "sponsors", parseJSON: Sponsor.init)
+    _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0.queryOrdered(byChild: "startTime"), .childAdded) }) { result in
+      guard let sponsor = result.value else { completion([]); return }
+      completion([sponsor])
+    }
+  }
+    
+  let sponsorsVC = ModelTableViewController(isIncremental: true,
+                                            load: sponsors,
+                                            cellDescriptor: { $0.cellDescriptor },
+                                            rowHeight: { _,_ in .absolute(90) })
+  
+  sponsorsTableVCBuilder.build(sponsorsVC)
+  
+  let navController = sponsorsVC.rooted()
+  let image = UIImage(named: "suitcase")!
+  
+  sponsorsVC.didSelect = { sponsor in
+    //TODO: show SponsorVC
+  }
+  
+  return (navController, "Sponsors", image)
 }
 
 fileprivate func profileVC() -> (UINavigationController, String, UIImage) {

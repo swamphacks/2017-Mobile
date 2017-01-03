@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().barTintColor = .turquoise
     UINavigationBar.appearance().tintColor = .white
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    UINavigationBar.appearance().shadowImage = UIImage()
+    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
   }
   
   fileprivate func addStatusBarView() {

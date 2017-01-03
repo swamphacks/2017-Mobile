@@ -17,24 +17,23 @@ struct Event {
   let attendees: Int
   let rating: Double
   let type: String
-  
-  //let map: UIImage?
+  let mapImage: UIImage?
 }
 
 extension Event {
   init?(json: JSONDictionary) {
     guard let title = json["name"] as? String,
-      let description = json["description"] as? String,
-      let startEpoch = json["startTime"] as? TimeInterval,
-      let endEpoch = json["endTime"] as? TimeInterval,
-      let location = json["location"] as? String,
-      let attendees = json["numAttendees"] as? Int,
-      let rating = json["avgRating"] as? Double,
-      let type = json["type"] as? String
-      //let mapImage = json["map"] as? String
-      else {
-        print("Failed to load Event from json: \(json)")
-        return nil
+          let description = json["description"] as? String,
+          let startEpoch = json["startTime"] as? TimeInterval,
+          let endEpoch = json["endTime"] as? TimeInterval,
+          let location = json["location"] as? String,
+          let attendees = json["numAttendees"] as? Int,
+          let rating = json["avgRating"] as? Double,
+          let type = json["type"] as? String,
+          let mapImageStr = json["map"] as? String
+    else {
+      print("Failed to load Event from json: \(json)")
+      return nil
     }
     
     self.title = title
@@ -46,7 +45,11 @@ extension Event {
     self.rating = rating
     self.type = type
     
-    //TODO: load base-64 encoded map image from string
+    if let data = Data(base64Encoded: mapImageStr) {
+      self.mapImage = UIImage(data: data)
+    } else {
+      self.mapImage = nil
+    }
   }
 }
 
