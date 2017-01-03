@@ -24,7 +24,6 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   
   fileprivate let previewView: CapturePreviewView!
   
-  //TODO: Customize detectorView? Just change border?
   fileprivate lazy var detectorView: UIView = {
     let view = UIView()
     view.backgroundColor = .clear

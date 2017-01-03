@@ -47,6 +47,8 @@ fileprivate func announcementsVC() -> (UINavigationController, String, UIImage) 
   let navController = announcementsVC.rooted()
   let image = UIImage(named: "announcement")!
   
+  //TODO: left bar button to filter by announcement type?
+  
   return (navController, "Announcements", image)
 }
 

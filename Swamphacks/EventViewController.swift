@@ -39,6 +39,7 @@ struct ViewPair {
   let superview: UIView
 }
 
+//TODO: Rating control and attendee counter. Right bar button to ScanVC if user is a volunteer?
 final class EventViewController: UIViewController {
   fileprivate let event: Event
   

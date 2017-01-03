@@ -10,6 +10,7 @@
 		532F66EC17F61A8F6D7919FE /* Pods_Swamphacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16095FE1F6E0BBFEFC8C267A /* Pods_Swamphacks.framework */; };
 		60B520234DF0601E1B4A73AB /* Pods_SwamphacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */; };
 		AB0AAD761E1ACDFE00ECBEC2 /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD751E1ACDFE00ECBEC2 /* EventViewController.xib */; };
+		AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */; };
 		AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2A6E1E0D7B3000AF875C /* AppDelegate.swift */; };
 		AB5F2A761E0D7B3000AF875C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2A751E0D7B3000AF875C /* Assets.xcassets */; };
 		AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2A771E0D7B3000AF875C /* LaunchScreen.storyboard */; };
@@ -27,7 +28,7 @@
 		AB5F2AA81E109E1B00AF875C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA71E109E1B00AF875C /* App.swift */; };
 		AB5F2AAA1E10A56300AF875C /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AA91E10A56300AF875C /* CircularProgressView.swift */; };
 		AB5F2AAD1E10B92F00AF875C /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AAC1E10B92F00AF875C /* UIColor+AppColors.swift */; };
-		AB5F2AAF1E10BD1300AF875C /* UINavigationController+StatusBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AAE1E10BD1300AF875C /* UINavigationController+StatusBarStyle.swift */; };
+		AB5F2AAF1E10BD1300AF875C /* UIView+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AAE1E10BD1300AF875C /* UIView+Conveniences.swift */; };
 		AB5F2AB11E10BDC900AF875C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AB01E10BDC900AF875C /* ProfileViewController.swift */; };
 		AB5F2AB31E10BDDA00AF875C /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5F2AB21E10BDDA00AF875C /* ProfileViewController.xib */; };
 		AB5F2AB51E14731E00AF875C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2AB41E14731E00AF875C /* Event.swift */; };
@@ -57,6 +58,7 @@
 		60A965A9164B026841F52940 /* Pods-Swamphacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.debug.xcconfig"; sourceTree = "<group>"; };
 		6D245F24CA276536977095C0 /* Pods-Swamphacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.release.xcconfig"; sourceTree = "<group>"; };
 		AB0AAD751E1ACDFE00ECBEC2 /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
+		AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		AB5F2A6B1E0D7B3000AF875C /* Swamphacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swamphacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5F2A6E1E0D7B3000AF875C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5F2A751E0D7B3000AF875C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,7 +79,7 @@
 		AB5F2AA71E109E1B00AF875C /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		AB5F2AA91E10A56300AF875C /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		AB5F2AAC1E10B92F00AF875C /* UIColor+AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
-		AB5F2AAE1E10BD1300AF875C /* UINavigationController+StatusBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+StatusBarStyle.swift"; sourceTree = "<group>"; };
+		AB5F2AAE1E10BD1300AF875C /* UIView+Conveniences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Conveniences.swift"; sourceTree = "<group>"; };
 		AB5F2AB01E10BDC900AF875C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		AB5F2AB21E10BDDA00AF875C /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		AB5F2AB41E14731E00AF875C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */,
 				AB0AAD751E1ACDFE00ECBEC2 /* EventViewController.xib */,
 				ABD68E0B1E18450400833333 /* EventViewController.swift */,
+				AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -187,7 +190,7 @@
 				AB5F2A941E0D888E00AF875C /* CellDescriptor.swift */,
 				AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */,
 				AB5F2AAC1E10B92F00AF875C /* UIColor+AppColors.swift */,
-				AB5F2AAE1E10BD1300AF875C /* UINavigationController+StatusBarStyle.swift */,
+				AB5F2AAE1E10BD1300AF875C /* UIView+Conveniences.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -438,13 +441,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */,
 				AB5F2A931E0D7FDE00AF875C /* NibLoadable.swift in Sources */,
 				AB5F2A9F1E0EC7E600AF875C /* AnnouncementCell.swift in Sources */,
 				AB5F2A9A1E0D8A9900AF875C /* ModelTableViewController.swift in Sources */,
 				AB5F2AA81E109E1B00AF875C /* App.swift in Sources */,
 				AB5F2AB11E10BDC900AF875C /* ProfileViewController.swift in Sources */,
 				ABD68E0C1E18450400833333 /* EventViewController.swift in Sources */,
-				AB5F2AAF1E10BD1300AF875C /* UINavigationController+StatusBarStyle.swift in Sources */,
+				AB5F2AAF1E10BD1300AF875C /* UIView+Conveniences.swift in Sources */,
 				AB5F2AAD1E10B92F00AF875C /* UIColor+AppColors.swift in Sources */,
 				AB5F2ABF1E15ACC300AF875C /* ScanViewController.swift in Sources */,
 				AB5F2AB71E14749E00AF875C /* EventCell.swift in Sources */,
