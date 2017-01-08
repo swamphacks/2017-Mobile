@@ -160,7 +160,6 @@ final class EventViewController: UIViewController {
       let top = viewPair.subview.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 8)
       let left = viewPair.subview.leftAnchor.constraint(equalTo: viewPair.superview.leftAnchor, constant: 16)
       return [top, left]
-
     }
   }
   
