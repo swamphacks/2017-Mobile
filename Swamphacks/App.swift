@@ -7,10 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
 //TODO: Add LoginVC, CalendarVC, SponsorsVC
 
 func root() -> UIViewController {
+  if FIRAuth.auth()?.currentUser == nil {
+    let root = LoginViewController(nibName: String(describing: LoginViewController.self), bundle: nil).rooted()
+    root.isNavigationBarHidden = true
+    return root
+  }
+  
+  return tabController()
+}
+
+func tabController() -> UITabBarController {
   let tabController = UITabBarController()
   tabController.tabBar.tintColor = .turquoise
   tabController.tabBar.isTranslucent = false
@@ -52,6 +63,8 @@ fileprivate func announcementsVC() -> (UINavigationController, String, UIImage) 
 }
 
 fileprivate func happeningNowVC() -> (UINavigationController, String, UIImage) {
+  
+  //TODO: change this to end time, not start time.
   let events = { (completion: @escaping ([Event]) -> ()) in
     let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
     _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0.queryOrdered(byChild: "startTime"), .childAdded) }) { result in
