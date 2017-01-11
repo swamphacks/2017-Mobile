@@ -15,7 +15,7 @@ extension UIViewController {
   }
 }
 
-//TODO: Add LoginVC, CalendarVC, SponsorsVC
+//TODO: Add ScheduleVC, SponsorsVC
 
 class App {
   

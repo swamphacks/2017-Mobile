@@ -13,8 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Swamphacks" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="bri-pc-RAp" id="JFI-y0-66K"/>
+                <outlet property="loadingView" destination="DHd-6c-chv" id="aUv-pf-Wat"/>
                 <outlet property="loginButton" destination="adM-Vc-KgS" id="mBe-Dg-J8c"/>
                 <outlet property="passwordTextField" destination="Y0s-2x-bWg" id="PPR-l8-FWQ"/>
+                <outlet property="spinner" destination="ojo-Oe-2R5" id="yIP-eW-LU7"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lwu-uA-pgC"/>
             </connections>
         </placeholder>
@@ -80,19 +82,43 @@
                     <state key="normal" title="forgot password">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="forgotPassword:" destination="-1" eventType="touchUpInside" id="u13-n0-dgZ"/>
+                    </connections>
                 </button>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHd-6c-chv">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojo-Oe-2R5" customClass="MMMaterialDesignSpinner">
+                            <rect key="frame" x="130" y="254" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="9Ju-C0-e9P"/>
+                                <constraint firstAttribute="width" constant="60" id="E6C-oG-dXz"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.43137254899999999" green="0.87058823529999996" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="ojo-Oe-2R5" firstAttribute="centerY" secondItem="DHd-6c-chv" secondAttribute="centerY" id="H5x-ee-aWV"/>
+                        <constraint firstItem="ojo-Oe-2R5" firstAttribute="centerX" secondItem="DHd-6c-chv" secondAttribute="centerX" id="Xeq-wh-3KS"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.43137254899999999" green="0.87058823529999996" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="adM-Vc-KgS" firstAttribute="top" secondItem="Q8o-By-Xyx" secondAttribute="bottom" constant="8" id="5Ms-M1-7yI"/>
+                <constraint firstAttribute="trailing" secondItem="DHd-6c-chv" secondAttribute="trailing" id="5wF-mw-0jI"/>
                 <constraint firstItem="bri-pc-RAp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="44" id="99F-92-Sqm"/>
                 <constraint firstItem="Y0s-2x-bWg" firstAttribute="width" secondItem="bri-pc-RAp" secondAttribute="width" id="A4x-nf-Nzi"/>
+                <constraint firstAttribute="bottom" secondItem="DHd-6c-chv" secondAttribute="bottom" id="AcT-jm-S4d"/>
                 <constraint firstItem="CFy-kz-fCt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="B7n-XJ-JA7"/>
                 <constraint firstItem="Q8o-By-Xyx" firstAttribute="centerX" secondItem="adM-Vc-KgS" secondAttribute="centerX" id="CT4-km-aoM"/>
                 <constraint firstItem="Y0s-2x-bWg" firstAttribute="top" secondItem="bri-pc-RAp" secondAttribute="bottom" constant="32" id="Nk4-Om-wTy"/>
                 <constraint firstItem="bri-pc-RAp" firstAttribute="top" secondItem="CFy-kz-fCt" secondAttribute="bottom" constant="32" id="OkN-AV-Qje"/>
                 <constraint firstAttribute="bottom" secondItem="adM-Vc-KgS" secondAttribute="bottom" constant="56" id="Uao-G9-371"/>
+                <constraint firstItem="DHd-6c-chv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Y7W-Dj-Odi"/>
                 <constraint firstAttribute="trailing" secondItem="bri-pc-RAp" secondAttribute="trailing" constant="44" id="b9E-W3-br9"/>
+                <constraint firstItem="DHd-6c-chv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cDH-ln-iOx"/>
                 <constraint firstItem="CFy-kz-fCt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gvZ-DW-1s8"/>
                 <constraint firstItem="Y0s-2x-bWg" firstAttribute="height" secondItem="bri-pc-RAp" secondAttribute="height" id="k4W-dU-sM6"/>
                 <constraint firstItem="adM-Vc-KgS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mCp-nM-hwH"/>

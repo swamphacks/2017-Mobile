@@ -8,12 +8,16 @@
 
 import UIKit
 import Firebase
+import MMMaterialDesignSpinner
 
 final class LoginViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   
   @IBOutlet weak var loginButton: UIButton!
+  
+  @IBOutlet weak var loadingView: UIView!
+  @IBOutlet weak var spinner: MMMaterialDesignSpinner!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,6 +26,12 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     
     loginButton.layer.borderColor = UIColor.white.cgColor
     loginButton.layer.borderWidth = 2
+    
+    spinner.tintColor = .white
+    spinner.lineWidth = 4
+    
+    let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+    view.addGestureRecognizer(tap)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -54,12 +64,12 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
   //MARK: Login
   
   @IBAction func login(_ sender: UIButton?) {
-    guard let email = emailTextField.text else {
+    guard let email = emailTextField.text, !email.isEmpty else {
       emailTextField.becomeFirstResponder()
       return
     }
     
-    guard let password = passwordTextField.text else {
+    guard let password = passwordTextField.text, !password.isEmpty else {
       passwordTextField.becomeFirstResponder()
       return
     }
@@ -69,13 +79,32 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
       return
     }
     
-    //TODO: loading indicator
+    setLoading(true)
     auth.signIn(withEmail: email, password: password) { (_, error) in
       if let e = error {
+        self.setLoading(false)
         self.showAlert(ofType: .error(e))
         return
       }
       self.goNext()
+    }
+  }
+  
+  @IBAction func forgotPassword(_ sender: UIButton?) {
+    guard let email = emailTextField.text, !email.isEmpty else {
+      showAlert(ofType: .message("Email Needed", "We need your email to send a password reset email. Please enter it above."))
+      return
+    }
+    
+    guard let auth = FIRAuth.auth() else {
+      showAlert(ofType: .generic)
+      return
+    }
+    
+    setLoading(true)
+    auth.sendPasswordReset(withEmail: email) { err in
+      self.setLoading(false)
+      self.showAlert(ofType: err != nil ? .error(err!) : .message("Email Sent", "Please check your email in order to reset your password."))
     }
   }
   
@@ -91,6 +120,18 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     return true
   }
   
+  //MARK: Gestures
+  
+  @objc fileprivate func handleTap(_ tap: UIGestureRecognizer) {
+    if emailTextField.isFirstResponder {
+      emailTextField.resignFirstResponder()
+    }
+    
+    if passwordTextField.isFirstResponder {
+      passwordTextField.resignFirstResponder()
+    }
+  }
+  
   //MARK: Navigation
   
   fileprivate func goNext() {
@@ -99,6 +140,18 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
   }
   
   //MARK: Helpers
+  
+  fileprivate func setLoading(_ loading: Bool) {
+    spinner.setAnimating(loading)
+    UIView.animate(withDuration: 0.2,
+                   delay: 0,
+                   options: [.beginFromCurrentState],
+                   animations:
+    {
+      self.loadingView.alpha = loading ? 1 : 0
+    },
+                   completion: nil)
+  }
   
   enum AlertType {
     case generic
