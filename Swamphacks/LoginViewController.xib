@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Swamphacks" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="bri-pc-RAp" id="JFI-y0-66K"/>
+                <outlet property="loginButton" destination="adM-Vc-KgS" id="mBe-Dg-J8c"/>
                 <outlet property="passwordTextField" destination="Y0s-2x-bWg" id="PPR-l8-FWQ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lwu-uA-pgC"/>
             </connections>
@@ -23,46 +24,81 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="CFy-kz-fCt">
-                    <rect key="frame" x="60" y="80" width="200" height="106.5"/>
+                    <rect key="frame" x="60" y="80" width="200" height="88"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="CFy-kz-fCt" secondAttribute="height" multiplier="100:53" id="A87-hH-tBF"/>
+                        <constraint firstAttribute="width" secondItem="CFy-kz-fCt" secondAttribute="height" multiplier="898:394" id="A87-hH-tBF"/>
                         <constraint firstAttribute="width" constant="200" id="b9O-mi-NXD"/>
                     </constraints>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bri-pc-RAp" customClass="PaddedTextField" customModule="Swamphacks" customModuleProvider="target">
-                    <rect key="frame" x="44" y="218.5" width="232" height="40"/>
+                <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bri-pc-RAp">
+                    <rect key="frame" x="44" y="200" width="232" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.43137254899999999" green="0.87058823529999996" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="BJF-tY-u1E"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="iGX-li-bBi"/>
+                    </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y0s-2x-bWg" customClass="PaddedTextField" customModule="Swamphacks" customModuleProvider="target">
-                    <rect key="frame" x="44" y="290.5" width="232" height="40"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y0s-2x-bWg">
+                    <rect key="frame" x="44" y="272" width="232" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.43137254899999999" green="0.87058823529999996" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="VGD-eJ-gIK"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="0W9-PH-zp8"/>
+                    </connections>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adM-Vc-KgS">
+                    <rect key="frame" x="64" y="468" width="192" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="iuz-bR-Wkx"/>
+                        <constraint firstAttribute="width" constant="192" id="tIe-UE-r9U"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Login">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="vPq-ru-h6R"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8o-By-Xyx">
+                    <rect key="frame" x="104" y="416" width="112" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="bCo-h1-e5h"/>
+                    </constraints>
+                    <state key="normal" title="forgot password">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.43137254899999999" green="0.87058823529999996" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="adM-Vc-KgS" firstAttribute="top" secondItem="Q8o-By-Xyx" secondAttribute="bottom" constant="8" id="5Ms-M1-7yI"/>
                 <constraint firstItem="bri-pc-RAp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="44" id="99F-92-Sqm"/>
                 <constraint firstItem="Y0s-2x-bWg" firstAttribute="width" secondItem="bri-pc-RAp" secondAttribute="width" id="A4x-nf-Nzi"/>
                 <constraint firstItem="CFy-kz-fCt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="B7n-XJ-JA7"/>
+                <constraint firstItem="Q8o-By-Xyx" firstAttribute="centerX" secondItem="adM-Vc-KgS" secondAttribute="centerX" id="CT4-km-aoM"/>
                 <constraint firstItem="Y0s-2x-bWg" firstAttribute="top" secondItem="bri-pc-RAp" secondAttribute="bottom" constant="32" id="Nk4-Om-wTy"/>
                 <constraint firstItem="bri-pc-RAp" firstAttribute="top" secondItem="CFy-kz-fCt" secondAttribute="bottom" constant="32" id="OkN-AV-Qje"/>
+                <constraint firstAttribute="bottom" secondItem="adM-Vc-KgS" secondAttribute="bottom" constant="56" id="Uao-G9-371"/>
                 <constraint firstAttribute="trailing" secondItem="bri-pc-RAp" secondAttribute="trailing" constant="44" id="b9E-W3-br9"/>
                 <constraint firstItem="CFy-kz-fCt" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gvZ-DW-1s8"/>
                 <constraint firstItem="Y0s-2x-bWg" firstAttribute="height" secondItem="bri-pc-RAp" secondAttribute="height" id="k4W-dU-sM6"/>
+                <constraint firstItem="adM-Vc-KgS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mCp-nM-hwH"/>
                 <constraint firstItem="Y0s-2x-bWg" firstAttribute="centerX" secondItem="bri-pc-RAp" secondAttribute="centerX" id="tE0-72-nSt"/>
             </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <point key="canvasLocation" x="-124" y="-24"/>
         </view>
     </objects>

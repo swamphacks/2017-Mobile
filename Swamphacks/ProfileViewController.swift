@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 
+import Firebase
+
 //TODO: Toggle view based on volunteer vs hacker. Make QRCode for hackers and cache locally. Finish layout.
 
 class ProfileViewController: UIViewController, ScanningDelegate {
@@ -21,8 +23,15 @@ class ProfileViewController: UIViewController, ScanningDelegate {
   //TODO: Make button bigger like the designs or ask for it to be smaller?
   @IBOutlet weak fileprivate var cameraButton: UIButton!
   
+  @IBOutlet weak fileprivate var displayNameLabel: UILabel!
+  @IBOutlet weak fileprivate var emailLabel: UILabel!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let user = FIRAuth.auth()?.currentUser
+    displayNameLabel.text = user?.displayName
+    emailLabel.text = user?.email
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {

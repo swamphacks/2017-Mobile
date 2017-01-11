@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
                 <outlet property="cameraButton" destination="0tM-bY-HWH" id="2FI-gF-Llu"/>
+                <outlet property="displayNameLabel" destination="Otk-Yu-lna" id="JqB-ak-fG0"/>
+                <outlet property="emailLabel" destination="c0Y-wV-Kzo" id="fKi-M6-ra0"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lyI-P9-Dih"/>
             </connections>
         </placeholder>
@@ -49,9 +51,51 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmz-Pe-E2L">
                     <rect key="frame" x="0.0" y="387" width="320" height="181"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5FE-GC-QKK">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFc-gZ-uap">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Otk-Yu-lna">
+                                    <rect key="frame" x="80" y="59.5" width="160.5" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="c0Y-wV-Kzo">
+                                    <rect key="frame" x="136" y="97.5" width="48.5" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyJ-xV-ZJL">
+                                    <rect key="frame" x="0.0" y="129.5" width="320" height="51.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Otk-Yu-lna" secondAttribute="trailing" constant="8" id="3GA-zs-89d"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c0Y-wV-Kzo" secondAttribute="trailing" constant="8" id="9Tp-dB-mfH"/>
+                                <constraint firstItem="Otk-Yu-lna" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5FE-GC-QKK" secondAttribute="leading" constant="8" id="FbG-cJ-Tmf"/>
+                                <constraint firstItem="c0Y-wV-Kzo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5FE-GC-QKK" secondAttribute="leading" constant="8" id="ZMO-wb-qjy"/>
+                                <constraint firstItem="sFc-gZ-uap" firstAttribute="height" secondItem="qyJ-xV-ZJL" secondAttribute="height" id="xxg-D2-Gvf"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="5FE-GC-QKK" firstAttribute="top" secondItem="fmz-Pe-E2L" secondAttribute="top" id="8pk-ZO-2Ez"/>
+                        <constraint firstAttribute="trailing" secondItem="5FE-GC-QKK" secondAttribute="trailing" id="TYL-5U-gIs"/>
                         <constraint firstAttribute="height" constant="181" id="g6A-Pm-zyo"/>
+                        <constraint firstAttribute="bottom" secondItem="5FE-GC-QKK" secondAttribute="bottom" id="iTC-et-AZR"/>
+                        <constraint firstItem="5FE-GC-QKK" firstAttribute="leading" secondItem="fmz-Pe-E2L" secondAttribute="leading" id="rhy-QJ-Fca"/>
                     </constraints>
                 </view>
             </subviews>
