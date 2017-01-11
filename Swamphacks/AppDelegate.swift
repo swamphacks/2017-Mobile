@@ -12,13 +12,18 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
+  fileprivate(set) var app: App!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     FIRApp.configure()
     setUpUI()
     
+    //try! FIRAuth.auth()?.signOut()
+    
+    app = App()
+    
     window = UIWindow(frame: UIScreen.main.bounds)
-    window!.rootViewController = root()
+    window!.rootViewController = app.root
     window!.makeKeyAndVisible()
     
     addStatusBarView()
