@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FIRApp.configure()
     setUpUI()
     
-    try! FIRAuth.auth()?.signOut()
+    //try! FIRAuth.auth()?.signOut()
     
     app = App()
     
