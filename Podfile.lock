@@ -45,6 +45,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
   - GTMSessionFetcher/Core (1.1.7)
+  - HCSStarRatingView (1.4.5)
   - MMMaterialDesignSpinner (0.2.3)
 
 DEPENDENCIES:
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - GNCam
+  - HCSStarRatingView
   - MMMaterialDesignSpinner
 
 SPEC CHECKSUMS:
@@ -68,8 +70,9 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
   MMMaterialDesignSpinner: 55c80b454f7928d0ed789cc3c456fa06bd6a2f16
 
-PODFILE CHECKSUM: f608b4aa2510562b6197f0c762aeef76d1dd2e42
+PODFILE CHECKSUM: d2f56f5fe305bb29bb5190c1c54731de1e38d015
 
 COCOAPODS: 1.1.1

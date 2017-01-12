@@ -15,18 +15,23 @@ extension UIViewController {
   }
 }
 
-//TODO: Add ScheduleVC, SponsorsVC
+//TODO: Add ScheduleVC, SponsorVC, ConfirmVC, loading indicators for data, and check TODOs in individual controllers
 
-class App {
+final class App {
   
-  lazy var root: UIViewController = {
+  //MARK: Controllers
+  
+  lazy var root: UINavigationController = {
+    let root: UINavigationController
+    
     if FIRAuth.auth()?.currentUser == nil {
-      let root = LoginViewController(nibName: String(describing: LoginViewController.self), bundle: nil).rooted()
-      root.isNavigationBarHidden = true
-      return root
+      root = LoginViewController(nibName: String(describing: LoginViewController.self), bundle: nil).rooted()
+    } else {
+      root = App.tabController().rooted()
     }
     
-    return App.tabController()
+    root.isNavigationBarHidden = true
+    return root
   }()
   
   static func tabController() -> UITabBarController {
@@ -71,12 +76,11 @@ class App {
   }
   
   fileprivate static func happeningNowVC() -> (UINavigationController, String, UIImage) {
-    //TODO: change this to end time, not start time.
     let events = { (completion: @escaping ([Event]) -> ()) in
       let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
       _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0.queryOrdered(byChild: "startTime"), .childAdded) }) { result in
         let now = Date()
-        guard let event = result.value, now.compare(event.startTime) == .orderedAscending else { completion([]); return }
+        guard let event = result.value, now.compare(event.endTime) == .orderedAscending else { completion([]); return }
         completion([event])
       }
     }
@@ -144,6 +148,15 @@ class App {
     return UITabBarItem(title: title,
                         image: image,
                         selectedImage: image)
+  }
+  
+}
+
+extension App {
+
+  func prepare(user: FIRUser) {
+    user.prepareInfoIfNeeded()
+    user.prepareQRCodeIfNeeded()
   }
   
 }

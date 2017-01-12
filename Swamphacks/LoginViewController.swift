@@ -37,6 +37,16 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
+    setLoading(false)
+    emailTextField.text = nil
+    passwordTextField.text = nil
+    
+    if let auth = FIRAuth.auth(), let user = auth.currentUser {
+      user.purgeInfo()
+      user.purgeQRCode()
+      try? auth.signOut()
+    }
+    
     func styleTextField(_ textField: UITextField) {
       textField.layer.cornerRadius = textField.bounds.height/2
       
@@ -80,12 +90,20 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     setLoading(true)
-    auth.signIn(withEmail: email, password: password) { (_, error) in
+    auth.signIn(withEmail: email, password: password) { (u, error) in
       if let e = error {
         self.setLoading(false)
         self.showAlert(ofType: .error(e))
         return
       }
+      
+      guard let user = u else {
+        self.setLoading(false)
+        self.showAlert(ofType: .generic)
+        return
+      }
+      
+      self.app.prepare(user: user)
       self.goNext()
     }
   }
@@ -152,30 +170,4 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     },
                    completion: nil)
   }
-  
-  enum AlertType {
-    case generic
-    case message(String, String?)
-    case error(Error)
-  }
-  
-  fileprivate func showAlert(ofType type: AlertType) {
-    let alertVC = UIAlertController(title: "Error", message: "Something went wrong, please try again later.", preferredStyle: .alert)
-    
-    switch type {
-    case .generic:
-      break
-    case .message(let title, let message):
-      alertVC.title = title
-      alertVC.message = message
-    case .error(let error):
-      alertVC.message = error.localizedDescription
-    }
-    
-    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-    alertVC.addAction(okAction)
-
-    present(alertVC, animated: true, completion: nil)
-  }
-  
 }

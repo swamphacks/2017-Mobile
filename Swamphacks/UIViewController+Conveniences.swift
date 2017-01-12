@@ -14,4 +14,29 @@ extension UIViewController {
     return UINavigationController(rootViewController: self)
   }
   
+  enum AlertType {
+    case generic
+    case message(String, String?)
+    case error(Error)
+  }
+  
+  func showAlert(ofType type: AlertType) {
+    let alertVC = UIAlertController(title: "Error", message: "Something went wrong, please try again later.", preferredStyle: .alert)
+    
+    switch type {
+    case .generic:
+      break
+    case .message(let title, let message):
+      alertVC.title = title
+      alertVC.message = message
+    case .error(let error):
+      alertVC.message = error.localizedDescription
+    }
+    
+    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+    alertVC.addAction(okAction)
+    
+    present(alertVC, animated: true, completion: nil)
+  }
+  
 }

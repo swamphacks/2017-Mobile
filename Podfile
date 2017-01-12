@@ -7,6 +7,7 @@ target 'Swamphacks' do
   pod 'Firebase/Database'
 
   pod 'MMMaterialDesignSpinner'
+  pod 'HCSStarRatingView'
 
   pod 'GNCam'
 
