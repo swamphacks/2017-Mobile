@@ -39,34 +39,82 @@ extension UserInfo {
 
 extension FIRUser {
   
-  var cacheKey: String {
+  fileprivate var infoCacheKey: String {
     return "\(uid)-info"
   }
   
-  func getInfo(useCache: Bool = true, completion: @escaping (UserInfo?) -> Void) {
-    guard let email = email else {
-      completion(nil)
+  func prepareInfoIfNeeded() {
+    if let cached = UserDefaults.standard.dictionary(forKey: infoCacheKey), let _ = UserInfo(json: cached) {
+      return
+    }
+    getInfo(completion: nil)
+  }
+  
+  func getInfo(useCache: Bool = true, completion: ((UserInfo?) -> Void)?) {
+    if useCache, let cached = UserDefaults.standard.dictionary(forKey: infoCacheKey), let info = UserInfo(json: cached) {
+      completion?(info)
       return
     }
     
-    if useCache, let cached = UserDefaults.standard.dictionary(forKey: cacheKey), let info = UserInfo(json: cached) {
-      completion(info)
+    guard let email = email else {
+      completion?(nil)
       return
     }
+    
     
     FirebaseManager.shared.getInfo(forUserEmail: email) { userInfo in
       guard let json = userInfo?.json else {
-        completion(nil)
+        completion?(nil)
         return
       }
       
-      UserDefaults.standard.set(json, forKey: self.cacheKey)
-      completion(userInfo)      
+      UserDefaults.standard.set(json, forKey: self.infoCacheKey)
+      completion?(userInfo)
     }
   }
   
   func purgeInfo() {
-    UserDefaults.standard.set(nil, forKey: cacheKey)
+    UserDefaults.standard.set(nil, forKey: infoCacheKey)
+  }
+  
+}
+
+extension FIRUser {
+  
+  fileprivate var qrCodeCacheKey: String {
+    return "\(uid)-qrCode"
+  }
+  
+  func prepareQRCodeIfNeeded() {
+    if let data = UserDefaults.standard.data(forKey: qrCodeCacheKey), let _ = UIImage(data: data) {
+      return
+    }
+    getQRCode(completion: nil)
+  }
+  
+  func getQRCode(useCache: Bool = true, completion: ((UIImage?) -> Void)?) {
+    if useCache, let data = UserDefaults.standard.data(forKey: qrCodeCacheKey), let image = UIImage(data: data) {
+      completion?(image)
+      return
+    }
+    
+    guard let email = email else {
+      completion?(nil)
+      return
+    }
+    
+    guard let qrCode = QRGenerator(metadata: email).qrCode(), let data = UIImageJPEGRepresentation(qrCode, 1) else {
+      completion?(nil)
+      return
+    }
+    
+    UserDefaults.standard.set(data, forKey: qrCodeCacheKey)
+    
+    completion?(qrCode)
+  }
+  
+  func purgeQRCode() {
+    UserDefaults.standard.set(nil, forKey: qrCodeCacheKey)
   }
   
 }

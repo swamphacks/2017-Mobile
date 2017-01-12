@@ -31,6 +31,9 @@ class ProfileViewController: UIViewController, ScanningDelegate {
   @IBOutlet weak fileprivate var displayNameLabel: UILabel!
   @IBOutlet weak fileprivate var emailLabel: UILabel!
   
+  @IBOutlet weak var generateQRCodeButton: UIButton!
+  @IBOutlet weak var qrCodeImageView: UIImageView!
+
   @IBOutlet weak var volunteerContainerView: UIView!
   
   override func viewDidLoad() {
@@ -41,6 +44,10 @@ class ProfileViewController: UIViewController, ScanningDelegate {
     
     submitEmailButton.layer.borderColor = UIColor.white.cgColor
     submitEmailButton.layer.borderWidth = 2
+    
+    generateQRCodeButton.layer.borderColor = UIColor.white.cgColor
+    generateQRCodeButton.layer.borderWidth = 2
+    generateQRCodeButton.isHidden = true
     
     emailTextField.returnKeyType = .go
     
@@ -77,6 +84,7 @@ class ProfileViewController: UIViewController, ScanningDelegate {
     
     styleTextField(emailTextField)
     submitEmailButton.layer.cornerRadius = submitEmailButton.bounds.height/2
+    generateQRCodeButton.layer.cornerRadius = generateQRCodeButton.bounds.height/2
   }
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -108,7 +116,25 @@ class ProfileViewController: UIViewController, ScanningDelegate {
   
   fileprivate func setUp(with info: UserInfo?) {
     let isVolunteer = info?.isVolunteer ?? false
-    //volunteerContainerView.isHidden = !isVolunteer
+    volunteerContainerView.isHidden = !isVolunteer
+    
+    if !isVolunteer {
+      getQRCode()
+    }
+  }
+  
+  fileprivate func getQRCode() {
+    generateQRCodeButton.isEnabled = false
+    FIRAuth.auth()?.currentUser?.getQRCode() { image in
+      self.setQRCode(to: image)
+      self.generateQRCodeButton.isEnabled = true
+    }
+  }
+  
+  fileprivate func setQRCode(to image: UIImage?) {
+    self.generateQRCodeButton.isHidden = (image != nil)
+    self.qrCodeImageView.image = image
+
   }
   
   //MARK: Actions
@@ -136,6 +162,10 @@ class ProfileViewController: UIViewController, ScanningDelegate {
       print(info.json)
     }
     
+  }
+  
+  @IBAction func generateQRCode(_ sender: UIButton?) {
+    getQRCode()
   }
   
   @IBAction func logout(_ sender: UIButton?) {

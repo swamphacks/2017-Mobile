@@ -43,6 +43,7 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     
     if let auth = FIRAuth.auth(), let user = auth.currentUser {
       user.purgeInfo()
+      user.purgeQRCode()
       try? auth.signOut()
     }
     

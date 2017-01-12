@@ -111,5 +111,3 @@ let sponsorsTableVCBuilder = ModelTableViewControllerBuilder<Sponsor> { vc in
   }
   
 }
-
-//TODO: make the other builders

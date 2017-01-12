@@ -155,7 +155,8 @@ final class App {
 extension App {
 
   func prepare(user: FIRUser) {
-    user.getInfo(useCache: false, completion: { _ in })
+    user.prepareInfoIfNeeded()
+    user.prepareQRCodeIfNeeded()
   }
   
 }
