@@ -80,12 +80,20 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     setLoading(true)
-    auth.signIn(withEmail: email, password: password) { (_, error) in
+    auth.signIn(withEmail: email, password: password) { (u, error) in
       if let e = error {
         self.setLoading(false)
         self.showAlert(ofType: .error(e))
         return
       }
+      
+      guard let user = u else {
+        self.setLoading(false)
+        self.showAlert(ofType: .generic)
+        return
+      }
+      
+      self.app.prepare(user: user)
       self.goNext()
     }
   }
