@@ -39,6 +39,56 @@
                                 <constraint firstAttribute="height" constant="4" id="UAs-kA-yyI"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbN-Xp-9WI">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="334"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NWM-7Y-G00">
+                                    <rect key="frame" x="0.0" y="64" width="320" height="270"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHJ-LQ-jea">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="TLg-VW-pn4"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q1T-Te-Rey">
+                                            <rect key="frame" x="0.0" y="32" width="320" height="206"/>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xcx-2f-c8p">
+                                            <rect key="frame" x="0.0" y="238" width="320" height="32"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="q1T-Te-Rey" secondAttribute="trailing" id="6hH-PO-ejM"/>
+                                        <constraint firstItem="vHJ-LQ-jea" firstAttribute="height" secondItem="Xcx-2f-c8p" secondAttribute="height" id="FWM-Pv-39f"/>
+                                        <constraint firstItem="q1T-Te-Rey" firstAttribute="leading" secondItem="NWM-7Y-G00" secondAttribute="leading" id="zbH-kS-Yxw"/>
+                                    </constraints>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxO-L1-LMW">
+                                    <rect key="frame" x="64" y="177" width="192" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="192" id="2Yv-5z-G08"/>
+                                        <constraint firstAttribute="height" constant="44" id="cee-GZ-L8I"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="Generate QR Code">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="generateQRCode:" destination="-1" eventType="touchUpInside" id="gLz-HC-spM"/>
+                                        <action selector="submitEmail:" destination="-1" eventType="touchUpInside" id="YrF-ai-agZ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.43137254899999999" green="0.87058823529999996" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="UxO-L1-LMW" firstAttribute="centerX" secondItem="NWM-7Y-G00" secondAttribute="centerX" id="9pj-1k-X3Y"/>
+                                <constraint firstItem="UxO-L1-LMW" firstAttribute="centerY" secondItem="NWM-7Y-G00" secondAttribute="centerY" id="FuT-ip-HOB"/>
+                                <constraint firstAttribute="bottom" secondItem="NWM-7Y-G00" secondAttribute="bottom" id="J5e-FK-Vkr"/>
+                                <constraint firstAttribute="trailing" secondItem="NWM-7Y-G00" secondAttribute="trailing" id="SBk-cw-CzP"/>
+                                <constraint firstItem="NWM-7Y-G00" firstAttribute="leading" secondItem="lbN-Xp-9WI" secondAttribute="leading" id="b0R-jn-cyT"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="05B-K4-ZPX">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="334"/>
                             <subviews>
@@ -105,6 +155,7 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <color key="backgroundColor" red="0.43137254899999999" green="0.87058823529999996" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="ANe-k7-BCN" firstAttribute="top" secondItem="0tM-bY-HWH" secondAttribute="bottom" constant="16" id="0Za-cb-IGz"/>
                                 <constraint firstItem="ANe-k7-BCN" firstAttribute="leading" secondItem="ced-d4-VcU" secondAttribute="trailing" constant="32" id="8Ys-lj-hSN"/>
@@ -118,56 +169,6 @@
                                 <constraint firstItem="0tM-bY-HWH" firstAttribute="top" secondItem="05B-K4-ZPX" secondAttribute="top" constant="60" id="m7z-qw-TdH"/>
                                 <constraint firstItem="ANe-k7-BCN" firstAttribute="centerX" secondItem="05B-K4-ZPX" secondAttribute="centerX" id="mLP-Ev-zYQ"/>
                                 <constraint firstItem="lCj-C0-Ocv" firstAttribute="centerX" secondItem="05B-K4-ZPX" secondAttribute="centerX" id="w84-ya-NuT"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbN-Xp-9WI">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="334"/>
-                            <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NWM-7Y-G00">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="270"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHJ-LQ-jea">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="TLg-VW-pn4"/>
-                                            </constraints>
-                                        </view>
-                                        <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q1T-Te-Rey">
-                                            <rect key="frame" x="0.0" y="32" width="320" height="206"/>
-                                        </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xcx-2f-c8p">
-                                            <rect key="frame" x="0.0" y="238" width="320" height="32"/>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="q1T-Te-Rey" secondAttribute="trailing" id="6hH-PO-ejM"/>
-                                        <constraint firstItem="vHJ-LQ-jea" firstAttribute="height" secondItem="Xcx-2f-c8p" secondAttribute="height" id="FWM-Pv-39f"/>
-                                        <constraint firstItem="q1T-Te-Rey" firstAttribute="leading" secondItem="NWM-7Y-G00" secondAttribute="leading" id="zbH-kS-Yxw"/>
-                                    </constraints>
-                                </stackView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxO-L1-LMW">
-                                    <rect key="frame" x="64" y="177" width="192" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="192" id="2Yv-5z-G08"/>
-                                        <constraint firstAttribute="height" constant="44" id="cee-GZ-L8I"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <state key="normal" title="Generate QR Code">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="generateQRCode:" destination="-1" eventType="touchUpInside" id="gLz-HC-spM"/>
-                                        <action selector="submitEmail:" destination="-1" eventType="touchUpInside" id="YrF-ai-agZ"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" red="0.43137254899999999" green="0.87058823529999996" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="UxO-L1-LMW" firstAttribute="centerX" secondItem="NWM-7Y-G00" secondAttribute="centerX" id="9pj-1k-X3Y"/>
-                                <constraint firstItem="UxO-L1-LMW" firstAttribute="centerY" secondItem="NWM-7Y-G00" secondAttribute="centerY" id="FuT-ip-HOB"/>
-                                <constraint firstAttribute="bottom" secondItem="NWM-7Y-G00" secondAttribute="bottom" id="J5e-FK-Vkr"/>
-                                <constraint firstAttribute="trailing" secondItem="NWM-7Y-G00" secondAttribute="trailing" id="SBk-cw-CzP"/>
-                                <constraint firstItem="NWM-7Y-G00" firstAttribute="leading" secondItem="lbN-Xp-9WI" secondAttribute="leading" id="b0R-jn-cyT"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doJ-2k-0b5">
