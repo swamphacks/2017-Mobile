@@ -21,14 +21,17 @@ final class App {
   
   //MARK: Controllers
   
-  lazy var root: UIViewController = {
+  lazy var root: UINavigationController = {
+    let root: UINavigationController
+    
     if FIRAuth.auth()?.currentUser == nil {
-      let root = LoginViewController(nibName: String(describing: LoginViewController.self), bundle: nil).rooted()
-      root.isNavigationBarHidden = true
-      return root
+      root = LoginViewController(nibName: String(describing: LoginViewController.self), bundle: nil).rooted()
+    } else {
+      root = App.tabController().rooted()
     }
     
-    return App.tabController()
+    root.isNavigationBarHidden = true
+    return root
   }()
   
   static func tabController() -> UITabBarController {

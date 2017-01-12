@@ -112,7 +112,6 @@ extension FirebaseManager {
   
   func getInfo(forUserEmail email: String, completion: @escaping (UserInfo?) -> Void) {
     let emailKey = email.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ".", with: "")
-    
     let resource = FirebaseResource<UserInfo>(path: "confirmed/\(emailKey)", parseJSON: UserInfo.init)
     FirebaseManager.shared.load(resource, queryEventType: {($0, .value)}) { result in
       completion(result.value)

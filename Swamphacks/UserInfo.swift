@@ -65,4 +65,8 @@ extension FIRUser {
     }
   }
   
+  func purgeInfo() {
+    UserDefaults.standard.set(nil, forKey: cacheKey)
+  }
+  
 }
