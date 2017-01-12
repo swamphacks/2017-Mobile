@@ -12,7 +12,7 @@ import AVFoundation
 import Firebase
 import MMMaterialDesignSpinner
 
-//TODO: Toggle view based on volunteer vs hacker. Make QRCode for hackers and cache locally. Finish layout.
+//TODO: ConfirmVC stuff
 
 class ProfileViewController: UIViewController, ScanningDelegate {
   fileprivate lazy var scanVC: UIViewController = {
@@ -32,6 +32,7 @@ class ProfileViewController: UIViewController, ScanningDelegate {
   @IBOutlet weak fileprivate var emailLabel: UILabel!
   
   @IBOutlet weak var generateQRCodeButton: UIButton!
+  @IBOutlet weak var qrCodeContainer: UIView!
   @IBOutlet weak var qrCodeImageView: UIImageView!
 
   @IBOutlet weak var volunteerContainerView: UIView!
@@ -44,6 +45,8 @@ class ProfileViewController: UIViewController, ScanningDelegate {
     
     submitEmailButton.layer.borderColor = UIColor.white.cgColor
     submitEmailButton.layer.borderWidth = 2
+    
+    qrCodeContainer.layer.cornerRadius = 16
     
     generateQRCodeButton.layer.borderColor = UIColor.white.cgColor
     generateQRCodeButton.layer.borderWidth = 2

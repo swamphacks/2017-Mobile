@@ -15,7 +15,7 @@ extension UIViewController {
   }
 }
 
-//TODO: Add ScheduleVC, SponsorVC, ConfirmVC, and check TODOs in individual controllers
+//TODO: Add ScheduleVC, SponsorVC, ConfirmVC, loading indicators for data, and check TODOs in individual controllers
 
 final class App {
   
