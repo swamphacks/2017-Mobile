@@ -71,6 +71,48 @@ extension Event {
 }
 
 extension Event {
+  var classification: String {
+    switch title {
+    case "Pancake Art":
+      return "main"
+    case "Brain Bowl":
+      return  "main"
+    case "Musical Chairs":
+      return "main"
+    case "Balloon Battle":
+      return "main"
+    case "Ping Pong":
+      return "main"
+    case "Stepping Challenge":
+      return "main"
+    case "Paper Airplane":
+      return "main"
+    case "Youtube Karaoke":
+      return "mini"
+    case "Rock Paper Scissors":
+      return "mini"
+    case "Cup Stacking":
+      return "mini"
+    case "Bubble Wrap":
+      return "mini"
+    case "Branding Competition":
+      return "mini"
+    case "Smash Bros":
+      return "mini"
+    case "Yoga":
+      return "mini"
+    case "Soylent Art":
+      return "mini"
+    case "Cornhole":
+      return "mini"
+    default:
+      return "mini"
+    }
+  }
+  
+}
+
+extension Event {
   func configureCell(_ cell: EventCell) {
     cell.titleLabel?.text = title
     cell.locationLabel?.text = location

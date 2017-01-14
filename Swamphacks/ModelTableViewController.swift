@@ -325,6 +325,7 @@ class ModelTableViewController<Model>: UITableViewController {
       }
     }
     
+    /*
     // Tiny hack for HappeningNowVC lolz sorry not sorry
     if Model.self is Event.Type {
       let now = Date()
@@ -343,6 +344,7 @@ class ModelTableViewController<Model>: UITableViewController {
       _reload(items: events as Any as! [Model])
       return
     }
+    */
     
     _reload(items: items)
   }

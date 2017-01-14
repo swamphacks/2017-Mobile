@@ -10,6 +10,8 @@ import UIKit
 
 import AVFoundation
 import GNCam
+
+import Firebase
 import MMMaterialDesignSpinner
 
 protocol ScanningDelegate: class {
@@ -195,7 +197,7 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     case .confirm:
       confirmUserInfo(metadata: metadata.stringValue)
     case .register(let event):
-      register(for: event)
+      register(for: event, metadata: metadata.stringValue)
     }
   }
   
@@ -225,9 +227,25 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     }
   }
   
-  fileprivate func register(for: Event) {
+  fileprivate func register(for event: Event, metadata: String?) {
+    guard let email = FIRAuth.auth()?.currentUser?.email, let title = metadata, !title.isEmpty else {
+      return
+    }
     
+    let emailKey = email.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ".", with: "")
+    let scannedTitle = title.replacingOccurrences(of: " ", with: "")
+    let ogTitle = event.title.replacingOccurrences(of: " ", with: "")
     
+    if ogTitle.caseInsensitiveCompare(scannedTitle) == .orderedSame {
+      let classification = event.classification
+      
+      let path = "attendee_events/\(emailKey)/\(event.title)"
+      let ref = FIRDatabase.database().reference(withPath: path)
+      
+      ref.setValue(classification)
+    }
+    
+    dismiss(animated: true, completion: nil)
   }
   
   @objc fileprivate func handleCloseButton(_ button: UIBarButtonItem?) {

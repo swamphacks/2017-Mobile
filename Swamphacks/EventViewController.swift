@@ -41,6 +41,11 @@ struct ViewPair {
 
 //TODO: Rating control and attendee counter. Right bar button to ScanVC if user is a volunteer?
 final class EventViewController: UIViewController {
+  fileprivate lazy var scanVC: ScanViewController = {
+    let vc = ScanViewController()
+    return vc
+  }()
+  
   fileprivate let event: Event
   
   //TODO: correct font for all of these labels. See their set up functions
@@ -90,6 +95,13 @@ final class EventViewController: UIViewController {
     super.viewDidLoad()
     title = "Event"
     setUpViews()
+    
+    scanVC.mode = .register(event)
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "scan"),
+                                                        style: .plain,
+                                                        target: self,
+                                                        action: #selector(openScanner(_:)))
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -246,6 +258,13 @@ final class EventViewController: UIViewController {
       let aspect = viewPair.subview.heightAnchor.constraint(equalTo: viewPair.subview.widthAnchor, multiplier: 9/16)
       return [top, left, right, aspect]
     }
+  }
+  
+  //MARK: Actions
+  
+  @objc fileprivate func openScanner(_ sender: UIBarButtonItem) {
+    let vc = scanVC.rooted().styled()
+    present(vc, animated: true, completion: nil)
   }
   
   //MARK: Helpers
