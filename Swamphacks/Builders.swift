@@ -28,6 +28,7 @@ let announcementsTableVCBuilder = ModelTableViewControllerBuilder<Announcement> 
 }
 
 let happeningNowTableVCBuilder = ModelTableViewControllerBuilder<Event> { vc in
+  vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
   vc.refreshable = false
   
   let headerHeight = UIScreen.main.bounds.height - 250
@@ -41,12 +42,15 @@ let happeningNowTableVCBuilder = ModelTableViewControllerBuilder<Event> { vc in
 }
 
 let sponsorsTableVCBuilder = ModelTableViewControllerBuilder<Sponsor> { vc in
+  vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+  vc.refreshable = false
+  
   vc.sections = { vc in
     var sections = 1
     if (vc.items.filter({ $0.tier.caseInsensitiveCompare("Turtle") == .orderedSame }).count > 0) {
       sections += 1
     }
-    if (vc.items.filter({ $0.tier.caseInsensitiveCompare("Lily Pad") == .orderedSame }).count > 0) {
+    if (vc.items.filter({ $0.tier.caseInsensitiveCompare("LilyPad") == .orderedSame }).count > 0) {
       sections += 1
     }
     return sections
@@ -59,7 +63,7 @@ let sponsorsTableVCBuilder = ModelTableViewControllerBuilder<Sponsor> { vc in
     case 1:
       return vc.items.filter({ $0.tier.caseInsensitiveCompare("Turtle") == .orderedSame }).count
     case 2:
-      return vc.items.filter({ $0.tier.caseInsensitiveCompare("Lily Pad") == .orderedSame }).count
+      return vc.items.filter({ $0.tier.caseInsensitiveCompare("LilyPad") == .orderedSame }).count
     default:
       return 0
     }
@@ -74,7 +78,7 @@ let sponsorsTableVCBuilder = ModelTableViewControllerBuilder<Sponsor> { vc in
       let items = vc.items.filter({ $0.tier.caseInsensitiveCompare("Turtle") == .orderedSame })
       return items[indexPath.row]
     case 2:
-      let items = vc.items.filter({ $0.tier.caseInsensitiveCompare("Lily Pad") == .orderedSame })
+      let items = vc.items.filter({ $0.tier.caseInsensitiveCompare("LilyPad") == .orderedSame })
       return items[indexPath.row]
     default:
       return nil
@@ -92,7 +96,7 @@ let sponsorsTableVCBuilder = ModelTableViewControllerBuilder<Sponsor> { vc in
       count = vc.items.filter({ $0.tier.caseInsensitiveCompare("Turtle") == .orderedSame }).count
       tier = "Turtle Tier"
     case 2:
-      count = vc.items.filter({ $0.tier.caseInsensitiveCompare("Lily Pad") == .orderedSame }).count
+      count = vc.items.filter({ $0.tier.caseInsensitiveCompare("LilyPad") == .orderedSame }).count
       tier = "Lily Pad Tier"
     default:
       count = 0

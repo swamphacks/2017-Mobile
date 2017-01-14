@@ -58,6 +58,25 @@ class ModelTableViewController<Model>: UITableViewController {
   
   var didSelect: (Model) -> Void = { _ in }
   
+  fileprivate var fabButton: UIButton!
+  
+  // Style the floating action button here.
+  var fabStyle: ((UIButton) -> [NSLayoutConstraint]?)? {
+    didSet {
+      if fabButton.superview == nil { return }
+      
+      NSLayoutConstraint.deactivate(fabButton.constraints)
+      if let constraints = fabStyle?(fabButton) {
+        NSLayoutConstraint.activate(constraints)
+      }
+      
+      fabButton.isHidden = (fabStyle == nil)
+    }
+  }
+  
+  // If you want a floating action button. Return function that it will call on .touchUpInside.
+  var fabAction: ((Void) -> (UIButton) -> Void)?
+  
   var sections: (ModelTableViewController<Model>) -> Int = { _ in 1 } {
     didSet {
       tableView.reloadData()
@@ -96,6 +115,18 @@ class ModelTableViewController<Model>: UITableViewController {
     self.rowsInSection = rowsInSection ?? { _ in self.items.count }
     
     addRefreshControl()
+    
+    fabButton = UIButton(frame: .zero)
+    fabButton.addTarget(self, action: #selector(handleFAB(_:)), for: .touchUpInside)
+    fabButton.isHidden = true
+    
+    fabButton.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(fabButton)
+    
+    if let constraints = fabStyle?(fabButton), let _ = fabAction {
+      NSLayoutConstraint.activate(constraints)
+      fabButton.isHidden = false
+    }
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -115,7 +146,7 @@ class ModelTableViewController<Model>: UITableViewController {
     super.viewWillAppear(animated)
     updateHeaderViewIfNeeded()
   }
-    
+  
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
@@ -187,11 +218,16 @@ class ModelTableViewController<Model>: UITableViewController {
   
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     updateHeaderViewIfNeeded()
+    
+    if let bottomConstraint = view.constraints.filter({ $0.firstAnchor == fabButton.bottomAnchor }).first {
+      bottomConstraint.constant = -8 + scrollView.contentOffset.y
+      view.layoutIfNeeded()
+    }
   }
   
   //MARK: Actions
   
-  @objc fileprivate func refresh(sender: UIRefreshControl?) {
+  @objc func refresh(sender: UIRefreshControl?) {
     items.removeAll()
     load { [weak self] items in
       sender?.endRefreshing()
@@ -245,14 +281,45 @@ class ModelTableViewController<Model>: UITableViewController {
     headerView.frame = rect
   }
   
+  //MARK: FAB
+  
+  @objc fileprivate func handleFAB(_ sender: UIButton) {
+    guard let f = fabAction?() else { return }
+    f(sender)
+  }
+  
   //MARK: Helpers
   
   fileprivate func reload(items: [Model]) {
-    if isIncremental {
-      self.items.append(contentsOf: items)
-    } else {
-      self.items = items
+    
+    func _reload(items: [Model]) {
+      if isIncremental {
+        self.items.append(contentsOf: items)
+      } else {
+        self.items = items
+      }
     }
+    
+    // Tiny hack for HappeningNowVC lolz sorry not sorry
+    if Model.self is Event.Type {
+      let now = Date()
+      let hackathonStart = Date(timeIntervalSince1970: 1484967600)
+      
+      if now.compare(hackathonStart) == .orderedAscending {
+        if self.items.count < 3 {
+          _reload(items: items)
+        }
+        return
+      }
+      
+      print(items)
+      let events = (items as Any as! [Event]).filter({ ($0.startTime...$0.endTime).contains(now) })
+      
+      _reload(items: events as Any as! [Model])
+      return
+    }
+    
+    _reload(items: items)
   }
   
   fileprivate func register(descriptor: CellDescriptor, in tableView: UITableView) {

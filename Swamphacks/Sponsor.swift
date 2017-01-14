@@ -11,6 +11,7 @@ import UIKit
 struct Sponsor {
   let name: String
   let description: String
+  let location: String
   let link: URL
   let reps: [Rep]
   let tier: String
@@ -21,6 +22,7 @@ extension Sponsor {
   init?(json: JSONDictionary) {
     guard let name = json["name"] as? String,
           let description = json["description"] as? String,
+          let location = json["location"] as? String,
           let path = json["link"] as? String,
           let link = URL(string: path),
           let repsDict = json["reps"] as? JSONDictionary,
@@ -33,10 +35,11 @@ extension Sponsor {
     
     self.name = name
     self.description = description
+    self.location = location
     self.link = link
     self.tier = tier
     
-    if let data = Data(base64Encoded: logoStr) {
+    if let data = Data(base64Encoded: logoStr, options: [.ignoreUnknownCharacters]) {
       self.logoImage = UIImage(data: data)
     } else {
       self.logoImage = nil
@@ -54,29 +57,17 @@ extension Sponsor {
   }
 }
 
-struct Rep {
-  let name: String
-  let title: String
-  let image: UIImage?
-}
-
-extension Rep {
-  init?(json: JSONDictionary) {
-    guard let name = json["name"] as? String,
-          let title = json["title"] as? String,
-          let imageStr = json["image"] as? String
-    else {
-      print("Failed to load Rep from json \(json)")
-      return nil
-    }
-    
-    self.name = name
-    self.title = title
-    
-    if let data = Data(base64Encoded: imageStr) {
-      self.image = UIImage(data: data)
-    } else {
-      self.image = nil
+extension Sponsor {
+  var color: UIColor {
+    switch tier {
+    case "heron":
+      return UIColor(red: 255/255, green: 188/255, blue: 129/255, alpha: 1) // orange
+    case "turtle":
+      return UIColor(red: 175/255, green: 239/255, blue: 249/255, alpha: 1) // blue
+    case "lilypad":
+      return UIColor(red: 192/255, green: 244/255, blue: 184/255, alpha: 1) // green
+    default:
+      return .turquoise
     }
   }
 }
@@ -84,7 +75,7 @@ extension Rep {
 extension Sponsor {
   func configureCell(_ cell: SponsorCell) {
     cell.sponsorImageView.image = logoImage
-    //TODO: typeIndicatorView backgroundColor based on tier
+    cell.typeIndicatorView.backgroundColor = color
   }
 }
 
@@ -96,3 +87,47 @@ extension Sponsor {
 
   }
 }
+
+struct Rep {
+  let name: String
+  let title: String
+  let image: UIImage?
+}
+
+extension Rep {
+  init?(json: JSONDictionary) {
+    guard let name = json["name"] as? String,
+      let title = json["title"] as? String,
+      let imageStr = json["image"] as? String
+      else {
+        print("Failed to load Rep from json \(json)")
+        return nil
+    }
+    
+    self.name = name
+    self.title = title
+    
+    if let data = Data(base64Encoded: imageStr, options: [.ignoreUnknownCharacters]) {
+      self.image = UIImage(data: data)
+    } else {
+      self.image = nil
+    }
+  }
+}
+
+extension Rep {
+  func configureCell(_ cell: RepCell) {
+    cell.repImageView?.image = image    
+    cell.nameLabel?.text = name
+    cell.titleLabel?.text = title
+  }
+}
+
+extension Rep {
+  var cellDescriptor: CellDescriptor {
+    return CellDescriptor(reuseIdentifier: "eventCell",
+                          registerMode: .withNib(RepCell.nib),
+                          configure: configureCell)
+  }
+}
+
