@@ -39,7 +39,7 @@ extension Sponsor {
     self.link = link
     self.tier = tier
     
-    if let data = Data(base64Encoded: logoStr) {
+    if let data = Data(base64Encoded: logoStr, options: [.ignoreUnknownCharacters]) {
       self.logoImage = UIImage(data: data)
     } else {
       self.logoImage = nil
@@ -92,7 +92,7 @@ extension Rep {
     self.name = name
     self.title = title
     
-    if let data = Data(base64Encoded: imageStr) {
+    if let data = Data(base64Encoded: imageStr, options: [.ignoreUnknownCharacters]) {
       self.image = UIImage(data: data)
     } else {
       self.image = nil

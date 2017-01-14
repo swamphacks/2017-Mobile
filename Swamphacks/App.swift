@@ -43,6 +43,7 @@ final class App {
     tabController.viewControllers = [announcementsVC(), happeningNowVC(), sponsorsVC(), profileVC()].map { (vcTitleImage) -> UIViewController in
       vcTitleImage.0.topViewController?.title = vcTitleImage.1
       vcTitleImage.0.tabBarItem = tabBarItem(title: vcTitleImage.1, image: vcTitleImage.2)
+      vcTitleImage.0.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
       return vcTitleImage.0.styled()
     }
     
@@ -55,8 +56,10 @@ final class App {
     let announcements = { (completion: @escaping ([Announcement]) -> ()) in
       let resource = FirebaseResource<Announcement>(path: "announcements", parseJSON: Announcement.init)
       _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0, .childAdded) }) { result in
-        guard let announcement = result.value else { completion([]); return }
-        completion([announcement])
+        let now = Date()
+        let comparison = result.value?.date.compare(now)
+        guard let announcement = result.value, comparison == .orderedAscending else { completion([]); return }
+        DispatchQueue.main.async { completion([announcement]) }
       }
     }
     
@@ -66,6 +69,12 @@ final class App {
                                                    rowHeight: { _,_ in .automatic })
     
     announcementsTableVCBuilder.build(announcementsVC)
+    
+    let timer = Timer(timeInterval: 60, repeats: true) { [weak announcementsVC] _ in
+      announcementsVC?.refresh(sender: nil)
+    }
+    
+    RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
     
     let navController = announcementsVC.rooted()
     let image = UIImage(named: "announcement")!
@@ -79,8 +88,7 @@ final class App {
     let events = { (completion: @escaping ([Event]) -> ()) in
       let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
       _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0.queryOrdered(byChild: "startTime"), .childAdded) }) { result in
-        let now = Date()
-        guard let event = result.value, now.compare(event.endTime) == .orderedAscending else { completion([]); return }
+        guard let event = result.value else { completion([]); return }
         completion([event])
       }
     }
@@ -91,6 +99,12 @@ final class App {
                                                   rowHeight: { _,_ in .automatic })
     
     happeningNowTableVCBuilder.build(happeningNowVC)
+    
+    let timer = Timer(timeInterval: 60, repeats: true) { [weak happeningNowVC] _ in
+      happeningNowVC?.refresh(sender: nil)
+    }
+    
+    RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
     
     let navController = happeningNowVC.rooted()
     let image = UIImage(named: "clock")!
@@ -184,12 +198,28 @@ final class App {
       
       sponsorVC.tableView.separatorStyle = .none
       sponsorVC.tableView.estimatedRowHeight = 90
-
-      //TODO: style FAB. don't return nil here lol.
       
       sponsorVC.fabStyle = { [weak sponsorVC] button in
-        guard let view = sponsorVC?.view else { return nil }
-        return nil
+        guard let vc = sponsorVC, let view = button.superview else { return nil }
+        
+        button.backgroundColor = .turquoise
+        button.setImage(UIImage(named: "open"), for: .normal)
+        button.adjustsImageWhenHighlighted = false
+        
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = 28
+        
+        button.layer.shadowRadius = 2
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowOpacity = 0.45
+        
+        let trailing = button.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+        let bottom = button.bottomAnchor.constraint(equalTo: vc.bottomLayoutGuide.topAnchor, constant: -8)
+        let width = button.widthAnchor.constraint(equalToConstant: 56)
+        let height = button.heightAnchor.constraint(equalToConstant: 56)
+        
+        return [trailing, bottom, width, height]
       }
       
       sponsorVC.fabAction = { _ in

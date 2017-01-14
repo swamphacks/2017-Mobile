@@ -45,7 +45,7 @@ extension Event {
     self.rating = rating
     self.type = type
     
-    if let data = Data(base64Encoded: mapImageStr) {
+    if let data = Data(base64Encoded: mapImageStr, options: [.ignoreUnknownCharacters]) {
       self.mapImage = UIImage(data: data)
     } else {
       self.mapImage = nil
