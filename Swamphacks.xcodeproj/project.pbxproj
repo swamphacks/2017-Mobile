@@ -47,6 +47,10 @@
 		AB6148631E26F9BD002C7008 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6148621E26F9BD002C7008 /* UserInfo.swift */; };
 		AB6148651E27036A002C7008 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6148641E27036A002C7008 /* QRGenerator.swift */; };
 		AB6148671E2703AD002C7008 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6148661E2703AD002C7008 /* CoreImage.framework */; };
+		ABA4A6FA1E299343005CD9CA /* SponsorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4A6F91E299343005CD9CA /* SponsorView.swift */; };
+		ABA4A6FC1E29934F005CD9CA /* SponsorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA4A6FB1E29934F005CD9CA /* SponsorView.xib */; };
+		ABA4A6FE1E299C67005CD9CA /* RepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4A6FD1E299C67005CD9CA /* RepCell.swift */; };
+		ABA4A7001E299C72005CD9CA /* RepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA4A6FF1E299C72005CD9CA /* RepCell.xib */; };
 		ABD68E0A1E1738FB00833333 /* Builders.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD68E091E1738FB00833333 /* Builders.swift */; };
 		ABD68E0C1E18450400833333 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD68E0B1E18450400833333 /* EventViewController.swift */; };
 /* End PBXBuildFile section */
@@ -108,6 +112,10 @@
 		AB6148621E26F9BD002C7008 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		AB6148641E27036A002C7008 /* QRGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
 		AB6148661E2703AD002C7008 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		ABA4A6F91E299343005CD9CA /* SponsorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorView.swift; sourceTree = "<group>"; };
+		ABA4A6FB1E29934F005CD9CA /* SponsorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorView.xib; sourceTree = "<group>"; };
+		ABA4A6FD1E299C67005CD9CA /* RepCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepCell.swift; sourceTree = "<group>"; };
+		ABA4A6FF1E299C72005CD9CA /* RepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepCell.xib; sourceTree = "<group>"; };
 		ABD68E091E1738FB00833333 /* Builders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builders.swift; sourceTree = "<group>"; };
 		ABD68E0B1E18450400833333 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,12 +248,16 @@
 				AB5F2AA91E10A56300AF875C /* CircularProgressView.swift */,
 				AB5F2ABA1E147E6200AF875C /* CountdownView.xib */,
 				AB5F2ABC1E147EFD00AF875C /* CountdownView.swift */,
+				ABA4A6FB1E29934F005CD9CA /* SponsorView.xib */,
+				ABA4A6F91E299343005CD9CA /* SponsorView.swift */,
 				AB5F2A9C1E0EC7BB00AF875C /* AnnouncementCell.xib */,
 				AB5F2A9E1E0EC7E600AF875C /* AnnouncementCell.swift */,
 				AB5F2AB81E1474BD00AF875C /* EventCell.xib */,
 				AB5F2AB61E14749E00AF875C /* EventCell.swift */,
 				AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */,
 				AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */,
+				ABA4A6FF1E299C72005CD9CA /* RepCell.xib */,
+				ABA4A6FD1E299C67005CD9CA /* RepCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -355,7 +367,9 @@
 			files = (
 				AB5F2ABB1E147E6200AF875C /* CountdownView.xib in Resources */,
 				AB0AAD761E1ACDFE00ECBEC2 /* EventViewController.xib in Resources */,
+				ABA4A7001E299C72005CD9CA /* RepCell.xib in Resources */,
 				AB1069AF1E258245000EE882 /* LoginViewController.xib in Resources */,
+				ABA4A6FC1E29934F005CD9CA /* SponsorView.xib in Resources */,
 				AB5F2AB31E10BDDA00AF875C /* ProfileViewController.xib in Resources */,
 				AB0AAD821E22D09C00ECBEC2 /* SponsorViewController.xib in Resources */,
 				AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */,
@@ -478,8 +492,10 @@
 				AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */,
 				AB0AAD801E22D01000ECBEC2 /* SponsorViewController.swift in Sources */,
 				AB5F2A931E0D7FDE00AF875C /* NibLoadable.swift in Sources */,
+				ABA4A6FE1E299C67005CD9CA /* RepCell.swift in Sources */,
 				AB6148631E26F9BD002C7008 /* UserInfo.swift in Sources */,
 				AB5F2A9F1E0EC7E600AF875C /* AnnouncementCell.swift in Sources */,
+				ABA4A6FA1E299343005CD9CA /* SponsorView.swift in Sources */,
 				AB5F2A9A1E0D8A9900AF875C /* ModelTableViewController.swift in Sources */,
 				AB5F2AA81E109E1B00AF875C /* App.swift in Sources */,
 				AB5F2AB11E10BDC900AF875C /* ProfileViewController.swift in Sources */,

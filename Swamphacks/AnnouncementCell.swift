@@ -8,6 +8,7 @@
 
 import UIKit
 
+//TODO: Don't let the date lable truncate. Shrink titleLabel's font instead. Use compression priority.
 final class AnnouncementCell: UITableViewCell {
   @IBOutlet weak var typeIndicatorView: UIView!
   @IBOutlet weak var titleLabel: UILabel!

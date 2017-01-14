@@ -35,7 +35,7 @@ final class CountdownView: UIView {
   }
   
   fileprivate func updateCountdown(_: Timer) {
-    var now = Date()
+    var now = Date() // change this to hackathonStart.addingTimeInterval(60 * 60 * HOURS) to test
     let hackathonStart = Date(timeIntervalSince1970: 1484967600)
     let hackathonEnd = Date(timeIntervalSince1970: 1485097200)
     

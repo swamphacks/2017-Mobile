@@ -97,9 +97,9 @@ final class App {
     
     navController.isNavigationBarHidden = true
     
-    happeningNowVC.didSelect = { event in
+    happeningNowVC.didSelect = { [weak navController] event in
       let eventVC = EventViewController(event: event)
-      navController.pushViewController(eventVC, animated: true)
+      navController?.pushViewController(eventVC, animated: true)
     }
     
     return (navController, "Now", image)
@@ -124,8 +124,29 @@ final class App {
     let navController = sponsorsVC.rooted()
     let image = UIImage(named: "suitcase")!
     
-    sponsorsVC.didSelect = { sponsor in
-      //TODO: show SponsorVC
+    sponsorsVC.didSelect = { [weak navController] sponsor in
+      let reps = { (completion: @escaping ([Rep]) -> ()) in
+        completion(sponsor.reps)
+      }
+      
+      let sponsorVC = ModelTableViewController(load: reps,
+                                               cellDescriptor: { $0.cellDescriptor },
+                                               rowHeight: { _,_ in .absolute(80) })
+      
+      let sponsorView = Bundle.main.loadNibNamed(SponsorView.defaultNibName,
+                                                 owner: nil,
+                                                 options: nil)!.first as! SponsorView
+      sponsorView.sponsor = sponsor
+      
+      let headerHeight = sponsorView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+      let headerWidth = sponsorVC.tableView.bounds.width
+      
+      sponsorVC.stickyHeader = (sponsorView, headerHeight, headerWidth)
+      sponsorVC.refreshable = false
+      
+      sponsorVC.tableView.separatorStyle = .none
+
+      navController?.pushViewController(sponsorVC, animated: true)
     }
     
     return (navController, "Sponsors", image)

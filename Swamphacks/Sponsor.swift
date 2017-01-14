@@ -11,6 +11,7 @@ import UIKit
 struct Sponsor {
   let name: String
   let description: String
+  let location: String
   let link: URL
   let reps: [Rep]
   let tier: String
@@ -21,6 +22,7 @@ extension Sponsor {
   init?(json: JSONDictionary) {
     guard let name = json["name"] as? String,
           let description = json["description"] as? String,
+          let location = json["location"] as? String,
           let path = json["link"] as? String,
           let link = URL(string: path),
           let repsDict = json["reps"] as? JSONDictionary,
@@ -33,6 +35,7 @@ extension Sponsor {
     
     self.name = name
     self.description = description
+    self.location = location
     self.link = link
     self.tier = tier
     
@@ -54,33 +57,6 @@ extension Sponsor {
   }
 }
 
-struct Rep {
-  let name: String
-  let title: String
-  let image: UIImage?
-}
-
-extension Rep {
-  init?(json: JSONDictionary) {
-    guard let name = json["name"] as? String,
-          let title = json["title"] as? String,
-          let imageStr = json["image"] as? String
-    else {
-      print("Failed to load Rep from json \(json)")
-      return nil
-    }
-    
-    self.name = name
-    self.title = title
-    
-    if let data = Data(base64Encoded: imageStr) {
-      self.image = UIImage(data: data)
-    } else {
-      self.image = nil
-    }
-  }
-}
-
 extension Sponsor {
   func configureCell(_ cell: SponsorCell) {
     cell.sponsorImageView.image = logoImage
@@ -96,3 +72,47 @@ extension Sponsor {
 
   }
 }
+
+struct Rep {
+  let name: String
+  let title: String
+  let image: UIImage?
+}
+
+extension Rep {
+  init?(json: JSONDictionary) {
+    guard let name = json["name"] as? String,
+      let title = json["title"] as? String,
+      let imageStr = json["image"] as? String
+      else {
+        print("Failed to load Rep from json \(json)")
+        return nil
+    }
+    
+    self.name = name
+    self.title = title
+    
+    if let data = Data(base64Encoded: imageStr) {
+      self.image = UIImage(data: data)
+    } else {
+      self.image = nil
+    }
+  }
+}
+
+extension Rep {
+  func configureCell(_ cell: RepCell) {
+    cell.repImageView?.image = image    
+    cell.nameLabel?.text = name
+    cell.titleLabel?.text = title
+  }
+}
+
+extension Rep {
+  var cellDescriptor: CellDescriptor {
+    return CellDescriptor(reuseIdentifier: "eventCell",
+                          registerMode: .withNib(RepCell.nib),
+                          configure: configureCell)
+  }
+}
+
