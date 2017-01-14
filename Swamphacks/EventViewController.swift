@@ -229,7 +229,7 @@ final class EventViewController: UIViewController {
   }
   
   fileprivate func setUpMapImageView() {
-    //TODO: mapImageView.image = event.mapImage
+    mapImageView.image = event.mapImage
     mapImageView.backgroundColor = .lightGray
     mapImageView.contentMode = .scaleAspectFit
     mapImageView.clipsToBounds = true

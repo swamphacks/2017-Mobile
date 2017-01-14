@@ -10,6 +10,7 @@ import UIKit
 
 import AVFoundation
 import GNCam
+import MMMaterialDesignSpinner
 
 protocol ScanningDelegate: class {
   func controller(vc: ScanViewController, didScan metadata: String?)
@@ -31,6 +32,17 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     return view
   }()
   
+  fileprivate lazy var spinner: MMMaterialDesignSpinner = {
+    let spinner = MMMaterialDesignSpinner(frame: .zero)
+    spinner.backgroundColor = .turquoise
+    spinner.tintColor = .white
+    spinner.lineWidth = 4
+    spinner.hidesWhenStopped = true
+    spinner.layer.cornerRadius = 8
+    spinner.layer.masksToBounds = true
+    return spinner
+  }()
+  
   public var detectorViewBorderColor: UIColor = .turquoise {
     didSet {
       detectorView.layer.borderColor = detectorViewBorderColor.cgColor
@@ -43,6 +55,12 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   fileprivate var detectorViewCenterY: NSLayoutConstraint!
   fileprivate var detectorViewWidth: NSLayoutConstraint!
   fileprivate var detectorViewHeight: NSLayoutConstraint!
+  
+  fileprivate var shouldScan = false
+  
+  fileprivate var isLoading: Bool {
+    return spinner.isAnimating
+  }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -57,6 +75,16 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     super.viewDidLoad()
     title = "Scan"
     setUp()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    shouldScan = true
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    shouldScan = false
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -80,8 +108,8 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   }
   
   fileprivate func setUpViews() {
-    view.addSubview(previewView)
     previewView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(previewView)
     
     let top     = previewView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
     let bottom  = previewView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -91,6 +119,16 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     NSLayoutConstraint.activate([top, bottom, left, right])
     
     setUpDetectorView()
+    
+    spinner.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(spinner)
+    
+    let centerX = spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+    let centerY = spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    let width = spinner.widthAnchor.constraint(equalToConstant: 60)
+    let height = spinner.heightAnchor.constraint(equalToConstant: 60)
+    
+    NSLayoutConstraint.activate([centerX, centerY, width, height])
   }
   
   fileprivate func setUpDetectorView() {
@@ -130,7 +168,11 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   //MARK: MetadataOutputDelegate
   
   public func captureManagerDidOutput(metadataObjects: [Any]) {
-    if metadataObjects.isEmpty {
+    if (isLoading) {
+      return
+    }
+    
+    if metadataObjects.isEmpty || !shouldScan {
       reactToBarcode(.hidden)
       return
     }
@@ -139,13 +181,39 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
           let barcode = previewLayer.transformedMetadataObject(for: metadata) else { return }
     
     reactToBarcode(.showing(barcode.bounds))
+    
     scanningDelegate?.controller(vc: self, didScan: metadata.stringValue)
+    
+    // Just slapped this in here. Sorry not sorry, again lolz.
+    
+    guard let email = metadata.stringValue, !email.isEmpty else {
+      return
+    }
+    
+    setLoading(true)
+    FirebaseManager.shared.getInfo(forUserEmail: email) { [weak self] userInfo in
+      guard let strongSelf = self else { return }
+      
+      strongSelf.setLoading(false)
+
+      guard let info = userInfo else {
+        strongSelf.showAlert(ofType: .message("Error", "Something went wrong. Please check that the email is correct."))
+        return
+      }
+            
+      let vc = ConfirmInfoViewController(userInfo: info).rooted()
+      strongSelf.present(vc, animated: true, completion: nil)
+    }
   }
   
   //MARK: Helpers
   
   @objc fileprivate func handleCloseButton(_ button: UIBarButtonItem?) {
     dismiss(animated: true, completion: nil)
+  }
+  
+  fileprivate func setLoading(_ loading: Bool) {
+    spinner.setAnimating(loading)
   }
   
   fileprivate func reactToBarcode(_ mode: BarcodeMode) {

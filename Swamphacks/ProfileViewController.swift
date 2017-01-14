@@ -14,10 +14,9 @@ import MMMaterialDesignSpinner
 
 //TODO: ConfirmVC stuff
 
-class ProfileViewController: UIViewController, ScanningDelegate {
+class ProfileViewController: UIViewController {
   fileprivate lazy var scanVC: UIViewController = {
     let vc = ScanViewController()
-    vc.scanningDelegate = self
     return vc.rooted().styled()
   }()
   
@@ -213,13 +212,6 @@ class ProfileViewController: UIViewController, ScanningDelegate {
     submitEmail(nil)
     
     return true
-  }
-
-  //MARK: ScanningDelegate
-  
-  //TODO: Handle what happens when we did scan. We might move some of this logic to ScanVC.
-  func controller(vc: ScanViewController, didScan metadata: String?) {
-    print("SCANNED QR CODE: \(metadata!)")
   }
   
   //MARK: Helpers

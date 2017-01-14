@@ -15,7 +15,7 @@ extension UIViewController {
   }
 }
 
-//TODO: Add ScheduleVC, ConfirmVC, loading indicators for data, and check TODOs in individual controllers
+//TODO: Add ScheduleVC, ConfirmVC, loading indicators for data?, and check in individual controllers
 
 final class App {
   
@@ -142,16 +142,6 @@ final class App {
       
       /*****************************/
       
-      class DescriptionCell: UITableViewCell {
-        override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-          super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-          fatalError("init(coder:) has not been implemented")
-        }
-      }
-      
       enum SponsorDetailItem {
         case description(String)
         case rep(Rep)
@@ -192,6 +182,7 @@ final class App {
                                                   return .absolute(80)
                                                 }
                                                })
+      sponsorVC.refreshable = false
       sponsorVC.title = sponsor.name
       sponsorVC.edgesForExtendedLayout = []
       sponsorVC.automaticallyAdjustsScrollViewInsets = false
