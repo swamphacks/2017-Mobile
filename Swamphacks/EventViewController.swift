@@ -120,11 +120,7 @@ final class EventViewController: UIViewController {
     typeLabel.textColor = .white
     typeLabel.font = UIFont.systemFont(ofSize: 14)
 
-    //TODO: color(for: event)
-    typeLabel.backgroundColor = UIColor(red: 255/255,
-                                        green: 188/255,
-                                        blue: 129/255,
-                                        alpha: 1)
+    typeLabel.backgroundColor = event.color
     
     setUp(subview: typeLabel, in: view) { viewPair in
       let top = viewPair.subview.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor, constant: 16)
