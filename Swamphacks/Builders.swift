@@ -28,6 +28,7 @@ let announcementsTableVCBuilder = ModelTableViewControllerBuilder<Announcement> 
 }
 
 let happeningNowTableVCBuilder = ModelTableViewControllerBuilder<Event> { vc in
+  vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
   vc.refreshable = false
   
   let headerHeight = UIScreen.main.bounds.height - 250

@@ -58,6 +58,22 @@ class ModelTableViewController<Model>: UITableViewController {
   
   var didSelect: (Model) -> Void = { _ in }
   
+  fileprivate var fabButton: UIButton!
+  
+  // Style the floating action button here.
+  var fabStyle: ((UIButton) -> [NSLayoutConstraint]?)? {
+    didSet {
+      _ = fabStyle?(fabButton)
+    }
+  }
+  
+  // If you want a floating action button. Return function that it will call on .touchUpInside.
+  var fabAction: ((Void) -> (UIButton) -> Void)? {
+    didSet {
+      fabButton.isHidden = (fabAction == nil)
+    }
+  }
+  
   var sections: (ModelTableViewController<Model>) -> Int = { _ in 1 } {
     didSet {
       tableView.reloadData()
@@ -75,8 +91,6 @@ class ModelTableViewController<Model>: UITableViewController {
       tableView.reloadData()
     }
   }
-  
-  var didLayoutSubviews: ((UIView) -> Void)?
   
   init(style: UITableViewStyle = .plain,
        isIncremental: Bool = false, // Do we replace the array each time or simply append to it? This only exists bc Firebase.
@@ -98,6 +112,9 @@ class ModelTableViewController<Model>: UITableViewController {
     self.rowsInSection = rowsInSection ?? { _ in self.items.count }
     
     addRefreshControl()
+    
+    fabButton = UIButton(frame: .zero)
+    fabButton.addTarget(self, action: #selector(handleFAB(_:)), for: .touchUpInside)
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -120,7 +137,9 @@ class ModelTableViewController<Model>: UITableViewController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    didLayoutSubviews?(view)
+    if let constraints = fabStyle?(fabButton) {
+      NSLayoutConstraint.activate(constraints)
+    }
   }
     
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -250,6 +269,13 @@ class ModelTableViewController<Model>: UITableViewController {
       rect = CGRect(x: 0, y: tableView.contentOffset.y, width: headerWidth, height: -tableView.contentOffset.y)
     }
     headerView.frame = rect
+  }
+  
+  //MARK: FAB
+  
+  @objc fileprivate func handleFAB(_ sender: UIButton) {
+    guard let f = fabAction?() else { return }
+    f(sender)
   }
   
   //MARK: Helpers

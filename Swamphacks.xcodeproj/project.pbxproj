@@ -14,7 +14,6 @@
 		AB0AAD7A1E1C114200ECBEC2 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */; };
 		AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */; };
 		AB0AAD7E1E1C144700ECBEC2 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD7D1E1C144700ECBEC2 /* Sponsor.swift */; };
-		AB0AAD801E22D01000ECBEC2 /* SponsorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD7F1E22D01000ECBEC2 /* SponsorViewController.swift */; };
 		AB0AAD821E22D09C00ECBEC2 /* SponsorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD811E22D09C00ECBEC2 /* SponsorViewController.xib */; };
 		AB0AAD841E25809300ECBEC2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD831E25809300ECBEC2 /* LoginViewController.swift */; };
 		AB1069AF1E258245000EE882 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1069AE1E258245000EE882 /* LoginViewController.xib */; };
@@ -78,7 +77,6 @@
 		AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
 		AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorCell.xib; sourceTree = "<group>"; };
 		AB0AAD7D1E1C144700ECBEC2 /* Sponsor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
-		AB0AAD7F1E22D01000ECBEC2 /* SponsorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorViewController.swift; sourceTree = "<group>"; };
 		AB0AAD811E22D09C00ECBEC2 /* SponsorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorViewController.xib; sourceTree = "<group>"; };
 		AB0AAD831E25809300ECBEC2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB1069AE1E258245000EE882 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 				AB0AAD751E1ACDFE00ECBEC2 /* EventViewController.xib */,
 				ABD68E0B1E18450400833333 /* EventViewController.swift */,
 				AB0AAD811E22D09C00ECBEC2 /* SponsorViewController.xib */,
-				AB0AAD7F1E22D01000ECBEC2 /* SponsorViewController.swift */,
 				AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */,
 				AB1069AE1E258245000EE882 /* LoginViewController.xib */,
 				AB0AAD831E25809300ECBEC2 /* LoginViewController.swift */,
@@ -497,7 +494,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */,
-				AB0AAD801E22D01000ECBEC2 /* SponsorViewController.swift in Sources */,
 				AB5F2A931E0D7FDE00AF875C /* NibLoadable.swift in Sources */,
 				ABA4A6FE1E299C67005CD9CA /* RepCell.swift in Sources */,
 				AB6148631E26F9BD002C7008 /* UserInfo.swift in Sources */,

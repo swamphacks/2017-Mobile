@@ -15,7 +15,7 @@ extension UIViewController {
   }
 }
 
-//TODO: Add ScheduleVC, SponsorVC, ConfirmVC, loading indicators for data, and check TODOs in individual controllers
+//TODO: Add ScheduleVC, ConfirmVC, loading indicators for data, and check TODOs in individual controllers
 
 final class App {
   
@@ -178,7 +178,6 @@ final class App {
                                                   return .absolute(80)
                                                 }
                                                })
-      
       sponsorVC.title = sponsor.name
       sponsorVC.edgesForExtendedLayout = []
       sponsorVC.automaticallyAdjustsScrollViewInsets = false
@@ -186,7 +185,20 @@ final class App {
       sponsorVC.tableView.separatorStyle = .none
       sponsorVC.tableView.estimatedRowHeight = 90
 
-      //TODO: Add learn more button
+      //TODO: style FAB. don't return nil here lol.
+      
+      sponsorVC.fabStyle = { [weak sponsorVC] button in
+        guard let view = sponsorVC?.view else { return nil }
+        return nil
+      }
+      
+      sponsorVC.fabAction = { _ in
+        return { _ in
+          if UIApplication.shared.canOpenURL(sponsor.link) {
+            UIApplication.shared.open(sponsor.link, options: [:], completionHandler: nil)
+          }
+        }
+      }
       
       /*****************************/
       
