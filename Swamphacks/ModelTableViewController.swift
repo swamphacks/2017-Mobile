@@ -76,6 +76,8 @@ class ModelTableViewController<Model>: UITableViewController {
     }
   }
   
+  var didLayoutSubviews: ((UIView) -> Void)?
+  
   init(style: UITableViewStyle = .plain,
        isIncremental: Bool = false, // Do we replace the array each time or simply append to it? This only exists bc Firebase.
        load: @escaping (@escaping ([Model]) -> ()) -> (),
@@ -114,6 +116,11 @@ class ModelTableViewController<Model>: UITableViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     updateHeaderViewIfNeeded()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    didLayoutSubviews?(view)
   }
     
   override var preferredStatusBarStyle: UIStatusBarStyle {

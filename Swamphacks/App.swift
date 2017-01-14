@@ -125,27 +125,83 @@ final class App {
     let image = UIImage(named: "suitcase")!
     
     sponsorsVC.didSelect = { [weak navController] sponsor in
-      let reps = { (completion: @escaping ([Rep]) -> ()) in
-        completion(sponsor.reps)
+      
+      /*****************************/
+      
+      class DescriptionCell: UITableViewCell {
+        override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+          super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+          fatalError("init(coder:) has not been implemented")
+        }
       }
       
-      let sponsorVC = ModelTableViewController(load: reps,
+      enum SponsorDetailItem {
+        case description(String)
+        case rep(Rep)
+        
+        var cellDescriptor: CellDescriptor {
+          switch self {
+          case .description(let str):
+            func configure(cell: LabelCell) {
+              cell.label?.text = str
+            }
+            return CellDescriptor(reuseIdentifier: "sponsorDescription",
+                                  registerMode: .withNib(LabelCell.nib),
+                                  configure: configure)
+          case .rep(let rep):
+            return rep.cellDescriptor
+          }
+        }
+      }
+      
+      /*****************************/
+      
+      let items = { (completion: @escaping ([SponsorDetailItem]) -> ()) in
+        var detailItems: [SponsorDetailItem] = [.description(sponsor.description)]
+        
+        let repItems = sponsor.reps.map({SponsorDetailItem.rep($0)})
+        detailItems.append(contentsOf: repItems)
+        
+        completion(detailItems)
+      }
+      
+      let sponsorVC = ModelTableViewController(load: items,
                                                cellDescriptor: { $0.cellDescriptor },
-                                               rowHeight: { _,_ in .absolute(80) })
+                                               rowHeight: { item, _ in
+                                                switch item {
+                                                case .description(_):
+                                                  return .automatic
+                                                case .rep(_):
+                                                  return .absolute(80)
+                                                }
+                                               })
+      
+      sponsorVC.title = sponsor.name
+      sponsorVC.edgesForExtendedLayout = []
+      sponsorVC.automaticallyAdjustsScrollViewInsets = false
+      
+      sponsorVC.tableView.separatorStyle = .none
+      sponsorVC.tableView.estimatedRowHeight = 90
+
+      //TODO: Add learn more button
+      
+      /*****************************/
       
       let sponsorView = Bundle.main.loadNibNamed(SponsorView.defaultNibName,
                                                  owner: nil,
                                                  options: nil)!.first as! SponsorView
       sponsorView.sponsor = sponsor
       
-      let headerHeight = sponsorView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
       let headerWidth = sponsorVC.tableView.bounds.width
+      let headerHeight: CGFloat = 149 + 84
       
-      sponsorVC.stickyHeader = (sponsorView, headerHeight, headerWidth)
+      sponsorView.frame = CGRect(x: 0, y: 0, width: headerWidth, height: headerHeight)
+      sponsorVC.tableView.tableHeaderView = sponsorView
+      
       sponsorVC.refreshable = false
-      
-      sponsorVC.tableView.separatorStyle = .none
-
       navController?.pushViewController(sponsorVC, animated: true)
     }
     

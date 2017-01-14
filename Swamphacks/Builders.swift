@@ -41,6 +41,8 @@ let happeningNowTableVCBuilder = ModelTableViewControllerBuilder<Event> { vc in
 }
 
 let sponsorsTableVCBuilder = ModelTableViewControllerBuilder<Sponsor> { vc in
+  vc.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+  
   vc.sections = { vc in
     var sections = 1
     if (vc.items.filter({ $0.tier.caseInsensitiveCompare("Turtle") == .orderedSame }).count > 0) {

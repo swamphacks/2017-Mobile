@@ -12,32 +12,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="ZjC-40-Gma" customClass="RepCell" customModule="Swamphacks" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="500" height="98"/>
+            <rect key="frame" x="0.0" y="0.0" width="500" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZjC-40-Gma" id="jxw-H4-QgU">
-                <rect key="frame" x="0.0" y="0.0" width="500" height="97"/>
+                <rect key="frame" x="0.0" y="0.0" width="500" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ab-9a-UjU">
-                        <rect key="frame" x="8" y="8.5" width="80" height="80"/>
+                        <rect key="frame" x="16" y="10" width="60" height="60"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="80" id="8M8-g9-Zv8"/>
-                            <constraint firstAttribute="width" constant="80" id="jDJ-pp-jSQ"/>
+                            <constraint firstAttribute="height" constant="60" id="8M8-g9-Zv8"/>
+                            <constraint firstAttribute="width" constant="60" id="jDJ-pp-jSQ"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xUh-hc-W5j">
-                        <rect key="frame" x="109" y="28" width="48" height="42"/>
+                        <rect key="frame" x="97" y="21.5" width="42.5" height="36.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lT1-t9-dLI">
-                                <rect key="frame" x="0.0" y="25" width="48" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lT1-t9-dLI">
+                                <rect key="frame" x="0.0" y="22" width="42.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldS-2T-Xne">
-                                <rect key="frame" x="0.0" y="0.0" width="48" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="ldS-2T-Xne">
+                                <rect key="frame" x="0.0" y="0.0" width="42.5" height="18"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -57,8 +57,9 @@
                 <constraints>
                     <constraint firstItem="2Ab-9a-UjU" firstAttribute="centerY" secondItem="jxw-H4-QgU" secondAttribute="centerY" id="0wp-xz-nvH"/>
                     <constraint firstItem="xUh-hc-W5j" firstAttribute="leading" secondItem="2Ab-9a-UjU" secondAttribute="trailing" constant="21" id="cvy-Y6-Crf"/>
-                    <constraint firstItem="2Ab-9a-UjU" firstAttribute="leading" secondItem="jxw-H4-QgU" secondAttribute="leading" constant="8" id="nVV-w6-Hro"/>
+                    <constraint firstItem="2Ab-9a-UjU" firstAttribute="leading" secondItem="jxw-H4-QgU" secondAttribute="leading" constant="16" id="nVV-w6-Hro"/>
                     <constraint firstItem="xUh-hc-W5j" firstAttribute="centerY" secondItem="jxw-H4-QgU" secondAttribute="centerY" id="pvO-m0-bDR"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xUh-hc-W5j" secondAttribute="trailing" constant="16" id="t19-mD-mtt"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

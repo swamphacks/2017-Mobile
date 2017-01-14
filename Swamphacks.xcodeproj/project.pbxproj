@@ -51,6 +51,8 @@
 		ABA4A6FC1E29934F005CD9CA /* SponsorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA4A6FB1E29934F005CD9CA /* SponsorView.xib */; };
 		ABA4A6FE1E299C67005CD9CA /* RepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4A6FD1E299C67005CD9CA /* RepCell.swift */; };
 		ABA4A7001E299C72005CD9CA /* RepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA4A6FF1E299C72005CD9CA /* RepCell.xib */; };
+		ABA4A7021E29B742005CD9CA /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4A7011E29B742005CD9CA /* LabelCell.swift */; };
+		ABA4A7041E29B75B005CD9CA /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA4A7031E29B75B005CD9CA /* LabelCell.xib */; };
 		ABD68E0A1E1738FB00833333 /* Builders.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD68E091E1738FB00833333 /* Builders.swift */; };
 		ABD68E0C1E18450400833333 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD68E0B1E18450400833333 /* EventViewController.swift */; };
 /* End PBXBuildFile section */
@@ -116,6 +118,8 @@
 		ABA4A6FB1E29934F005CD9CA /* SponsorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorView.xib; sourceTree = "<group>"; };
 		ABA4A6FD1E299C67005CD9CA /* RepCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepCell.swift; sourceTree = "<group>"; };
 		ABA4A6FF1E299C72005CD9CA /* RepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepCell.xib; sourceTree = "<group>"; };
+		ABA4A7011E29B742005CD9CA /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		ABA4A7031E29B75B005CD9CA /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
 		ABD68E091E1738FB00833333 /* Builders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builders.swift; sourceTree = "<group>"; };
 		ABD68E0B1E18450400833333 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -258,6 +262,8 @@
 				AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */,
 				ABA4A6FF1E299C72005CD9CA /* RepCell.xib */,
 				ABA4A6FD1E299C67005CD9CA /* RepCell.swift */,
+				ABA4A7011E29B742005CD9CA /* LabelCell.swift */,
+				ABA4A7031E29B75B005CD9CA /* LabelCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -377,6 +383,7 @@
 				AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */,
 				AB5F2AA51E10728900AF875C /* GoogleService-Info.plist in Resources */,
 				AB5F2AB91E1474BD00AF875C /* EventCell.xib in Resources */,
+				ABA4A7041E29B75B005CD9CA /* LabelCell.xib in Resources */,
 				AB5F2A761E0D7B3000AF875C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +518,7 @@
 				AB5F2ABD1E147EFD00AF875C /* CountdownView.swift in Sources */,
 				AB0AAD7E1E1C144700ECBEC2 /* Sponsor.swift in Sources */,
 				AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */,
+				ABA4A7021E29B742005CD9CA /* LabelCell.swift in Sources */,
 				ABD68E0A1E1738FB00833333 /* Builders.swift in Sources */,
 				AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */,
 				AB5F2A951E0D888E00AF875C /* CellDescriptor.swift in Sources */,

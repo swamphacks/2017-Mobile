@@ -10,15 +10,13 @@ import UIKit
 
 class SponsorView: UIView {
   
-  @IBOutlet fileprivate weak var imageView: UIImageView!
-  @IBOutlet fileprivate weak var nameLabel: UILabel!
-  @IBOutlet fileprivate weak var descriptionLabel: UILabel!
+  @IBOutlet weak var imageView: UIImageView!
+  @IBOutlet weak var nameLabel: UILabel!
   
   var sponsor: Sponsor! {
     didSet {
       imageView.image = sponsor.logoImage
       nameLabel.text = "\(sponsor.name) | \(sponsor.location)"
-      descriptionLabel.text = sponsor.description
     }
   }
   
