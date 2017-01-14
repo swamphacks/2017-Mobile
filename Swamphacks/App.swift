@@ -15,7 +15,7 @@ extension UIViewController {
   }
 }
 
-//TODO: Add ScheduleVC, ConfirmVC, loading indicators for data?, and check in individual controllers
+//TODO: Add ScheduleVC, change fonts, and check in individual controllers
 
 final class App {
   

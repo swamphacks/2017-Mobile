@@ -16,6 +16,11 @@ protocol ScanningDelegate: class {
   func controller(vc: ScanViewController, didScan metadata: String?)
 }
 
+enum ScanMode {
+  case confirm
+  case register(Event)
+}
+
 final class ScanViewController: UIViewController, VideoPreviewLayerProvider, MetadataOutputDelegate {
 
   fileprivate enum BarcodeMode {
@@ -43,11 +48,13 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     return spinner
   }()
   
-  public var detectorViewBorderColor: UIColor = .turquoise {
+  var detectorViewBorderColor: UIColor = .turquoise {
     didSet {
       detectorView.layer.borderColor = detectorViewBorderColor.cgColor
     }
   }
+  
+  var mode: ScanMode = .confirm
   
   weak var scanningDelegate: ScanningDelegate?
   
@@ -184,11 +191,22 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     // ***************************
     // Just slapped this in here. Sorry not sorry, again lolz. Deadlines are great 🙃
     
+    switch mode {
+    case .confirm:
+      confirmUserInfo(metadata: metadata.stringValue)
+    case .register(let event):
+      register(for: event)
+    }
+  }
+  
+  //MARK: Helpers
+  
+  fileprivate func confirmUserInfo(metadata: String?) {
     if (isLoading) {
       return
     }
     
-    guard let email = metadata.stringValue, !email.isEmpty else {
+    guard let email = metadata, !email.isEmpty else {
       return
     }
     
@@ -207,7 +225,10 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     }
   }
   
-  //MARK: Helpers
+  fileprivate func register(for: Event) {
+    
+    
+  }
   
   @objc fileprivate func handleCloseButton(_ button: UIBarButtonItem?) {
     dismiss(animated: true, completion: nil)

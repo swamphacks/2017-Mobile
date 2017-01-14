@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ConfirmInfoViewController: UIViewController {
   
@@ -129,7 +130,15 @@ class ConfirmInfoViewController: UIViewController {
   //MARK: Actions
   
   @objc fileprivate func handleConfirmButton(_ button: UIButton?) {
+    let info = userInfo
+    let emailKey = info.email.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ".", with: "")
     
+    let path = "attendees/\(emailKey)"
+    let ref = FIRDatabase.database().reference(withPath: path)
+    
+    ref.setValue(info.json)
+    
+    dismiss(animated: true, completion: nil)
   }
   
   @objc fileprivate func handleCloseButton(_ button: UIBarButtonItem?) {
