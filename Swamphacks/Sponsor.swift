@@ -58,9 +58,24 @@ extension Sponsor {
 }
 
 extension Sponsor {
+  var color: UIColor {
+    switch tier {
+    case "heron":
+      return UIColor(red: 255/255, green: 188/255, blue: 129/255, alpha: 1) // orange
+    case "turtle":
+      return UIColor(red: 175/255, green: 239/255, blue: 249/255, alpha: 1) // blue
+    case "lilypad":
+      return UIColor(red: 192/255, green: 244/255, blue: 184/255, alpha: 1) // green
+    default:
+      return .turquoise
+    }
+  }
+}
+
+extension Sponsor {
   func configureCell(_ cell: SponsorCell) {
     cell.sponsorImageView.image = logoImage
-    //TODO: typeIndicatorView backgroundColor based on tier
+    cell.typeIndicatorView.backgroundColor = color
   }
 }
 

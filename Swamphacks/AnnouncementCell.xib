@@ -23,7 +23,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHD-PL-ZBa">
                                 <rect key="frame" x="0.0" y="0.0" width="8" height="97.5"/>
-                                <color key="backgroundColor" red="0.99812597036361694" green="0.73531115055084229" blue="0.50421732664108276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.73531115055084229" blue="0.50421732664108276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="Vh2-Wu-mLw"/>
                                 </constraints>

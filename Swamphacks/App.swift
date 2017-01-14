@@ -243,7 +243,6 @@ final class App {
       sponsorView.frame = CGRect(x: 0, y: 0, width: headerWidth, height: headerHeight)
       sponsorVC.tableView.tableHeaderView = sponsorView
       
-      sponsorVC.refreshable = false
       navController?.pushViewController(sponsorVC, animated: true)
     }
     

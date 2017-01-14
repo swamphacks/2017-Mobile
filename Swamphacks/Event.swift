@@ -54,10 +54,27 @@ extension Event {
 }
 
 extension Event {
+  var color: UIColor {
+    switch type {
+      case "logistics":
+        return UIColor(red: 249/255, green: 167/255, blue: 167/255, alpha: 1) // red
+      case "social":
+        return UIColor(red: 192/255, green: 244/255, blue: 184/255, alpha: 1) // green
+      case "food":
+        return UIColor(red: 255/255, green: 188/255, blue: 129/255, alpha: 1) // orange
+      case "techtalk":
+        return UIColor(red: 173/255, green: 178/255, blue: 251/255, alpha: 1) // purple
+    default:
+      return .turquoise
+    }
+  }
+}
+
+extension Event {
   func configureCell(_ cell: EventCell) {
     cell.titleLabel?.text = title
     cell.locationLabel?.text = location
-    //TODO: typeIndicatorView backgroundColor based on type
+    cell.typeIndicatorView.backgroundColor = color
   }
 }
 

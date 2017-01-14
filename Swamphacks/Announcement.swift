@@ -46,11 +46,30 @@ extension Announcement {
 }
 
 extension Announcement {
+  var color: UIColor {
+    switch type {
+    case "logistics":
+      return UIColor(red: 249/255, green: 167/255, blue: 167/255, alpha: 1) // red
+    case "social":
+      return UIColor(red: 175/255, green: 239/255, blue: 249/255, alpha: 1) // blue
+    case "food":
+      return UIColor(red: 173/255, green: 178/255, blue: 251/255, alpha: 1) // purple
+    case "techtalk":
+      return UIColor(red: 192/255, green: 244/255, blue: 184/255, alpha: 1) // green
+    case "sponsor":
+      return UIColor(red: 255/255, green: 188/255, blue: 129/255, alpha: 1) // orange
+    default:
+      return .turquoise
+    }
+  }
+}
+
+extension Announcement {
   func configureCell(_ cell: AnnouncementCell) {
     cell.titleLabel?.text = title
     cell.descriptionLabel?.text = description
     cell.dateLabel?.text = dateString
-    //TODO: typeIndicatorView backgroundColor based on type
+    cell.typeIndicatorView.backgroundColor = color
   }
 }
 
