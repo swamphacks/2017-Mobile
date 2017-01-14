@@ -152,16 +152,17 @@ class ProfileViewController: UIViewController {
     }
     
     setLoading(true)
-    FirebaseManager.shared.getInfo(forUserEmail: email) { userInfo in
-      self.setLoading(false)
-
+    FirebaseManager.shared.getInfo(forUserEmail: email) { [weak self] userInfo in
+      guard let strongSelf = self else { return }
+      strongSelf.setLoading(false)
+      
       guard let info = userInfo else {
-        self.showAlert(ofType: .message("Error", "Something went wrong. Please check that the email is correct."))
+        strongSelf.showAlert(ofType: .message("Error", "Something went wrong. Please check that the email is correct."))
         return
       }
       
-      //TODO: show confirm user VC
-      print(info.json)
+      let vc = ConfirmInfoViewController(userInfo: info).rooted().styled()
+      strongSelf.present(vc, animated: true, completion: nil)
     }
     
   }

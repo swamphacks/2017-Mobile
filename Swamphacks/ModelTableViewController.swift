@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MMMaterialDesignSpinner
 
 enum RowHeight {
   case absolute(CGFloat)
@@ -43,6 +44,24 @@ class ModelTableViewController<Model>: UITableViewController {
     let refreshControl = UIRefreshControl()
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     self.refreshControl = refreshControl
+  }
+  
+  fileprivate lazy var spinner: MMMaterialDesignSpinner = {
+    let spinner = MMMaterialDesignSpinner(frame: CGRect(x: 0, y: 0, width: 22, height: 22))
+    spinner.tintColor = .white
+    spinner.lineWidth = 4
+    spinner.hidesWhenStopped = true
+    return spinner
+  }()
+  
+  var showsIndicator: Bool = true {
+    didSet {
+      if (showsIndicator) {
+        navigationItem.rightBarButtonItem  = UIBarButtonItem(customView: spinner)
+      } else {
+        navigationItem.rightBarButtonItem = nil
+      }
+    }
   }
   
   let load: (@escaping ([Model]) -> ()) -> ()
@@ -127,6 +146,8 @@ class ModelTableViewController<Model>: UITableViewController {
       NSLayoutConstraint.activate(constraints)
       fabButton.isHidden = false
     }
+    
+    navigationItem.rightBarButtonItem  = UIBarButtonItem(customView: spinner)
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -136,8 +157,10 @@ class ModelTableViewController<Model>: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    //TODO: loading indicator? empty state?
+    //TODO: empty state?
+    setLoading(true)
     load { [weak self] items in
+      self?.setLoading(false)
       self?.reload(items: items)
     }
   }
@@ -229,8 +252,10 @@ class ModelTableViewController<Model>: UITableViewController {
   
   @objc func refresh(sender: UIRefreshControl?) {
     items.removeAll()
+    setLoading(true)
     load { [weak self] items in
       sender?.endRefreshing()
+      self?.setLoading(false)
       self?.reload(items: items)
     }
   }
@@ -320,6 +345,12 @@ class ModelTableViewController<Model>: UITableViewController {
     }
     
     _reload(items: items)
+  }
+  
+  fileprivate func setLoading(_ loading: Bool) {
+    if showsIndicator {
+      spinner.setAnimating(loading)
+    }
   }
   
   fileprivate func register(descriptor: CellDescriptor, in tableView: UITableView) {

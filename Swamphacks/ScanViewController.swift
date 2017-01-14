@@ -77,9 +77,12 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     setUp()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    shouldScan = true
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { [weak self] _ in
+      self?.shouldScan = true
+    }
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -120,15 +123,8 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     
     setUpDetectorView()
     
-    spinner.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(spinner)
-    
-    let centerX = spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-    let centerY = spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-    let width = spinner.widthAnchor.constraint(equalToConstant: 60)
-    let height = spinner.heightAnchor.constraint(equalToConstant: 60)
-    
-    NSLayoutConstraint.activate([centerX, centerY, width, height])
+    spinner.frame = CGRect(x: 0, y: 0, width: 22, height: 22)
+    navigationItem.rightBarButtonItem  = UIBarButtonItem(customView: spinner)
   }
   
   fileprivate func setUpDetectorView() {
@@ -168,23 +164,29 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   //MARK: MetadataOutputDelegate
   
   public func captureManagerDidOutput(metadataObjects: [Any]) {
-    if (isLoading) {
-      return
-    }
-    
-    if metadataObjects.isEmpty || !shouldScan {
+    if metadataObjects.isEmpty {
       reactToBarcode(.hidden)
       return
     }
     
     guard let metadata = metadataObjects[0] as? AVMetadataMachineReadableCodeObject, metadata.type == AVMetadataObjectTypeQRCode,
-          let barcode = previewLayer.transformedMetadataObject(for: metadata) else { return }
+      let barcode = previewLayer.transformedMetadataObject(for: metadata) else { return }
+    
+    if (!shouldScan) {
+      reactToBarcode(.hidden)
+      return
+    }
     
     reactToBarcode(.showing(barcode.bounds))
     
     scanningDelegate?.controller(vc: self, didScan: metadata.stringValue)
     
-    // Just slapped this in here. Sorry not sorry, again lolz.
+    // ***************************
+    // Just slapped this in here. Sorry not sorry, again lolz. Deadlines are great 🙃
+    
+    if (isLoading) {
+      return
+    }
     
     guard let email = metadata.stringValue, !email.isEmpty else {
       return
@@ -193,15 +195,14 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     setLoading(true)
     FirebaseManager.shared.getInfo(forUserEmail: email) { [weak self] userInfo in
       guard let strongSelf = self else { return }
-      
       strongSelf.setLoading(false)
-
+      
       guard let info = userInfo else {
         strongSelf.showAlert(ofType: .message("Error", "Something went wrong. Please check that the email is correct."))
         return
       }
-            
-      let vc = ConfirmInfoViewController(userInfo: info).rooted()
+      
+      let vc = ConfirmInfoViewController(userInfo: info).rooted().styled()
       strongSelf.present(vc, animated: true, completion: nil)
     }
   }
