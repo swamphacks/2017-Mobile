@@ -115,3 +115,37 @@ let sponsorsTableVCBuilder = ModelTableViewControllerBuilder<Sponsor> { vc in
   }
   
 }
+
+let sponsorVCTableVCBuilder = ModelTableViewControllerBuilder<SponsorDetailItem>(prepare: false) { sponsorVC in
+  
+  sponsorVC.refreshable = false
+  sponsorVC.edgesForExtendedLayout = []
+  sponsorVC.automaticallyAdjustsScrollViewInsets = false
+  
+  sponsorVC.tableView.separatorStyle = .none
+  sponsorVC.tableView.estimatedRowHeight = 90
+  
+  sponsorVC.fabStyle = { [weak sponsorVC] button in
+    guard let vc = sponsorVC, let view = button.superview else { return nil }
+    
+    button.backgroundColor = .turquoise
+    button.setImage(UIImage(named: "open"), for: .normal)
+    button.adjustsImageWhenHighlighted = false
+    
+    button.layer.masksToBounds = false
+    button.layer.cornerRadius = 28
+    
+    button.layer.shadowRadius = 2
+    button.layer.shadowColor = UIColor.black.cgColor
+    button.layer.shadowOffset = CGSize(width: 0, height: 2)
+    button.layer.shadowOpacity = 0.45
+    
+    let trailing = button.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+    let bottom = button.bottomAnchor.constraint(equalTo: vc.bottomLayoutGuide.topAnchor, constant: -8)
+    let width = button.widthAnchor.constraint(equalToConstant: 56)
+    let height = button.heightAnchor.constraint(equalToConstant: 56)
+    
+    return [trailing, bottom, width, height]
+  }
+  
+}
