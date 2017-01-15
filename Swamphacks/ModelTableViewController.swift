@@ -26,6 +26,10 @@ class ModelTableViewController<Model>: UITableViewController {
     }
   }
   
+  fileprivate var filteredItems: [Model] {
+    return filter(items)
+  }
+  
   var filter: (([Model]) -> [Model]) = { $0 } {
     didSet {
       localReload()
@@ -33,7 +37,7 @@ class ModelTableViewController<Model>: UITableViewController {
   }
   
   func localReload() {
-    items = filter(items)
+    tableView.reloadData()
   }
   
   fileprivate var reuseIdentifiers = Set<String>()
@@ -87,6 +91,26 @@ class ModelTableViewController<Model>: UITableViewController {
   
   var didSelect: (Model) -> Void = { _ in }
   
+  //******** Right Item ***********
+  
+  var rightItem: (UIImage?, UIBarButtonItemStyle) {
+    didSet {
+      let (image, style) = rightItem
+      navigationItem.rightBarButtonItem = UIBarButtonItem(image: image,
+                                                          style: style,
+                                                          target: self,
+                                                          action: #selector(choseRightItem(_:)))
+    }
+  }
+  
+  @objc fileprivate func choseRightItem(_ item: UIBarButtonItem) {
+    didChooseRightItem(item)
+  }
+  
+  var didChooseRightItem: (UIBarButtonItem) -> Void = { _ in }
+  
+  //********************************
+  
   fileprivate var fabButton: UIButton!
   
   // Style the floating action button here.
@@ -138,13 +162,15 @@ class ModelTableViewController<Model>: UITableViewController {
     self.cellDescriptor = cellDescriptor
     self.rowHeight = rowHeight
     
+    self.rightItem = (nil, .plain)
+    
     super.init(style: style)
     
     self.itemForIndexPath = itemForIndexPath ?? { [weak self] in
-      self?.filter(self?.items ?? [])[$0.row]
+      self?.filteredItems[$0.row]
     }
     self.rowsInSection = rowsInSection ?? { [weak self] _ in
-      self?.filter(self?.items ?? []).count ?? 0
+      self?.filteredItems.count ?? 0
     }
     
     addRefreshControl()
@@ -184,7 +210,7 @@ class ModelTableViewController<Model>: UITableViewController {
     updateHeaderViewIfNeeded()
     localReload()
   }
-  
+    
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }

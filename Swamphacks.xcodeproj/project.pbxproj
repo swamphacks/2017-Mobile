@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3183B6E21E2BF9B100131DFA /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3183B6E11E2BF9B100131DFA /* FilterTableViewController.swift */; };
+		3183B6E41E2BFBB900131DFA /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3183B6E31E2BFBB900131DFA /* FilterCell.swift */; };
+		3183B6EA1E2C107000131DFA /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3183B6E91E2C107000131DFA /* FilterCell.xib */; };
 		532F66EC17F61A8F6D7919FE /* Pods_Swamphacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16095FE1F6E0BBFEFC8C267A /* Pods_Swamphacks.framework */; };
 		60B520234DF0601E1B4A73AB /* Pods_SwamphacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */; };
 		AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */; };
@@ -68,6 +71,9 @@
 /* Begin PBXFileReference section */
 		16095FE1F6E0BBFEFC8C267A /* Pods_Swamphacks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swamphacks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D60451B04BD67EA4D9CC3C0 /* Pods-SwamphacksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwamphacksTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwamphacksTests/Pods-SwamphacksTests.release.xcconfig"; sourceTree = "<group>"; };
+		3183B6E11E2BF9B100131DFA /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
+		3183B6E31E2BFBB900131DFA /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		3183B6E91E2C107000131DFA /* FilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		35D70BA879A2D402F0976A57 /* Pods-SwamphacksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwamphacksTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwamphacksTests/Pods-SwamphacksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		60A965A9164B026841F52940 /* Pods-Swamphacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.debug.xcconfig"; sourceTree = "<group>"; };
 		6D245F24CA276536977095C0 /* Pods-Swamphacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				AB1069AE1E258245000EE882 /* LoginViewController.xib */,
 				AB0AAD831E25809300ECBEC2 /* LoginViewController.swift */,
 				AB89F2A11E2AAD5300CAD485 /* ConfirmInfoViewController.swift */,
+				3183B6E11E2BF9B100131DFA /* FilterTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -256,8 +263,10 @@
 				AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */,
 				ABA4A6FF1E299C72005CD9CA /* RepCell.xib */,
 				ABA4A6FD1E299C67005CD9CA /* RepCell.swift */,
-				ABA4A7011E29B742005CD9CA /* LabelCell.swift */,
 				ABA4A7031E29B75B005CD9CA /* LabelCell.xib */,
+				ABA4A7011E29B742005CD9CA /* LabelCell.swift */,
+				3183B6E91E2C107000131DFA /* FilterCell.xib */,
+				3183B6E31E2BFBB900131DFA /* FilterCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -375,6 +384,7 @@
 				AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */,
 				AB5F2AA51E10728900AF875C /* GoogleService-Info.plist in Resources */,
 				AB5F2AB91E1474BD00AF875C /* EventCell.xib in Resources */,
+				3183B6EA1E2C107000131DFA /* FilterCell.xib in Resources */,
 				ABA4A7041E29B75B005CD9CA /* LabelCell.xib in Resources */,
 				AB5F2A761E0D7B3000AF875C /* Assets.xcassets in Resources */,
 			);
@@ -496,6 +506,7 @@
 				ABA4A6FA1E299343005CD9CA /* SponsorView.swift in Sources */,
 				AB5F2A9A1E0D8A9900AF875C /* ModelTableViewController.swift in Sources */,
 				AB5F2AA81E109E1B00AF875C /* App.swift in Sources */,
+				3183B6E41E2BFBB900131DFA /* FilterCell.swift in Sources */,
 				AB89F2A21E2AAD5300CAD485 /* ConfirmInfoViewController.swift in Sources */,
 				AB5F2AB11E10BDC900AF875C /* ProfileViewController.swift in Sources */,
 				ABD68E0C1E18450400833333 /* EventViewController.swift in Sources */,
@@ -512,6 +523,7 @@
 				AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */,
 				ABA4A7021E29B742005CD9CA /* LabelCell.swift in Sources */,
 				ABD68E0A1E1738FB00833333 /* Builders.swift in Sources */,
+				3183B6E21E2BF9B100131DFA /* FilterTableViewController.swift in Sources */,
 				AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */,
 				AB5F2A951E0D888E00AF875C /* CellDescriptor.swift in Sources */,
 				AB0AAD7A1E1C114200ECBEC2 /* SponsorCell.swift in Sources */,
