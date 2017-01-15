@@ -100,6 +100,8 @@ final class App {
           inFilters = (vc.filters[announcement.type.lowercased()]! == true)
         }
         return inFilters && announcement.date.compare(now) == .orderedAscending
+      }.sorted {
+        return $0.date.compare($1.date) == .orderedDescending
       }
     }
     
