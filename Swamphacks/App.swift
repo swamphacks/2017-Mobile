@@ -40,7 +40,7 @@ final class App {
     tabController.tabBar.isTranslucent = false
     tabController.tabBar.barTintColor = .white
     
-    tabController.viewControllers = [announcementsVC(), happeningNowVC(), sponsorsVC(), profileVC()].map { (vcTitleImage) -> UIViewController in
+    tabController.viewControllers = [scheduleVC(), announcementsVC(), happeningNowVC(), sponsorsVC(), profileVC()].map { (vcTitleImage) -> UIViewController in
       vcTitleImage.0.topViewController?.title = vcTitleImage.1
       vcTitleImage.0.tabBarItem = tabBarItem(title: vcTitleImage.1, image: vcTitleImage.2)
       vcTitleImage.0.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
@@ -51,6 +51,23 @@ final class App {
   }
  
   //MARK: View Controllers
+  
+  fileprivate static func scheduleVC() -> (UINavigationController, String, UIImage) {
+    let events = { (completion: @escaping ([Event]) -> ()) in
+      let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
+      _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0.queryOrdered(byChild: "startTime"), .childAdded) }) { result in
+        guard let event = result.value else { completion([]); return }
+        completion([event])
+      }
+    }
+    
+    let scheduleVC = ScheduleViewController(events: events)
+    
+    let navController = scheduleVC.rooted().styled()
+    let image = UIImage(named: "event")!
+    
+    return (navController, "Events", image)
+  }
   
   fileprivate static let filterVC = FilterTableViewController(nibName: nil, bundle: nil)
   
