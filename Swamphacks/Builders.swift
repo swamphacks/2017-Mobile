@@ -38,6 +38,10 @@ let happeningNowTableVCBuilder = ModelTableViewControllerBuilder<Event> { vc in
                                                owner: nil,
                                                options: nil)!.first as! CountdownView
   countdownView.clipsToBounds = true
+  countdownView.refresh = { [weak vc] (_: UIButton) -> Void in
+    vc?.localReload()
+  }
+  
   vc.stickyHeader = (countdownView, headerHeight, headerWidth)
 }
 
@@ -116,7 +120,7 @@ let sponsorsTableVCBuilder = ModelTableViewControllerBuilder<Sponsor> { vc in
   
 }
 
-let sponsorVCTableVCBuilder = ModelTableViewControllerBuilder<SponsorDetailItem>(prepare: false) { sponsorVC in
+let sponsorVCTableVCBuilder = ModelTableViewControllerBuilder<DetailItem<Rep>>(prepare: false) { sponsorVC in
   
   sponsorVC.refreshable = false
   sponsorVC.edgesForExtendedLayout = []

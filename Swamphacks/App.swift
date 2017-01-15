@@ -97,9 +97,7 @@ final class App {
     
     let navController = announcementsVC.rooted()
     let image = UIImage(named: "announcement")!
-        
-    //TODO: left bar button to filter by announcement type?
-    
+            
     filterVC.title = "Filters"
     filterVC.tableView.separatorStyle = .none
     filterVC.automaticallyAdjustsScrollViewInsets = false
@@ -193,10 +191,10 @@ final class App {
     
     sponsorsVC.didSelect = { [weak navController] sponsor in
             
-      let items = { (completion: @escaping ([SponsorDetailItem]) -> ()) in
-        var detailItems: [SponsorDetailItem] = [.description(sponsor.description)]
+      let items = { (completion: @escaping ([DetailItem<Rep>]) -> ()) in
+        var detailItems: [DetailItem<Rep>] = [.text(sponsor.description)]
         
-        let repItems = sponsor.reps.map({SponsorDetailItem.rep($0)})
+        let repItems = sponsor.reps.map({DetailItem.item($0)})
         detailItems.append(contentsOf: repItems)
         
         completion(detailItems)
@@ -206,9 +204,9 @@ final class App {
                                                cellDescriptor: { $0.cellDescriptor },
                                                rowHeight: { item, _ in
                                                 switch item {
-                                                case .description(_):
+                                                case .text(_):
                                                   return .automatic
-                                                case .rep(_):
+                                                case .item(_):
                                                   return .absolute(80)
                                                 }
                                                })

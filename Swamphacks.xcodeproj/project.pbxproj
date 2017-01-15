@@ -12,6 +12,7 @@
 		3183B6EA1E2C107000131DFA /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3183B6E91E2C107000131DFA /* FilterCell.xib */; };
 		532F66EC17F61A8F6D7919FE /* Pods_Swamphacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16095FE1F6E0BBFEFC8C267A /* Pods_Swamphacks.framework */; };
 		60B520234DF0601E1B4A73AB /* Pods_SwamphacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */; };
+		AB05FA7B1E2C3B8200EC3F26 /* DetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05FA7A1E2C3B8200EC3F26 /* DetailItem.swift */; };
 		AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */; };
 		AB0AAD7A1E1C114200ECBEC2 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */; };
 		AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */; };
@@ -91,6 +92,7 @@
 		35D70BA879A2D402F0976A57 /* Pods-SwamphacksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwamphacksTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwamphacksTests/Pods-SwamphacksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		60A965A9164B026841F52940 /* Pods-Swamphacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.debug.xcconfig"; sourceTree = "<group>"; };
 		6D245F24CA276536977095C0 /* Pods-Swamphacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.release.xcconfig"; sourceTree = "<group>"; };
+		AB05FA7A1E2C3B8200EC3F26 /* DetailItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailItem.swift; sourceTree = "<group>"; };
 		AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
 		AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorCell.xib; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				AB5F2AB41E14731E00AF875C /* Event.swift */,
 				AB0AAD7D1E1C144700ECBEC2 /* Sponsor.swift */,
 				AB6148621E26F9BD002C7008 /* UserInfo.swift */,
+				AB05FA7A1E2C3B8200EC3F26 /* DetailItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */,
 				AB5F2A931E0D7FDE00AF875C /* NibLoadable.swift in Sources */,
 				ABA4A6FE1E299C67005CD9CA /* RepCell.swift in Sources */,
+				AB05FA7B1E2C3B8200EC3F26 /* DetailItem.swift in Sources */,
 				AB6148631E26F9BD002C7008 /* UserInfo.swift in Sources */,
 				AB89F2BC1E2C25DF00CAD485 /* ScheduleNowIndicator.swift in Sources */,
 				AB5F2A9F1E0EC7E600AF875C /* AnnouncementCell.swift in Sources */,

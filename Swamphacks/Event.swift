@@ -126,7 +126,7 @@ extension Event {
   }
 }
 
-extension Event {
+extension Event: CellDescriber {
   var cellDescriptor: CellDescriptor {
     return CellDescriptor(reuseIdentifier: "eventCell",
                           registerMode: .withNib(EventCell.nib),

@@ -88,4 +88,10 @@ final class CountdownView: UIView {
     return countdownText
   }
   
+  var refresh: (UIButton) -> Void = { _ in }
+  
+  @IBAction func handleRefresh(_ sender: UIButton) {
+    refresh(sender)
+  }
+  
 }
