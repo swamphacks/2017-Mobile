@@ -15,7 +15,7 @@ extension UIViewController {
   }
 }
 
-//TODO: Add ScheduleVC, change fonts, and check in individual controllers
+//TODO: Change fonts, and check in individual controllers
 
 final class App {
   
@@ -63,6 +63,7 @@ final class App {
     }
     
     let scheduleVC = ScheduleViewController(events: events)
+    scheduleVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     
     let navController = scheduleVC.rooted().styled()
     let image = UIImage(named: "event")!

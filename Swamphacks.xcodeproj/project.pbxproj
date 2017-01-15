@@ -314,8 +314,8 @@
 		AB89F2AA1E2C23FC00CAD485 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AB89F2BF1E2C261100CAD485 /* CircleView.swift */,
 				AB89F2B51E2C25DF00CAD485 /* ScheduleDayHeader.swift */,
+				AB89F2BF1E2C261100CAD485 /* CircleView.swift */,
 				AB89F2B61E2C25DF00CAD485 /* ScheduleHourSeparator.swift */,
 				AB89F2B71E2C25DF00CAD485 /* ScheduleNowIndicator.swift */,
 				AB89F2B81E2C25DF00CAD485 /* ScheduleNowLabel.swift */,
