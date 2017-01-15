@@ -15,7 +15,7 @@ extension UIViewController {
   }
 }
 
-//TODO: Add ScheduleVC, change fonts, and check in individual controllers
+//TODO: Change fonts, and check in individual controllers
 
 final class App {
   
@@ -40,17 +40,36 @@ final class App {
     tabController.tabBar.isTranslucent = false
     tabController.tabBar.barTintColor = .white
     
-    tabController.viewControllers = [announcementsVC(), happeningNowVC(), sponsorsVC(), profileVC()].map { (vcTitleImage) -> UIViewController in
+    tabController.viewControllers = [scheduleVC(), announcementsVC(), happeningNowVC(), sponsorsVC(), profileVC()].map { (vcTitleImage) -> UIViewController in
       vcTitleImage.0.topViewController?.title = vcTitleImage.1
       vcTitleImage.0.tabBarItem = tabBarItem(title: vcTitleImage.1, image: vcTitleImage.2)
       vcTitleImage.0.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
       return vcTitleImage.0.styled()
     }
     
+    tabController.selectedIndex = 2
     return tabController //.styled()
   }
  
   //MARK: View Controllers
+  
+  fileprivate static func scheduleVC() -> (UINavigationController, String, UIImage) {
+    let events = { (completion: @escaping ([Event]) -> ()) in
+      let resource = FirebaseResource<Event>(path: "events", parseJSON: Event.init)
+      _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0.queryOrdered(byChild: "startTime"), .childAdded) }) { result in
+        guard let event = result.value else { completion([]); return }
+        completion([event])
+      }
+    }
+    
+    let scheduleVC = ScheduleViewController(events: events)
+    scheduleVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    
+    let navController = scheduleVC.rooted().styled()
+    let image = UIImage(named: "event")!
+    
+    return (navController, "Events", image)
+  }
   
   fileprivate static let filterVC = FilterTableViewController(nibName: nil, bundle: nil)
   
@@ -78,9 +97,7 @@ final class App {
     
     let navController = announcementsVC.rooted()
     let image = UIImage(named: "announcement")!
-        
-    //TODO: left bar button to filter by announcement type?
-    
+            
     filterVC.title = "Filters"
     filterVC.tableView.separatorStyle = .none
     filterVC.automaticallyAdjustsScrollViewInsets = false
@@ -176,10 +193,10 @@ final class App {
     
     sponsorsVC.didSelect = { [weak navController] sponsor in
             
-      let items = { (completion: @escaping ([SponsorDetailItem]) -> ()) in
-        var detailItems: [SponsorDetailItem] = [.description(sponsor.description)]
+      let items = { (completion: @escaping ([DetailItem<Rep>]) -> ()) in
+        var detailItems: [DetailItem<Rep>] = [.text(sponsor.description)]
         
-        let repItems = sponsor.reps.map({SponsorDetailItem.rep($0)})
+        let repItems = sponsor.reps.map({DetailItem.item($0)})
         detailItems.append(contentsOf: repItems)
         
         completion(detailItems)
@@ -189,9 +206,9 @@ final class App {
                                                cellDescriptor: { $0.cellDescriptor },
                                                rowHeight: { item, _ in
                                                 switch item {
-                                                case .description(_):
+                                                case .text(_):
                                                   return .automatic
-                                                case .rep(_):
+                                                case .item(_):
                                                   return .absolute(80)
                                                 }
                                                })

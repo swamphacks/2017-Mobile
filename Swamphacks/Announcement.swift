@@ -64,7 +64,7 @@ extension Announcement {
   }
 }
 
-extension Announcement {
+extension Announcement: CellDescriber {
   func configureCell(_ cell: AnnouncementCell) {
     cell.titleLabel?.text = title
     cell.descriptionLabel?.text = description

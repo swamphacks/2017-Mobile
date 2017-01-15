@@ -39,19 +39,14 @@ final class FilterTableViewController: UITableViewController, FilterCellDelegate
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
     let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as! FilterCell
-    
     cell.filterLabel.text = types[indexPath.row].capitalized
-    
-    cell.delegate = self
-    
     cell.filterSwitch.isOn = filters[types[indexPath.row]] ?? false
-    
+    cell.delegate = self
     return cell
   }
   
   func filterCell(_ filterCell: FilterCell, updatedSwitchTo value: Bool) {
     filters[filterCell.filterLabel.text!.lowercased()] = value
-    dump(filters)
   }
   
   @objc fileprivate func handleCloseButton(_ item: UIBarButtonItem) {

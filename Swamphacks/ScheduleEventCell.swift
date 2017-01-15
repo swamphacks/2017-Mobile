@@ -11,7 +11,7 @@ import UIKit
 class ScheduleEventCell: UICollectionViewCell {
     
     // MARK: Outlets
-    
+  
     @IBOutlet fileprivate weak var bodyView: UIView!
     @IBOutlet fileprivate weak var leaderBar: UIView!
     @IBOutlet fileprivate weak var bodyViewTopConstraint: NSLayoutConstraint!
@@ -31,7 +31,7 @@ class ScheduleEventCell: UICollectionViewCell {
     var color: UIColor = UIColor.clear {
         didSet {
             updateBodyViewBackgroundColor()
-            leaderBar.backgroundColor = textColorForColor(color)
+            leaderBar.backgroundColor = bodyColorForColor(color, desaturated: false)
             
             let textColor = textColorForColor(color)
             
@@ -56,7 +56,7 @@ class ScheduleEventCell: UICollectionViewCell {
         
         let bodyViewHighlighted = isHighlighted || isSelected
         
-        bodyView.backgroundColor = textColorForColor(color)
+        bodyView.backgroundColor = bodyColorForColor(color, desaturated: !bodyViewHighlighted)
     }
     
     // MARK: Highlight
@@ -80,6 +80,22 @@ class ScheduleEventCell: UICollectionViewCell {
         
         bodyViewTopConstraint.constant = Geometry.hairlineWidthInTraitCollection(traitCollection)
     }
+}
+
+
+func bodyColorForColor(_ color: UIColor, desaturated: Bool) -> UIColor {
+  var hue: CGFloat = 0.0
+  var saturation: CGFloat = 0.0
+  var brightness: CGFloat = 0.0
+  var alpha: CGFloat = 0.0
+  
+  color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+  
+  let desaturationFactor: CGFloat = desaturated ? 0.25 : 1.0
+  let brightnessFactor: CGFloat = desaturated ? 1.0 / brightness : 1.0
+  let alphaFactor: CGFloat = desaturated ? 0.75 : 0.95
+  
+  return UIColor(hue: hue, saturation: saturation * desaturationFactor, brightness: brightness * brightnessFactor, alpha: alpha * alphaFactor)
 }
 
 // Quick and dirty class to not draw any text if there's not enough room

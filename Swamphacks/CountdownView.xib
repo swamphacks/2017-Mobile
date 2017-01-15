@@ -38,14 +38,35 @@
                         <constraint firstAttribute="height" constant="4" id="dbT-cc-ilS"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happening Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQC-Va-SK8">
+                    <rect key="frame" x="16" y="371" width="130" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChE-Jl-xnk">
+                    <rect key="frame" x="335" y="360" width="36" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="S4d-W2-zpI"/>
+                        <constraint firstAttribute="width" constant="36" id="nWP-cZ-Niq"/>
+                    </constraints>
+                    <state key="normal" image="refresh"/>
+                    <connections>
+                        <action selector="handleRefresh:" destination="iN0-l3-epB" eventType="touchUpInside" id="v8j-hd-Crx"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.43137254901960786" green="0.87058823529411766" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="zs4-Ea-pxL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4kb-rB-HzC"/>
+                <constraint firstItem="sAo-n2-pls" firstAttribute="top" secondItem="ChE-Jl-xnk" secondAttribute="bottom" id="7FJ-Ra-ZtP"/>
                 <constraint firstItem="zs4-Ea-pxL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BWc-Hk-lsK"/>
                 <constraint firstAttribute="trailing" secondItem="zs4-Ea-pxL" secondAttribute="trailing" constant="16" id="BuW-sy-AxM"/>
                 <constraint firstItem="sAo-n2-pls" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ONI-1o-ahM"/>
+                <constraint firstItem="hQC-Va-SK8" firstAttribute="bottom" secondItem="ChE-Jl-xnk" secondAttribute="bottom" constant="-4" id="cKW-jQ-orb"/>
                 <constraint firstAttribute="trailing" secondItem="sAo-n2-pls" secondAttribute="trailing" id="e8P-j5-3Gc"/>
+                <constraint firstAttribute="trailing" secondItem="ChE-Jl-xnk" secondAttribute="trailing" constant="4" id="eoe-El-6zF"/>
+                <constraint firstItem="hQC-Va-SK8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="hwz-8U-ZJo"/>
                 <constraint firstAttribute="bottom" secondItem="sAo-n2-pls" secondAttribute="bottom" id="k7i-DV-3I7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -55,4 +76,7 @@
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="refresh" width="24" height="24"/>
+    </resources>
 </document>

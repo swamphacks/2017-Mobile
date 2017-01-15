@@ -197,7 +197,6 @@ class ModelTableViewController<Model>: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    //TODO: empty state?
     setLoading(true)
     load { [weak self] items in
       self?.setLoading(false)

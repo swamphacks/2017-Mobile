@@ -71,6 +71,12 @@ extension Event {
 }
 
 extension Event {
+  var timeInterval: Range<TimeInterval> {
+    return startTime.timeIntervalSinceReferenceDate..<endTime.timeIntervalSinceReferenceDate
+  }
+}
+
+extension Event {
   var classification: String {
     switch title {
     case "Pancake Art":
@@ -120,7 +126,7 @@ extension Event {
   }
 }
 
-extension Event {
+extension Event: CellDescriber {
   var cellDescriptor: CellDescriptor {
     return CellDescriptor(reuseIdentifier: "eventCell",
                           registerMode: .withNib(EventCell.nib),

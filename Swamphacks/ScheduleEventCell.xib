@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell" id="OJC-SG-FAs" customClass="ScheduleEventCell" customModule="Swamphacks" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zvw-8H-fuL">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJ9-gn-RYf">
+                                <rect key="frame" x="0.0" y="0.0" width="2" height="44"/>
+                                <color key="backgroundColor" red="0.041692961010000001" green="0.38031816480000002" blue="0.99836134909999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="2" id="6Z8-8C-l4s"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ymc-JJ-Sxm">
+                                <rect key="frame" x="6" y="2" width="290" height="31.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03i-bM-hes">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCR-tw-klN" customClass="DisappearingLabel" customModule="Swamphacks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="17" width="290" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.70070827010000003" green="0.83693927530000001" blue="0.99931150670000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ymc-JJ-Sxm" firstAttribute="top" secondItem="Zvw-8H-fuL" secondAttribute="top" constant="2" id="C8H-ff-HNH"/>
+                            <constraint firstItem="RJ9-gn-RYf" firstAttribute="leading" secondItem="Zvw-8H-fuL" secondAttribute="leading" id="I5b-By-X5h"/>
+                            <constraint firstAttribute="trailing" secondItem="ymc-JJ-Sxm" secondAttribute="trailing" constant="4" id="Pr4-ll-nlf"/>
+                            <constraint firstAttribute="bottom" secondItem="RJ9-gn-RYf" secondAttribute="bottom" id="QQh-yN-oGt"/>
+                            <constraint firstItem="RJ9-gn-RYf" firstAttribute="top" secondItem="Zvw-8H-fuL" secondAttribute="top" id="U18-er-ALe"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ymc-JJ-Sxm" secondAttribute="bottom" constant="2" id="bDn-eD-wi1"/>
+                            <constraint firstItem="ymc-JJ-Sxm" firstAttribute="leading" secondItem="RJ9-gn-RYf" secondAttribute="trailing" constant="4" id="xLS-X8-MxS"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Zvw-8H-fuL" firstAttribute="top" secondItem="OJC-SG-FAs" secondAttribute="top" id="Dv6-7e-02D"/>
+                <constraint firstItem="Zvw-8H-fuL" firstAttribute="leading" secondItem="OJC-SG-FAs" secondAttribute="leading" id="pTR-qz-6pp"/>
+                <constraint firstAttribute="trailing" secondItem="Zvw-8H-fuL" secondAttribute="trailing" id="t1J-oZ-RF9"/>
+                <constraint firstAttribute="bottom" secondItem="Zvw-8H-fuL" secondAttribute="bottom" id="tW3-2b-hJ0"/>
+            </constraints>
+            <size key="customSize" width="300" height="44"/>
+            <connections>
+                <outlet property="bodyView" destination="Zvw-8H-fuL" id="mCK-WG-vct"/>
+                <outlet property="bodyViewTopConstraint" destination="Dv6-7e-02D" id="jF4-EU-dk2"/>
+                <outlet property="detailTextLabel" destination="gCR-tw-klN" id="nFU-pG-4wX"/>
+                <outlet property="leaderBar" destination="RJ9-gn-RYf" id="bXG-4y-yES"/>
+                <outlet property="textLabel" destination="03i-bM-hes" id="H5u-em-war"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

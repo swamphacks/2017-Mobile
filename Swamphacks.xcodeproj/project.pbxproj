@@ -12,6 +12,7 @@
 		3183B6EA1E2C107000131DFA /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3183B6E91E2C107000131DFA /* FilterCell.xib */; };
 		532F66EC17F61A8F6D7919FE /* Pods_Swamphacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16095FE1F6E0BBFEFC8C267A /* Pods_Swamphacks.framework */; };
 		60B520234DF0601E1B4A73AB /* Pods_SwamphacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */; };
+		AB05FA7B1E2C3B8200EC3F26 /* DetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05FA7A1E2C3B8200EC3F26 /* DetailItem.swift */; };
 		AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */; };
 		AB0AAD7A1E1C114200ECBEC2 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */; };
 		AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */; };
@@ -48,6 +49,20 @@
 		AB6148651E27036A002C7008 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6148641E27036A002C7008 /* QRGenerator.swift */; };
 		AB6148671E2703AD002C7008 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6148661E2703AD002C7008 /* CoreImage.framework */; };
 		AB89F2A21E2AAD5300CAD485 /* ConfirmInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2A11E2AAD5300CAD485 /* ConfirmInfoViewController.swift */; };
+		AB89F2A41E2C1BAA00CAD485 /* CalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2A31E2C1BAA00CAD485 /* CalendarLayout.swift */; };
+		AB89F2A71E2C1C3E00CAD485 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2A61E2C1C3E00CAD485 /* Geometry.swift */; };
+		AB89F2A91E2C1E4900CAD485 /* EventOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2A81E2C1E4900CAD485 /* EventOrganizer.swift */; };
+		AB89F2B11E2C25CA00CAD485 /* ScheduleDayHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB89F2AD1E2C25CA00CAD485 /* ScheduleDayHeader.xib */; };
+		AB89F2B21E2C25CA00CAD485 /* ScheduleHourSeparator.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB89F2AE1E2C25CA00CAD485 /* ScheduleHourSeparator.xib */; };
+		AB89F2B31E2C25CA00CAD485 /* ScheduleNowIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB89F2AF1E2C25CA00CAD485 /* ScheduleNowIndicator.xib */; };
+		AB89F2B41E2C25CA00CAD485 /* ScheduleNowLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB89F2B01E2C25CA00CAD485 /* ScheduleNowLabel.xib */; };
+		AB89F2BA1E2C25DF00CAD485 /* ScheduleDayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2B51E2C25DF00CAD485 /* ScheduleDayHeader.swift */; };
+		AB89F2BB1E2C25DF00CAD485 /* ScheduleHourSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2B61E2C25DF00CAD485 /* ScheduleHourSeparator.swift */; };
+		AB89F2BC1E2C25DF00CAD485 /* ScheduleNowIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2B71E2C25DF00CAD485 /* ScheduleNowIndicator.swift */; };
+		AB89F2BD1E2C25DF00CAD485 /* ScheduleNowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2B81E2C25DF00CAD485 /* ScheduleNowLabel.swift */; };
+		AB89F2BE1E2C25DF00CAD485 /* ScheduleEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2B91E2C25DF00CAD485 /* ScheduleEventCell.swift */; };
+		AB89F2C01E2C261100CAD485 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2BF1E2C261100CAD485 /* CircleView.swift */; };
+		AB89F2C21E2C2EBB00CAD485 /* ScheduleEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB89F2C11E2C2EBB00CAD485 /* ScheduleEventCell.xib */; };
 		ABA4A6FA1E299343005CD9CA /* SponsorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4A6F91E299343005CD9CA /* SponsorView.swift */; };
 		ABA4A6FC1E29934F005CD9CA /* SponsorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA4A6FB1E29934F005CD9CA /* SponsorView.xib */; };
 		ABA4A6FE1E299C67005CD9CA /* RepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4A6FD1E299C67005CD9CA /* RepCell.swift */; };
@@ -77,6 +92,7 @@
 		35D70BA879A2D402F0976A57 /* Pods-SwamphacksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwamphacksTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwamphacksTests/Pods-SwamphacksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		60A965A9164B026841F52940 /* Pods-Swamphacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.debug.xcconfig"; sourceTree = "<group>"; };
 		6D245F24CA276536977095C0 /* Pods-Swamphacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.release.xcconfig"; sourceTree = "<group>"; };
+		AB05FA7A1E2C3B8200EC3F26 /* DetailItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailItem.swift; sourceTree = "<group>"; };
 		AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
 		AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorCell.xib; sourceTree = "<group>"; };
@@ -116,6 +132,20 @@
 		AB6148641E27036A002C7008 /* QRGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
 		AB6148661E2703AD002C7008 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		AB89F2A11E2AAD5300CAD485 /* ConfirmInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmInfoViewController.swift; sourceTree = "<group>"; };
+		AB89F2A31E2C1BAA00CAD485 /* CalendarLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarLayout.swift; sourceTree = "<group>"; };
+		AB89F2A61E2C1C3E00CAD485 /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		AB89F2A81E2C1E4900CAD485 /* EventOrganizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventOrganizer.swift; sourceTree = "<group>"; };
+		AB89F2AD1E2C25CA00CAD485 /* ScheduleDayHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleDayHeader.xib; sourceTree = "<group>"; };
+		AB89F2AE1E2C25CA00CAD485 /* ScheduleHourSeparator.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleHourSeparator.xib; sourceTree = "<group>"; };
+		AB89F2AF1E2C25CA00CAD485 /* ScheduleNowIndicator.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleNowIndicator.xib; sourceTree = "<group>"; };
+		AB89F2B01E2C25CA00CAD485 /* ScheduleNowLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleNowLabel.xib; sourceTree = "<group>"; };
+		AB89F2B51E2C25DF00CAD485 /* ScheduleDayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDayHeader.swift; sourceTree = "<group>"; };
+		AB89F2B61E2C25DF00CAD485 /* ScheduleHourSeparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleHourSeparator.swift; sourceTree = "<group>"; };
+		AB89F2B71E2C25DF00CAD485 /* ScheduleNowIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleNowIndicator.swift; sourceTree = "<group>"; };
+		AB89F2B81E2C25DF00CAD485 /* ScheduleNowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleNowLabel.swift; sourceTree = "<group>"; };
+		AB89F2B91E2C25DF00CAD485 /* ScheduleEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleEventCell.swift; sourceTree = "<group>"; };
+		AB89F2BF1E2C261100CAD485 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		AB89F2C11E2C2EBB00CAD485 /* ScheduleEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleEventCell.xib; sourceTree = "<group>"; };
 		ABA4A6F91E299343005CD9CA /* SponsorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorView.swift; sourceTree = "<group>"; };
 		ABA4A6FB1E29934F005CD9CA /* SponsorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorView.xib; sourceTree = "<group>"; };
 		ABA4A6FD1E299C67005CD9CA /* RepCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepCell.swift; sourceTree = "<group>"; };
@@ -186,6 +216,7 @@
 				AB5F2A7A1E0D7B3000AF875C /* Info.plist */,
 				AB5F2AA41E10728900AF875C /* GoogleService-Info.plist */,
 				AB5F2A6E1E0D7B3000AF875C /* AppDelegate.swift */,
+				AB89F2A51E2C1C2D00CAD485 /* MHacks */,
 				AB5F2A911E0D7FCE00AF875C /* Utilities */,
 				AB5F2A961E0D89CC00AF875C /* Models */,
 				AB5F2A9B1E0EC78700AF875C /* Views */,
@@ -243,6 +274,7 @@
 				AB5F2AB41E14731E00AF875C /* Event.swift */,
 				AB0AAD7D1E1C144700ECBEC2 /* Sponsor.swift */,
 				AB6148621E26F9BD002C7008 /* UserInfo.swift */,
+				AB05FA7A1E2C3B8200EC3F26 /* DetailItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -267,6 +299,35 @@
 				ABA4A7011E29B742005CD9CA /* LabelCell.swift */,
 				3183B6E91E2C107000131DFA /* FilterCell.xib */,
 				3183B6E31E2BFBB900131DFA /* FilterCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AB89F2A51E2C1C2D00CAD485 /* MHacks */ = {
+			isa = PBXGroup;
+			children = (
+				AB89F2A81E2C1E4900CAD485 /* EventOrganizer.swift */,
+				AB89F2A61E2C1C3E00CAD485 /* Geometry.swift */,
+				AB89F2A31E2C1BAA00CAD485 /* CalendarLayout.swift */,
+				AB89F2AA1E2C23FC00CAD485 /* Views */,
+			);
+			name = MHacks;
+			sourceTree = "<group>";
+		};
+		AB89F2AA1E2C23FC00CAD485 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB89F2B51E2C25DF00CAD485 /* ScheduleDayHeader.swift */,
+				AB89F2BF1E2C261100CAD485 /* CircleView.swift */,
+				AB89F2B61E2C25DF00CAD485 /* ScheduleHourSeparator.swift */,
+				AB89F2B71E2C25DF00CAD485 /* ScheduleNowIndicator.swift */,
+				AB89F2B81E2C25DF00CAD485 /* ScheduleNowLabel.swift */,
+				AB89F2B91E2C25DF00CAD485 /* ScheduleEventCell.swift */,
+				AB89F2C11E2C2EBB00CAD485 /* ScheduleEventCell.xib */,
+				AB89F2AD1E2C25CA00CAD485 /* ScheduleDayHeader.xib */,
+				AB89F2AE1E2C25CA00CAD485 /* ScheduleHourSeparator.xib */,
+				AB89F2AF1E2C25CA00CAD485 /* ScheduleNowIndicator.xib */,
+				AB89F2B01E2C25CA00CAD485 /* ScheduleNowLabel.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -375,15 +436,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB5F2ABB1E147E6200AF875C /* CountdownView.xib in Resources */,
+				AB89F2C21E2C2EBB00CAD485 /* ScheduleEventCell.xib in Resources */,
 				ABA4A7001E299C72005CD9CA /* RepCell.xib in Resources */,
+				AB89F2B41E2C25CA00CAD485 /* ScheduleNowLabel.xib in Resources */,
 				AB1069AF1E258245000EE882 /* LoginViewController.xib in Resources */,
 				ABA4A6FC1E29934F005CD9CA /* SponsorView.xib in Resources */,
 				AB5F2AB31E10BDDA00AF875C /* ProfileViewController.xib in Resources */,
 				AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */,
 				AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */,
+				AB89F2B31E2C25CA00CAD485 /* ScheduleNowIndicator.xib in Resources */,
+				AB89F2B21E2C25CA00CAD485 /* ScheduleHourSeparator.xib in Resources */,
 				AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */,
 				AB5F2AA51E10728900AF875C /* GoogleService-Info.plist in Resources */,
 				AB5F2AB91E1474BD00AF875C /* EventCell.xib in Resources */,
+				AB89F2B11E2C25CA00CAD485 /* ScheduleDayHeader.xib in Resources */,
 				3183B6EA1E2C107000131DFA /* FilterCell.xib in Resources */,
 				ABA4A7041E29B75B005CD9CA /* LabelCell.xib in Resources */,
 				AB5F2A761E0D7B3000AF875C /* Assets.xcassets in Resources */,
@@ -501,27 +567,37 @@
 				AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */,
 				AB5F2A931E0D7FDE00AF875C /* NibLoadable.swift in Sources */,
 				ABA4A6FE1E299C67005CD9CA /* RepCell.swift in Sources */,
+				AB05FA7B1E2C3B8200EC3F26 /* DetailItem.swift in Sources */,
 				AB6148631E26F9BD002C7008 /* UserInfo.swift in Sources */,
+				AB89F2BC1E2C25DF00CAD485 /* ScheduleNowIndicator.swift in Sources */,
 				AB5F2A9F1E0EC7E600AF875C /* AnnouncementCell.swift in Sources */,
 				ABA4A6FA1E299343005CD9CA /* SponsorView.swift in Sources */,
 				AB5F2A9A1E0D8A9900AF875C /* ModelTableViewController.swift in Sources */,
+				AB89F2A41E2C1BAA00CAD485 /* CalendarLayout.swift in Sources */,
 				AB5F2AA81E109E1B00AF875C /* App.swift in Sources */,
 				3183B6E41E2BFBB900131DFA /* FilterCell.swift in Sources */,
+				AB89F2BB1E2C25DF00CAD485 /* ScheduleHourSeparator.swift in Sources */,
+				AB89F2BD1E2C25DF00CAD485 /* ScheduleNowLabel.swift in Sources */,
 				AB89F2A21E2AAD5300CAD485 /* ConfirmInfoViewController.swift in Sources */,
 				AB5F2AB11E10BDC900AF875C /* ProfileViewController.swift in Sources */,
 				ABD68E0C1E18450400833333 /* EventViewController.swift in Sources */,
+				AB89F2C01E2C261100CAD485 /* CircleView.swift in Sources */,
 				AB5F2AAF1E10BD1300AF875C /* UIView+Conveniences.swift in Sources */,
+				AB89F2BA1E2C25DF00CAD485 /* ScheduleDayHeader.swift in Sources */,
 				AB6148651E27036A002C7008 /* QRGenerator.swift in Sources */,
 				AB5F2AAD1E10B92F00AF875C /* UIColor+AppColors.swift in Sources */,
 				AB5F2ABF1E15ACC300AF875C /* ScanViewController.swift in Sources */,
 				AB5F2AB71E14749E00AF875C /* EventCell.swift in Sources */,
 				AB0AAD841E25809300ECBEC2 /* LoginViewController.swift in Sources */,
+				AB89F2BE1E2C25DF00CAD485 /* ScheduleEventCell.swift in Sources */,
 				AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */,
 				AB5F2A981E0D89E000AF875C /* Announcement.swift in Sources */,
 				AB5F2ABD1E147EFD00AF875C /* CountdownView.swift in Sources */,
 				AB0AAD7E1E1C144700ECBEC2 /* Sponsor.swift in Sources */,
 				AB5F2AA31E106E6300AF875C /* Firebase.swift in Sources */,
 				ABA4A7021E29B742005CD9CA /* LabelCell.swift in Sources */,
+				AB89F2A71E2C1C3E00CAD485 /* Geometry.swift in Sources */,
+				AB89F2A91E2C1E4900CAD485 /* EventOrganizer.swift in Sources */,
 				ABD68E0A1E1738FB00833333 /* Builders.swift in Sources */,
 				3183B6E21E2BF9B100131DFA /* FilterTableViewController.swift in Sources */,
 				AB5F2AA11E102BAE00AF875C /* UIViewController+Conveniences.swift in Sources */,
@@ -669,6 +745,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.swamphacks.SwampHacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -684,6 +761,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.swamphacks.SwampHacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
