@@ -52,6 +52,8 @@ final class App {
  
   //MARK: View Controllers
   
+  fileprivate static let filterVC = FilterTableViewController(nibName: nil, bundle: nil)
+  
   fileprivate static func announcementsVC() -> (UINavigationController, String, UIImage) {
     let announcements = { (completion: @escaping ([Announcement]) -> ()) in
       let resource = FirebaseResource<Announcement>(path: "announcements", parseJSON: Announcement.init)
@@ -66,11 +68,6 @@ final class App {
                                                    cellDescriptor: { $0.cellDescriptor },
                                                    rowHeight: { _,_ in .automatic })
     
-    announcementsVC.filter = {
-      let now = Date()
-      return $0.filter { $0.date.compare(now) == .orderedAscending }
-    }
-    
     announcementsTableVCBuilder.build(announcementsVC)
     
     let timer = Timer(timeInterval: 60 * 5, repeats: true) { [weak announcementsVC] _ in
@@ -81,8 +78,34 @@ final class App {
     
     let navController = announcementsVC.rooted()
     let image = UIImage(named: "announcement")!
-    
+        
     //TODO: left bar button to filter by announcement type?
+    
+    filterVC.title = "Filters"
+    filterVC.tableView.separatorStyle = .none
+    filterVC.automaticallyAdjustsScrollViewInsets = false
+    filterVC.edgesForExtendedLayout = []
+    
+    filterVC.dismissed = { [weak announcementsVC] in
+      announcementsVC?.localReload()
+    }
+    
+    announcementsVC.rightItem = (UIImage(named: "filter"), .plain)
+    announcementsVC.didChooseRightItem = { [weak announcementsVC, weak filterVC] item in
+      guard let vc = filterVC else { return }
+      announcementsVC?.present(vc.rooted(), animated: true, completion: nil)
+    }
+    
+    announcementsVC.filter = { [weak filterVC] in
+      let now = Date()
+      return $0.filter { announcement -> Bool in
+        var inFilters = true
+        if let vc = filterVC {
+          inFilters = (vc.filters[announcement.type.lowercased()]! == true)
+        }
+        return inFilters /*&& announcement.date.compare(now) == .orderedAscending*/
+      }
+    }
     
     return (navController, "Announcements", image)
   }
