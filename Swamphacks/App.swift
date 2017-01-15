@@ -85,15 +85,11 @@ final class App {
     filterVC.tableView.separatorStyle = .none
     filterVC.automaticallyAdjustsScrollViewInsets = false
     filterVC.edgesForExtendedLayout = []
-    
-    filterVC.dismissed = { [weak announcementsVC] in
-      announcementsVC?.localReload()
-    }
-    
+        
     announcementsVC.rightItem = (UIImage(named: "filter"), .plain)
     announcementsVC.didChooseRightItem = { [weak announcementsVC, weak filterVC] item in
       guard let vc = filterVC else { return }
-      announcementsVC?.present(vc.rooted(), animated: true, completion: nil)
+      announcementsVC?.present(vc.rooted().styled(), animated: true, completion: nil)
     }
     
     announcementsVC.filter = { [weak filterVC] in
@@ -103,7 +99,7 @@ final class App {
         if let vc = filterVC {
           inFilters = (vc.filters[announcement.type.lowercased()]! == true)
         }
-        return inFilters /*&& announcement.date.compare(now) == .orderedAscending*/
+        return inFilters && announcement.date.compare(now) == .orderedAscending
       }
     }
     
