@@ -12,8 +12,6 @@ import AVFoundation
 import Firebase
 import MMMaterialDesignSpinner
 
-//TODO: ConfirmVC stuff
-
 class ProfileViewController: UIViewController {
   fileprivate lazy var scanVC: UIViewController = {
     let vc = ScanViewController()
