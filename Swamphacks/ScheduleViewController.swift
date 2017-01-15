@@ -22,12 +22,7 @@ class ScheduleViewController: UICollectionViewController, CalendarLayoutDelegate
   
   fileprivate var eventOrganizer = EventOrganizer(events: [])
   
-  fileprivate(set) var events: [Event] = [] {
-    didSet {
-      eventOrganizer = EventOrganizer(events: events)
-      collectionView?.reloadData()
-    }
-  }
+  fileprivate(set) var events: [Event] = []
   
   fileprivate var calendarLayout: CalendarLayout {
     return collectionView?.collectionViewLayout as! CalendarLayout
@@ -56,6 +51,7 @@ class ScheduleViewController: UICollectionViewController, CalendarLayoutDelegate
     layout.rowInsets = UIEdgeInsets(top: 0.0, left: 62.0, bottom: 0.0, right: 0.0)
     
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView?.backgroundColor = .white
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -71,12 +67,19 @@ class ScheduleViewController: UICollectionViewController, CalendarLayoutDelegate
       })
     }
   }
+  
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
 
   fileprivate func setUp() {
     setUpCollectionView()
   }
   
   fileprivate func setUpCollectionView() {
+    collectionView?.register(UINib(nibName: "ScheduleEventCell", bundle: nil),
+                             forCellWithReuseIdentifier: "EventCell")
+    
     collectionView?.register(UINib(nibName: "ScheduleDayHeader", bundle: nil),
                              forSupplementaryViewOfKind: CalendarLayout.SupplementaryViewKind.Header.rawValue,
                              withReuseIdentifier: "DayHeader")
@@ -174,11 +177,23 @@ class ScheduleViewController: UICollectionViewController, CalendarLayoutDelegate
   
   //MARK: Helpers
   
+  fileprivate var loadTimer: Timer?
+  
   fileprivate func loadEvents() {
     setLoading(true)
     load { [weak self] events in
-      self?.setLoading(false)
-      self?.events = events
+      guard let strongSelf = self else { return }
+      strongSelf.events.append(contentsOf: events)
+      
+      strongSelf.loadTimer?.invalidate()
+      
+      strongSelf.loadTimer = Timer(timeInterval: 5, repeats: false) { timer in
+        self?.setLoading(false)
+        self?.eventOrganizer = EventOrganizer(events: strongSelf.events)
+        self?.collectionView?.reloadData()
+      }
+      
+      RunLoop.main.add(strongSelf.loadTimer!, forMode: .defaultRunLoopMode)
     }
   }
   

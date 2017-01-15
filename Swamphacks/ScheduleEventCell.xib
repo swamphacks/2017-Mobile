@@ -29,7 +29,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ymc-JJ-Sxm">
-                                <rect key="frame" x="6" y="2" width="290" height="32"/>
+                                <rect key="frame" x="6" y="2" width="290" height="31.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03i-bM-hes">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="17"/>
@@ -38,7 +38,7 @@
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCR-tw-klN" customClass="DisappearingLabel" customModule="Swamphacks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="17" width="290" height="15"/>
+                                        <rect key="frame" x="0.0" y="17" width="290" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,6 +68,7 @@
             <size key="customSize" width="300" height="44"/>
             <connections>
                 <outlet property="bodyView" destination="Zvw-8H-fuL" id="mCK-WG-vct"/>
+                <outlet property="bodyViewTopConstraint" destination="Dv6-7e-02D" id="jF4-EU-dk2"/>
                 <outlet property="detailTextLabel" destination="gCR-tw-klN" id="nFU-pG-4wX"/>
                 <outlet property="leaderBar" destination="RJ9-gn-RYf" id="bXG-4y-yES"/>
                 <outlet property="textLabel" destination="03i-bM-hes" id="H5u-em-war"/>

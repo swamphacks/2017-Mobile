@@ -47,6 +47,7 @@ final class App {
       return vcTitleImage.0.styled()
     }
     
+    tabController.selectedIndex = 2
     return tabController //.styled()
   }
  
