@@ -56,9 +56,7 @@ final class App {
     let announcements = { (completion: @escaping ([Announcement]) -> ()) in
       let resource = FirebaseResource<Announcement>(path: "announcements", parseJSON: Announcement.init)
       _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0, .childAdded) }) { result in
-        let now = Date()
-        let comparison = result.value?.date.compare(now)
-        guard let announcement = result.value, comparison == .orderedAscending else { completion([]); return }
+        guard let announcement = result.value else { completion([]); return }
         DispatchQueue.main.async { completion([announcement]) }
       }
     }
@@ -68,10 +66,15 @@ final class App {
                                                    cellDescriptor: { $0.cellDescriptor },
                                                    rowHeight: { _,_ in .automatic })
     
+    announcementsVC.filter = {
+      let now = Date()
+      return $0.filter { $0.date.compare(now) == .orderedAscending }
+    }
+    
     announcementsTableVCBuilder.build(announcementsVC)
     
-    let timer = Timer(timeInterval: 60, repeats: true) { [weak announcementsVC] _ in
-      announcementsVC?.refresh(sender: nil)
+    let timer = Timer(timeInterval: 60 * 5, repeats: true) { [weak announcementsVC] _ in
+      announcementsVC?.localReload()
     }
     
     RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
@@ -98,10 +101,22 @@ final class App {
                                                   cellDescriptor: { $0.cellDescriptor },
                                                   rowHeight: { _,_ in .automatic })
     
+    happeningNowVC.filter = {
+      let hackathonStart = Date(timeIntervalSince1970: 1484967600)
+      let now = Date() // Date(timeIntervalSince1970: 1485036000)
+      
+      if now.compare(hackathonStart) == .orderedAscending {
+        let max = min($0.count, 3)
+        return Array($0[0..<max])
+      }
+      
+      return $0.filter { ($0.startTime...$0.endTime).contains(now) }
+    }
+    
     happeningNowTableVCBuilder.build(happeningNowVC)
     
-    let timer = Timer(timeInterval: 60, repeats: true) { [weak happeningNowVC] _ in
-      happeningNowVC?.refresh(sender: nil)
+    let timer = Timer(timeInterval: 60 * 5, repeats: true) { [weak happeningNowVC] _ in
+      happeningNowVC?.localReload()
     }
     
     RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
@@ -185,6 +200,7 @@ final class App {
       sponsorVC.tableView.tableHeaderView = sponsorView
       
       //*******************************
+
       
       navController?.pushViewController(sponsorVC, animated: true)
     }

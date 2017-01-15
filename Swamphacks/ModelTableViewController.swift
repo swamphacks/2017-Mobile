@@ -26,6 +26,16 @@ class ModelTableViewController<Model>: UITableViewController {
     }
   }
   
+  var filter: (([Model]) -> [Model]) = { $0 } {
+    didSet {
+      localReload()
+    }
+  }
+  
+  func localReload() {
+    items = filter(items)
+  }
+  
   fileprivate var reuseIdentifiers = Set<String>()
   
   var isIncremental: Bool
@@ -130,8 +140,12 @@ class ModelTableViewController<Model>: UITableViewController {
     
     super.init(style: style)
     
-    self.itemForIndexPath = itemForIndexPath ?? { self.items[$0.row] }
-    self.rowsInSection = rowsInSection ?? { _ in self.items.count }
+    self.itemForIndexPath = itemForIndexPath ?? { [weak self] in
+      self?.filter(self?.items ?? [])[$0.row]
+    }
+    self.rowsInSection = rowsInSection ?? { [weak self] _ in
+      self?.filter(self?.items ?? []).count ?? 0
+    }
     
     addRefreshControl()
     
@@ -168,6 +182,7 @@ class ModelTableViewController<Model>: UITableViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     updateHeaderViewIfNeeded()
+    localReload()
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -315,38 +330,12 @@ class ModelTableViewController<Model>: UITableViewController {
   
   //MARK: Helpers
   
-  fileprivate func reload(items: [Model]) {
-    
-    func _reload(items: [Model]) {
-      if isIncremental {
-        self.items.append(contentsOf: items)
-      } else {
-        self.items = items
-      }
+  func reload(items: [Model]) {
+    if isIncremental {
+      self.items.append(contentsOf: items)
+    } else {
+      self.items = items
     }
-    
-    /*
-    // Tiny hack for HappeningNowVC lolz sorry not sorry
-    if Model.self is Event.Type {
-      let now = Date()
-      let hackathonStart = Date(timeIntervalSince1970: 1484967600)
-      
-      if now.compare(hackathonStart) == .orderedAscending {
-        if self.items.count < 3 {
-          _reload(items: items)
-        }
-        return
-      }
-      
-      print(items)
-      let events = (items as Any as! [Event]).filter({ ($0.startTime...$0.endTime).contains(now) })
-      
-      _reload(items: events as Any as! [Model])
-      return
-    }
-    */
-    
-    _reload(items: items)
   }
   
   fileprivate func setLoading(_ loading: Bool) {
