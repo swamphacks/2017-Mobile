@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import HCSStarRatingView
+import Firebase
 
 final class PaddedLabel: UILabel {
   var padding = UIEdgeInsets.zero {
@@ -55,6 +57,7 @@ final class EventViewController: UIViewController {
   fileprivate let dateLabel: UILabel
   fileprivate let locationLabel: UILabel
   fileprivate let mapImageView: UIImageView
+  fileprivate let ratingView: HCSStarRatingView
   
   fileprivate static let dayFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -78,7 +81,8 @@ final class EventViewController: UIViewController {
     self.dateLabel = UILabel(frame: .zero)
     self.locationLabel = UILabel(frame: .zero)
     self.mapImageView = UIImageView(frame: .zero)
-
+    self.ratingView = HCSStarRatingView(frame: .zero)
+    
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -115,6 +119,7 @@ final class EventViewController: UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     navigationController?.setNavigationBarHidden(true, animated: animated)
+    pushRatingOrCounter()
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -130,6 +135,7 @@ final class EventViewController: UIViewController {
     setUpDateLabel()
     setUpLocationLabel()
     setUpMapImageView()
+    setUpRatingView()
   }
   
   fileprivate func setUpTypeLabel() {
@@ -258,6 +264,35 @@ final class EventViewController: UIViewController {
       let aspect = viewPair.subview.heightAnchor.constraint(equalTo: viewPair.subview.widthAnchor, multiplier: 9/16)
       return [top, left, right, aspect]
     }
+  }
+  
+  fileprivate func setUpRatingView() {
+    //TODO: set up rest of ratingView here
+    ratingView.backgroundColor = .white
+    ratingView.allowsHalfStars = true
+    
+    ratingView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(ratingView)
+    
+    setUp(subview: ratingView, in: view) { viewPair in
+      let bottom = viewPair.subview.bottomAnchor.constraint(equalTo: viewPair.superview.bottomAnchor, constant: -16)
+      let centerX = viewPair.subview.centerXAnchor.constraint(equalTo: viewPair.superview.centerXAnchor)
+      let width = viewPair.subview.widthAnchor.constraint(equalToConstant: 200)
+      let height = viewPair.subview.heightAnchor.constraint(equalToConstant: 100)
+      return [bottom, centerX, width, height]
+    }
+  }
+  
+  fileprivate func pushRatingOrCounter() {
+    guard let email = FIRAuth.auth()?.currentUser?.email else { return }
+    let emailKey = email.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ".", with: "")
+    
+    let rating = ratingView.value
+    
+    let path = "event_stats/\(event.title)/ratings/\(emailKey)"
+    let ref = FIRDatabase.database().reference(withPath: path)
+    
+    ref.setValue(rating)
   }
   
   //MARK: Actions
