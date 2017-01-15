@@ -110,7 +110,7 @@ final class App {
         return Array($0[0..<max])
       }
       
-      return $0.filter { ($0.startTime...$0.endTime).contains(now) }
+      return $0.filter { ($0.startTime..<$0.endTime).contains(now) }
     }
     
     happeningNowTableVCBuilder.build(happeningNowVC)
