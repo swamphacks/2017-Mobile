@@ -33,13 +33,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IH0-3u-fTO">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="338"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkU-fL-aEM">
-                            <rect key="frame" x="0.0" y="334" width="320" height="4"/>
-                            <color key="backgroundColor" red="0.44705882352941173" green="0.84705882352941175" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="4" id="UAs-kA-yyI"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W02-LD-x4B">
                             <rect key="frame" x="0.0" y="2" width="320" height="334"/>
                             <subviews>
@@ -118,7 +111,7 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="270"/>
                             <subviews>
                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAW-BI-7jn">
-                                    <rect key="frame" x="24" y="-0.5" width="272" height="271"/>
+                                    <rect key="frame" x="24" y="0.0" width="272" height="270"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tM-bY-HWH">
                                             <rect key="frame" x="61" y="0.0" width="150" height="110"/>
@@ -205,6 +198,13 @@
                                 <constraint firstItem="iAW-BI-7jn" firstAttribute="centerY" secondItem="05B-K4-ZPX" secondAttribute="centerY" id="197-3O-630"/>
                                 <constraint firstAttribute="trailing" secondItem="iAW-BI-7jn" secondAttribute="trailing" constant="24" id="1Av-QJ-U44"/>
                                 <constraint firstItem="iAW-BI-7jn" firstAttribute="leading" secondItem="05B-K4-ZPX" secondAttribute="leading" constant="24" id="AMh-t3-Js5"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkU-fL-aEM">
+                            <rect key="frame" x="0.0" y="334" width="320" height="4"/>
+                            <color key="backgroundColor" red="0.44705882352941173" green="0.84705882352941175" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="4" id="UAs-kA-yyI"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doJ-2k-0b5">

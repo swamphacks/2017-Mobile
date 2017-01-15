@@ -15,7 +15,7 @@ extension UIViewController {
   }
 }
 
-//TODO: Add ScheduleVC, ConfirmVC, loading indicators for data, and check TODOs in individual controllers
+//TODO: Add ScheduleVC, change fonts, and check in individual controllers
 
 final class App {
   
@@ -56,9 +56,7 @@ final class App {
     let announcements = { (completion: @escaping ([Announcement]) -> ()) in
       let resource = FirebaseResource<Announcement>(path: "announcements", parseJSON: Announcement.init)
       _ = FirebaseManager.shared.observe(resource, queryEventType: { ($0, .childAdded) }) { result in
-        let now = Date()
-        let comparison = result.value?.date.compare(now)
-        guard let announcement = result.value, comparison == .orderedAscending else { completion([]); return }
+        guard let announcement = result.value else { completion([]); return }
         DispatchQueue.main.async { completion([announcement]) }
       }
     }
@@ -68,10 +66,15 @@ final class App {
                                                    cellDescriptor: { $0.cellDescriptor },
                                                    rowHeight: { _,_ in .automatic })
     
+    announcementsVC.filter = {
+      let now = Date()
+      return $0.filter { $0.date.compare(now) == .orderedAscending }
+    }
+    
     announcementsTableVCBuilder.build(announcementsVC)
     
-    let timer = Timer(timeInterval: 60, repeats: true) { [weak announcementsVC] _ in
-      announcementsVC?.refresh(sender: nil)
+    let timer = Timer(timeInterval: 60 * 5, repeats: true) { [weak announcementsVC] _ in
+      announcementsVC?.localReload()
     }
     
     RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
@@ -98,10 +101,22 @@ final class App {
                                                   cellDescriptor: { $0.cellDescriptor },
                                                   rowHeight: { _,_ in .automatic })
     
+    happeningNowVC.filter = {
+      let hackathonStart = Date(timeIntervalSince1970: 1484967600)
+      let now = Date() // Date(timeIntervalSince1970: 1485036000)
+      
+      if now.compare(hackathonStart) == .orderedAscending {
+        let max = min($0.count, 3)
+        return Array($0[0..<max])
+      }
+      
+      return $0.filter { ($0.startTime..<$0.endTime).contains(now) }
+    }
+    
     happeningNowTableVCBuilder.build(happeningNowVC)
     
-    let timer = Timer(timeInterval: 60, repeats: true) { [weak happeningNowVC] _ in
-      happeningNowVC?.refresh(sender: nil)
+    let timer = Timer(timeInterval: 60 * 5, repeats: true) { [weak happeningNowVC] _ in
+      happeningNowVC?.localReload()
     }
     
     RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
@@ -139,40 +154,7 @@ final class App {
     let image = UIImage(named: "suitcase")!
     
     sponsorsVC.didSelect = { [weak navController] sponsor in
-      
-      /*****************************/
-      
-      class DescriptionCell: UITableViewCell {
-        override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-          super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-          fatalError("init(coder:) has not been implemented")
-        }
-      }
-      
-      enum SponsorDetailItem {
-        case description(String)
-        case rep(Rep)
-        
-        var cellDescriptor: CellDescriptor {
-          switch self {
-          case .description(let str):
-            func configure(cell: LabelCell) {
-              cell.label?.text = str
-            }
-            return CellDescriptor(reuseIdentifier: "sponsorDescription",
-                                  registerMode: .withNib(LabelCell.nib),
-                                  configure: configure)
-          case .rep(let rep):
-            return rep.cellDescriptor
-          }
-        }
-      }
-      
-      /*****************************/
-      
+            
       let items = { (completion: @escaping ([SponsorDetailItem]) -> ()) in
         var detailItems: [SponsorDetailItem] = [.description(sponsor.description)]
         
@@ -192,35 +174,9 @@ final class App {
                                                   return .absolute(80)
                                                 }
                                                })
+      
       sponsorVC.title = sponsor.name
-      sponsorVC.edgesForExtendedLayout = []
-      sponsorVC.automaticallyAdjustsScrollViewInsets = false
-      
-      sponsorVC.tableView.separatorStyle = .none
-      sponsorVC.tableView.estimatedRowHeight = 90
-      
-      sponsorVC.fabStyle = { [weak sponsorVC] button in
-        guard let vc = sponsorVC, let view = button.superview else { return nil }
-        
-        button.backgroundColor = .turquoise
-        button.setImage(UIImage(named: "open"), for: .normal)
-        button.adjustsImageWhenHighlighted = false
-        
-        button.layer.masksToBounds = false
-        button.layer.cornerRadius = 28
-        
-        button.layer.shadowRadius = 2
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowOpacity = 0.45
-        
-        let trailing = button.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
-        let bottom = button.bottomAnchor.constraint(equalTo: vc.bottomLayoutGuide.topAnchor, constant: -8)
-        let width = button.widthAnchor.constraint(equalToConstant: 56)
-        let height = button.heightAnchor.constraint(equalToConstant: 56)
-        
-        return [trailing, bottom, width, height]
-      }
+      sponsorVCTableVCBuilder.build(sponsorVC)
       
       sponsorVC.fabAction = { _ in
         return { _ in
@@ -230,7 +186,7 @@ final class App {
         }
       }
       
-      /*****************************/
+      //*******************************
       
       let sponsorView = Bundle.main.loadNibNamed(SponsorView.defaultNibName,
                                                  owner: nil,
@@ -242,6 +198,9 @@ final class App {
       
       sponsorView.frame = CGRect(x: 0, y: 0, width: headerWidth, height: headerHeight)
       sponsorVC.tableView.tableHeaderView = sponsorView
+      
+      //*******************************
+
       
       navController?.pushViewController(sponsorVC, animated: true)
     }

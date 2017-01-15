@@ -14,10 +14,9 @@ import MMMaterialDesignSpinner
 
 //TODO: ConfirmVC stuff
 
-class ProfileViewController: UIViewController, ScanningDelegate {
+class ProfileViewController: UIViewController {
   fileprivate lazy var scanVC: UIViewController = {
     let vc = ScanViewController()
-    vc.scanningDelegate = self
     return vc.rooted().styled()
   }()
   
@@ -153,16 +152,17 @@ class ProfileViewController: UIViewController, ScanningDelegate {
     }
     
     setLoading(true)
-    FirebaseManager.shared.getInfo(forUserEmail: email) { userInfo in
-      self.setLoading(false)
-
+    FirebaseManager.shared.getInfo(forUserEmail: email) { [weak self] userInfo in
+      guard let strongSelf = self else { return }
+      strongSelf.setLoading(false)
+      
       guard let info = userInfo else {
-        self.showAlert(ofType: .message("Error", "Something went wrong. Please check that the email is correct."))
+        strongSelf.showAlert(ofType: .message("Error", "Something went wrong. Please check that the email is correct."))
         return
       }
       
-      //TODO: show confirm user VC
-      print(info.json)
+      let vc = ConfirmInfoViewController(userInfo: info).rooted().styled()
+      strongSelf.present(vc, animated: true, completion: nil)
     }
     
   }
@@ -213,13 +213,6 @@ class ProfileViewController: UIViewController, ScanningDelegate {
     submitEmail(nil)
     
     return true
-  }
-
-  //MARK: ScanningDelegate
-  
-  //TODO: Handle what happens when we did scan. We might move some of this logic to ScanVC.
-  func controller(vc: ScanViewController, didScan metadata: String?) {
-    print("SCANNED QR CODE: \(metadata!)")
   }
   
   //MARK: Helpers

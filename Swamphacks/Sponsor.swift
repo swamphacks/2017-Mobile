@@ -131,3 +131,21 @@ extension Rep {
   }
 }
 
+enum SponsorDetailItem {
+  case description(String)
+  case rep(Rep)
+  
+  var cellDescriptor: CellDescriptor {
+    switch self {
+    case .description(let str):
+      func configure(cell: LabelCell) {
+        cell.label?.text = str
+      }
+      return CellDescriptor(reuseIdentifier: "sponsorDescription",
+                            registerMode: .withNib(LabelCell.nib),
+                            configure: configure)
+    case .rep(let rep):
+      return rep.cellDescriptor
+    }
+  }
+}

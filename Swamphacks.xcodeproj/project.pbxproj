@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		532F66EC17F61A8F6D7919FE /* Pods_Swamphacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16095FE1F6E0BBFEFC8C267A /* Pods_Swamphacks.framework */; };
 		60B520234DF0601E1B4A73AB /* Pods_SwamphacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */; };
-		AB0AAD761E1ACDFE00ECBEC2 /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD751E1ACDFE00ECBEC2 /* EventViewController.xib */; };
 		AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */; };
 		AB0AAD7A1E1C114200ECBEC2 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */; };
 		AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */; };
 		AB0AAD7E1E1C144700ECBEC2 /* Sponsor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD7D1E1C144700ECBEC2 /* Sponsor.swift */; };
-		AB0AAD821E22D09C00ECBEC2 /* SponsorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD811E22D09C00ECBEC2 /* SponsorViewController.xib */; };
 		AB0AAD841E25809300ECBEC2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD831E25809300ECBEC2 /* LoginViewController.swift */; };
 		AB1069AF1E258245000EE882 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1069AE1E258245000EE882 /* LoginViewController.xib */; };
 		AB5F2A6F1E0D7B3000AF875C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5F2A6E1E0D7B3000AF875C /* AppDelegate.swift */; };
@@ -46,6 +44,7 @@
 		AB6148631E26F9BD002C7008 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6148621E26F9BD002C7008 /* UserInfo.swift */; };
 		AB6148651E27036A002C7008 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6148641E27036A002C7008 /* QRGenerator.swift */; };
 		AB6148671E2703AD002C7008 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6148661E2703AD002C7008 /* CoreImage.framework */; };
+		AB89F2A21E2AAD5300CAD485 /* ConfirmInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89F2A11E2AAD5300CAD485 /* ConfirmInfoViewController.swift */; };
 		ABA4A6FA1E299343005CD9CA /* SponsorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4A6F91E299343005CD9CA /* SponsorView.swift */; };
 		ABA4A6FC1E29934F005CD9CA /* SponsorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA4A6FB1E29934F005CD9CA /* SponsorView.xib */; };
 		ABA4A6FE1E299C67005CD9CA /* RepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA4A6FD1E299C67005CD9CA /* RepCell.swift */; };
@@ -72,12 +71,10 @@
 		35D70BA879A2D402F0976A57 /* Pods-SwamphacksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwamphacksTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwamphacksTests/Pods-SwamphacksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		60A965A9164B026841F52940 /* Pods-Swamphacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.debug.xcconfig"; sourceTree = "<group>"; };
 		6D245F24CA276536977095C0 /* Pods-Swamphacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.release.xcconfig"; sourceTree = "<group>"; };
-		AB0AAD751E1ACDFE00ECBEC2 /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
 		AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
 		AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorCell.xib; sourceTree = "<group>"; };
 		AB0AAD7D1E1C144700ECBEC2 /* Sponsor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sponsor.swift; sourceTree = "<group>"; };
-		AB0AAD811E22D09C00ECBEC2 /* SponsorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorViewController.xib; sourceTree = "<group>"; };
 		AB0AAD831E25809300ECBEC2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB1069AE1E258245000EE882 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		AB5F2A6B1E0D7B3000AF875C /* Swamphacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swamphacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +109,7 @@
 		AB6148621E26F9BD002C7008 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		AB6148641E27036A002C7008 /* QRGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
 		AB6148661E2703AD002C7008 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		AB89F2A11E2AAD5300CAD485 /* ConfirmInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmInfoViewController.swift; sourceTree = "<group>"; };
 		ABA4A6F91E299343005CD9CA /* SponsorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorView.swift; sourceTree = "<group>"; };
 		ABA4A6FB1E29934F005CD9CA /* SponsorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorView.xib; sourceTree = "<group>"; };
 		ABA4A6FD1E299C67005CD9CA /* RepCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepCell.swift; sourceTree = "<group>"; };
@@ -208,12 +206,11 @@
 				AB5F2AB21E10BDDA00AF875C /* ProfileViewController.xib */,
 				AB5F2AB01E10BDC900AF875C /* ProfileViewController.swift */,
 				AB5F2ABE1E15ACC300AF875C /* ScanViewController.swift */,
-				AB0AAD751E1ACDFE00ECBEC2 /* EventViewController.xib */,
 				ABD68E0B1E18450400833333 /* EventViewController.swift */,
-				AB0AAD811E22D09C00ECBEC2 /* SponsorViewController.xib */,
 				AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */,
 				AB1069AE1E258245000EE882 /* LoginViewController.xib */,
 				AB0AAD831E25809300ECBEC2 /* LoginViewController.swift */,
+				AB89F2A11E2AAD5300CAD485 /* ConfirmInfoViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -369,12 +366,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB5F2ABB1E147E6200AF875C /* CountdownView.xib in Resources */,
-				AB0AAD761E1ACDFE00ECBEC2 /* EventViewController.xib in Resources */,
 				ABA4A7001E299C72005CD9CA /* RepCell.xib in Resources */,
 				AB1069AF1E258245000EE882 /* LoginViewController.xib in Resources */,
 				ABA4A6FC1E29934F005CD9CA /* SponsorView.xib in Resources */,
 				AB5F2AB31E10BDDA00AF875C /* ProfileViewController.xib in Resources */,
-				AB0AAD821E22D09C00ECBEC2 /* SponsorViewController.xib in Resources */,
 				AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */,
 				AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */,
 				AB5F2A791E0D7B3000AF875C /* LaunchScreen.storyboard in Resources */,
@@ -501,6 +496,7 @@
 				ABA4A6FA1E299343005CD9CA /* SponsorView.swift in Sources */,
 				AB5F2A9A1E0D8A9900AF875C /* ModelTableViewController.swift in Sources */,
 				AB5F2AA81E109E1B00AF875C /* App.swift in Sources */,
+				AB89F2A21E2AAD5300CAD485 /* ConfirmInfoViewController.swift in Sources */,
 				AB5F2AB11E10BDC900AF875C /* ProfileViewController.swift in Sources */,
 				ABD68E0C1E18450400833333 /* EventViewController.swift in Sources */,
 				AB5F2AAF1E10BD1300AF875C /* UIView+Conveniences.swift in Sources */,

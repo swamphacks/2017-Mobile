@@ -41,6 +41,11 @@ struct ViewPair {
 
 //TODO: Rating control and attendee counter. Right bar button to ScanVC if user is a volunteer?
 final class EventViewController: UIViewController {
+  fileprivate lazy var scanVC: ScanViewController = {
+    let vc = ScanViewController()
+    return vc
+  }()
+  
   fileprivate let event: Event
   
   //TODO: correct font for all of these labels. See their set up functions
@@ -74,17 +79,29 @@ final class EventViewController: UIViewController {
     self.locationLabel = UILabel(frame: .zero)
     self.mapImageView = UIImageView(frame: .zero)
 
-    super.init(nibName: String(describing: EventViewController.self), bundle: nil)
+    super.init(nibName: nil, bundle: nil)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func loadView() {
+    view = UIView()
+    view.backgroundColor = .white
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Event"
     setUpViews()
+    
+    scanVC.mode = .register(event)
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "scan"),
+                                                        style: .plain,
+                                                        target: self,
+                                                        action: #selector(openScanner(_:)))
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -120,11 +137,7 @@ final class EventViewController: UIViewController {
     typeLabel.textColor = .white
     typeLabel.font = UIFont.systemFont(ofSize: 14)
 
-    //TODO: color(for: event)
-    typeLabel.backgroundColor = UIColor(red: 255/255,
-                                        green: 188/255,
-                                        blue: 129/255,
-                                        alpha: 1)
+    typeLabel.backgroundColor = event.color
     
     setUp(subview: typeLabel, in: view) { viewPair in
       let top = viewPair.subview.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor, constant: 16)
@@ -233,7 +246,7 @@ final class EventViewController: UIViewController {
   }
   
   fileprivate func setUpMapImageView() {
-    //TODO: mapImageView.image = event.mapImage
+    mapImageView.image = event.mapImage
     mapImageView.backgroundColor = .lightGray
     mapImageView.contentMode = .scaleAspectFit
     mapImageView.clipsToBounds = true
@@ -245,6 +258,13 @@ final class EventViewController: UIViewController {
       let aspect = viewPair.subview.heightAnchor.constraint(equalTo: viewPair.subview.widthAnchor, multiplier: 9/16)
       return [top, left, right, aspect]
     }
+  }
+  
+  //MARK: Actions
+  
+  @objc fileprivate func openScanner(_ sender: UIBarButtonItem) {
+    let vc = scanVC.rooted().styled()
+    present(vc, animated: true, completion: nil)
   }
   
   //MARK: Helpers
