@@ -270,6 +270,9 @@ final class EventViewController: UIViewController {
     //TODO: set up rest of ratingView here
     ratingView.backgroundColor = .white
     ratingView.allowsHalfStars = true
+    ratingView.emptyStarImage = UIImage(named: "star-empty")
+    ratingView.halfStarImage = UIImage(named: "star-half")
+    ratingView.filledStarImage = UIImage(named: "star-full")
     
     ratingView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(ratingView)
@@ -277,7 +280,7 @@ final class EventViewController: UIViewController {
     setUp(subview: ratingView, in: view) { viewPair in
       let bottom = viewPair.subview.bottomAnchor.constraint(equalTo: viewPair.superview.bottomAnchor, constant: -16)
       let centerX = viewPair.subview.centerXAnchor.constraint(equalTo: viewPair.superview.centerXAnchor)
-      let width = viewPair.subview.widthAnchor.constraint(equalToConstant: 200)
+      let width = viewPair.subview.widthAnchor.constraint(equalToConstant: 300)
       let height = viewPair.subview.heightAnchor.constraint(equalToConstant: 100)
       return [bottom, centerX, width, height]
     }
