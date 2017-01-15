@@ -8,6 +8,7 @@
 
 import UIKit
 import HCSStarRatingView
+import Firebase
 
 final class PaddedLabel: UILabel {
   var padding = UIEdgeInsets.zero {
@@ -81,7 +82,7 @@ final class EventViewController: UIViewController {
     self.locationLabel = UILabel(frame: .zero)
     self.mapImageView = UIImageView(frame: .zero)
     self.ratingView = HCSStarRatingView(frame: .zero)
-
+    
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -118,6 +119,7 @@ final class EventViewController: UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     navigationController?.setNavigationBarHidden(true, animated: animated)
+    pushRatingOrCounter()
   }
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -266,7 +268,8 @@ final class EventViewController: UIViewController {
   
   fileprivate func setUpRatingView() {
     //TODO: set up rest of ratingView here
-    ratingView.backgroundColor = .red
+    ratingView.backgroundColor = .white
+    ratingView.allowsHalfStars = true
     
     ratingView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(ratingView)
@@ -278,6 +281,18 @@ final class EventViewController: UIViewController {
       let height = viewPair.subview.heightAnchor.constraint(equalToConstant: 100)
       return [bottom, centerX, width, height]
     }
+  }
+  
+  fileprivate func pushRatingOrCounter() {
+    guard let email = FIRAuth.auth()?.currentUser?.email else { return }
+    let emailKey = email.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ".", with: "")
+    
+    let rating = ratingView.value
+    
+    let path = "event_stats/\(event.title)/ratings/\(emailKey)"
+    let ref = FIRDatabase.database().reference(withPath: path)
+    
+    ref.setValue(rating)
   }
   
   //MARK: Actions
