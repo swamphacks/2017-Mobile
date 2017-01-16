@@ -21,6 +21,11 @@ final class App {
   
   //MARK: Controllers
   
+  lazy var scanVC: ScanViewController = {
+    let vc = ScanViewController()
+    return vc
+  }()
+  
   lazy var root: UINavigationController = {
     let root: UINavigationController
     

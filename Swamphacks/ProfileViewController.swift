@@ -12,12 +12,7 @@ import AVFoundation
 import Firebase
 import MMMaterialDesignSpinner
 
-class ProfileViewController: UIViewController {
-  fileprivate lazy var scanVC: UIViewController = {
-    let vc = ScanViewController()
-    return vc.rooted().styled()
-  }()
-  
+class ProfileViewController: UIViewController {  
   @IBOutlet weak fileprivate var logoutButton: UIButton!
   @IBOutlet weak fileprivate var cameraButton: UIButton!
   
@@ -140,7 +135,9 @@ class ProfileViewController: UIViewController {
   //MARK: Actions
   
   @IBAction func handleCameraButton(_ sender: AnyObject?) {
-    present(scanVC, animated: true, completion: nil)
+    app.scanVC.mode = .confirm
+    app.scanVC.shouldScan = true
+    present(app.scanVC.rooted().styled(), animated: true, completion: nil)
   }
   
   @IBAction func submitEmail(_ sender: UIButton?) {

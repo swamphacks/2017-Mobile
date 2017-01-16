@@ -13,6 +13,11 @@
 		532F66EC17F61A8F6D7919FE /* Pods_Swamphacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16095FE1F6E0BBFEFC8C267A /* Pods_Swamphacks.framework */; };
 		60B520234DF0601E1B4A73AB /* Pods_SwamphacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */; };
 		AB05FA7B1E2C3B8200EC3F26 /* DetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05FA7A1E2C3B8200EC3F26 /* DetailItem.swift */; };
+		AB05FA801E2C4F1200EC3F26 /* beepboop.aifc in Resources */ = {isa = PBXBuildFile; fileRef = AB05FA7D1E2C4E1A00EC3F26 /* beepboop.aifc */; };
+		AB05FA811E2C4F1500EC3F26 /* scannedwithenthusiasm.aifc in Resources */ = {isa = PBXBuildFile; fileRef = AB05FA7E1E2C4E1A00EC3F26 /* scannedwithenthusiasm.aifc */; };
+		AB05FA821E2C4F1700EC3F26 /* yadidit.aifc in Resources */ = {isa = PBXBuildFile; fileRef = AB05FA7F1E2C4E1A00EC3F26 /* yadidit.aifc */; };
+		AB05FA861E2C510200EC3F26 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB05FA851E2C510200EC3F26 /* AVFoundation.framework */; };
+		AB05FA881E2C533B00EC3F26 /* welcome.aifc in Resources */ = {isa = PBXBuildFile; fileRef = AB05FA871E2C523C00EC3F26 /* welcome.aifc */; };
 		AB0AAD781E1B4A6200ECBEC2 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */; };
 		AB0AAD7A1E1C114200ECBEC2 /* SponsorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */; };
 		AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */; };
@@ -93,6 +98,12 @@
 		60A965A9164B026841F52940 /* Pods-Swamphacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.debug.xcconfig"; sourceTree = "<group>"; };
 		6D245F24CA276536977095C0 /* Pods-Swamphacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swamphacks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swamphacks/Pods-Swamphacks.release.xcconfig"; sourceTree = "<group>"; };
 		AB05FA7A1E2C3B8200EC3F26 /* DetailItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailItem.swift; sourceTree = "<group>"; };
+		AB05FA7D1E2C4E1A00EC3F26 /* beepboop.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = beepboop.aifc; sourceTree = "<group>"; };
+		AB05FA7E1E2C4E1A00EC3F26 /* scannedwithenthusiasm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = scannedwithenthusiasm.aifc; sourceTree = "<group>"; };
+		AB05FA7F1E2C4E1A00EC3F26 /* yadidit.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = yadidit.aifc; sourceTree = "<group>"; };
+		AB05FA831E2C509200EC3F26 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		AB05FA851E2C510200EC3F26 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AB05FA871E2C523C00EC3F26 /* welcome.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = welcome.aifc; sourceTree = "<group>"; };
 		AB0AAD771E1B4A6200ECBEC2 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		AB0AAD791E1C114200ECBEC2 /* SponsorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorCell.swift; sourceTree = "<group>"; };
 		AB0AAD7B1E1C114C00ECBEC2 /* SponsorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SponsorCell.xib; sourceTree = "<group>"; };
@@ -162,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB05FA861E2C510200EC3F26 /* AVFoundation.framework in Frameworks */,
 				AB6148671E2703AD002C7008 /* CoreImage.framework in Frameworks */,
 				532F66EC17F61A8F6D7919FE /* Pods_Swamphacks.framework in Frameworks */,
 			);
@@ -181,11 +193,24 @@
 		0AD746AA41631775A005BE19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB05FA851E2C510200EC3F26 /* AVFoundation.framework */,
+				AB05FA831E2C509200EC3F26 /* CoreAudio.framework */,
 				AB6148661E2703AD002C7008 /* CoreImage.framework */,
 				16095FE1F6E0BBFEFC8C267A /* Pods_Swamphacks.framework */,
 				CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB05FA7C1E2C4E1200EC3F26 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				AB05FA871E2C523C00EC3F26 /* welcome.aifc */,
+				AB05FA7D1E2C4E1A00EC3F26 /* beepboop.aifc */,
+				AB05FA7E1E2C4E1A00EC3F26 /* scannedwithenthusiasm.aifc */,
+				AB05FA7F1E2C4E1A00EC3F26 /* yadidit.aifc */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 		AB5F2A621E0D7B3000AF875C = {
@@ -256,6 +281,7 @@
 		AB5F2A911E0D7FCE00AF875C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AB05FA7C1E2C4E1200EC3F26 /* Audio */,
 				AB5F2A921E0D7FDE00AF875C /* NibLoadable.swift */,
 				AB5F2A941E0D888E00AF875C /* CellDescriptor.swift */,
 				AB5F2AA01E102BAE00AF875C /* UIViewController+Conveniences.swift */,
@@ -442,6 +468,7 @@
 				AB1069AF1E258245000EE882 /* LoginViewController.xib in Resources */,
 				ABA4A6FC1E29934F005CD9CA /* SponsorView.xib in Resources */,
 				AB5F2AB31E10BDDA00AF875C /* ProfileViewController.xib in Resources */,
+				AB05FA821E2C4F1700EC3F26 /* yadidit.aifc in Resources */,
 				AB5F2A9D1E0EC7BB00AF875C /* AnnouncementCell.xib in Resources */,
 				AB0AAD7C1E1C114C00ECBEC2 /* SponsorCell.xib in Resources */,
 				AB89F2B31E2C25CA00CAD485 /* ScheduleNowIndicator.xib in Resources */,
@@ -451,8 +478,11 @@
 				AB5F2AB91E1474BD00AF875C /* EventCell.xib in Resources */,
 				AB89F2B11E2C25CA00CAD485 /* ScheduleDayHeader.xib in Resources */,
 				3183B6EA1E2C107000131DFA /* FilterCell.xib in Resources */,
+				AB05FA811E2C4F1500EC3F26 /* scannedwithenthusiasm.aifc in Resources */,
 				ABA4A7041E29B75B005CD9CA /* LabelCell.xib in Resources */,
+				AB05FA801E2C4F1200EC3F26 /* beepboop.aifc in Resources */,
 				AB5F2A761E0D7B3000AF875C /* Assets.xcassets in Resources */,
+				AB05FA881E2C533B00EC3F26 /* welcome.aifc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

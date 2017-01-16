@@ -20,7 +20,7 @@ extension UIViewController {
     case error(Error)
   }
   
-  func showAlert(ofType type: AlertType) {
+  func showAlert(ofType type: AlertType, handler: ((UIAlertAction) -> ())? = nil) {
     let alertVC = UIAlertController(title: "Error", message: "Something went wrong, please try again later.", preferredStyle: .alert)
     
     switch type {
@@ -33,7 +33,7 @@ extension UIViewController {
       alertVC.message = error.localizedDescription
     }
     
-    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: handler)
     alertVC.addAction(okAction)
     
     present(alertVC, animated: true, completion: nil)
