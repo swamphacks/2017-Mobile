@@ -208,7 +208,7 @@ final class EventViewController: UIViewController {
   }
   
   fileprivate func setUpDescriptionLabel() {
-    descriptionLabel.text = "This is my very long description. This is my very long description. This is my there." //event.description
+    descriptionLabel.text = event.description
     descriptionLabel.textColor = .black
     descriptionLabel.font = typeLabel.font
     descriptionLabel.numberOfLines = 0
