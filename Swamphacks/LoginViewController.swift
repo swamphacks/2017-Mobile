@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+
 import Firebase
 import MMMaterialDesignSpinner
 
@@ -18,6 +20,8 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var loadingView: UIView!
   @IBOutlet weak var spinner: MMMaterialDesignSpinner!
+  
+  fileprivate var audioPlayer: AVAudioPlayer?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -153,6 +157,11 @@ final class LoginViewController: UIViewController, UITextFieldDelegate {
   //MARK: Navigation
   
   fileprivate func goNext() {
+    if let url = Bundle.main.url(forResource: "welcome", withExtension: "aifc") {
+      audioPlayer = try? AVAudioPlayer(contentsOf: url)
+      audioPlayer?.play()
+    }
+    
     navigationItem.hidesBackButton = true
     show(App.tabController(), sender: self)
   }

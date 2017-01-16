@@ -12,6 +12,23 @@ import MMMaterialDesignSpinner
 
 class ScheduleViewController: UICollectionViewController, CalendarLayoutDelegate {
   
+  fileprivate lazy var fabButton: UIButton = {
+    let button = UIButton()
+    button.backgroundColor = .turquoise
+    button.setImage(UIImage(named: "scan"), for: .normal)
+    button.adjustsImageWhenHighlighted = false
+    
+    button.layer.masksToBounds = false
+    button.layer.cornerRadius = 28
+    
+    button.layer.shadowRadius = 2
+    button.layer.shadowColor = UIColor.black.cgColor
+    button.layer.shadowOffset = CGSize(width: 0, height: 2)
+    button.layer.shadowOpacity = 0.45
+    
+    return button
+  }()
+  
   fileprivate lazy var spinner: MMMaterialDesignSpinner = {
     let spinner = MMMaterialDesignSpinner(frame: CGRect(x: 0, y: 0, width: 22, height: 22))
     spinner.tintColor = .white
@@ -44,6 +61,23 @@ class ScheduleViewController: UICollectionViewController, CalendarLayoutDelegate
     navigationItem.rightBarButtonItem  = UIBarButtonItem(customView: spinner)
     setUp()
     loadEvents()
+    
+    fabButton.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(fabButton)
+    
+    fabButton.addTarget(self, action: #selector(handleScanButton(_:)), for: .touchUpInside)
+    
+    let trailing = fabButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+    let bottom = fabButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -8)
+    let width = fabButton.widthAnchor.constraint(equalToConstant: 56)
+    let height = fabButton.heightAnchor.constraint(equalToConstant: 56)
+    NSLayoutConstraint.activate([trailing, bottom, width, height])
+  }
+  
+  @objc fileprivate func handleScanButton(_ sender: UIButton) {
+    app.scanVC.mode = .register(nil)
+    app.scanVC.shouldScan = true
+    present(app.scanVC.rooted().styled(), animated: true, completion: nil)
   }
   
   override func loadView() {

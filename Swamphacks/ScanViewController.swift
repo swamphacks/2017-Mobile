@@ -20,7 +20,7 @@ protocol ScanningDelegate: class {
 
 enum ScanMode {
   case confirm
-  case register(Event)
+  case register(Event?)
 }
 
 final class ScanViewController: UIViewController, VideoPreviewLayerProvider, MetadataOutputDelegate {
@@ -65,11 +65,14 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
   fileprivate var detectorViewWidth: NSLayoutConstraint!
   fileprivate var detectorViewHeight: NSLayoutConstraint!
   
-  fileprivate var shouldScan = false
+  var shouldScan = false
   
   fileprivate var isLoading: Bool {
     return spinner.isAnimating
   }
+  
+  fileprivate let audioFiles = ["beepboop", "scannedwithenthusiasm", "yadidit"]
+  fileprivate var audioPlayer: AVAudioPlayer?
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -84,6 +87,11 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     super.viewDidLoad()
     title = "Scan"
     setUp()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    captureManager.startRunning()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -161,7 +169,6 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     }
     
     captureManager.metadataOutputDelegate = self
-    captureManager.startRunning()
   }
   
   //MARK: VideoPreviewLayerProvider
@@ -227,25 +234,42 @@ final class ScanViewController: UIViewController, VideoPreviewLayerProvider, Met
     }
   }
   
-  fileprivate func register(for event: Event, metadata: String?) {
+  fileprivate func register(for event: Event?, metadata: String?) {
     guard let email = FIRAuth.auth()?.currentUser?.email, let title = metadata, !title.isEmpty else {
       return
     }
     
-    let emailKey = email.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ".", with: "")
-    let scannedTitle = title.replacingOccurrences(of: " ", with: "")
-    let ogTitle = event.title.replacingOccurrences(of: " ", with: "")
-    
-    if ogTitle.caseInsensitiveCompare(scannedTitle) == .orderedSame {
-      let classification = event.classification
-      
-      let path = "attendee_events/\(emailKey)/\(event.title)"
+    func register(event: String) {
+      let emailKey = email.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ".", with: "")
+      let key = event.replacingOccurrences(of: "@", with: "").replacingOccurrences(of: ".", with: "")
+      let path = "attendee_events/\(emailKey)/\(key)"
       let ref = FIRDatabase.database().reference(withPath: path)
       
-      ref.setValue(classification)
+      ref.setValue(classification(for: event))
+      
+      let idx = Int(arc4random_uniform(UInt32(audioFiles.count)))
+      if let url = Bundle.main.url(forResource: audioFiles[idx], withExtension: "aifc") {
+        audioPlayer = try? AVAudioPlayer(contentsOf: url)
+        audioPlayer?.play()
+      }
+      
+      shouldScan = false
+      showAlert(ofType: .message("Success!", "You've been registered for this event.")) { [weak self] action in
+        self?.dismiss(animated: true, completion: nil)
+        self?.shouldScan = true
+      }
     }
     
-    dismiss(animated: true, completion: nil)
+    let scannedTitle = title.replacingOccurrences(of: " ", with: "")
+    
+    if let ogTitle = event?.title.replacingOccurrences(of: " ", with: "") {
+      if ogTitle.caseInsensitiveCompare(scannedTitle) == .orderedSame {
+        register(event: scannedTitle)
+      }
+    } else {
+      register(event: scannedTitle)
+    }
+    
   }
   
   @objc fileprivate func handleCloseButton(_ button: UIBarButtonItem?) {

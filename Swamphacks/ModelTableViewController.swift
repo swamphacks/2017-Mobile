@@ -93,21 +93,21 @@ class ModelTableViewController<Model>: UITableViewController {
   
   //******** Right Item ***********
   
-  var rightItem: (UIImage?, UIBarButtonItemStyle) {
+  var leftItem: (UIImage?, UIBarButtonItemStyle) {
     didSet {
-      let (image, style) = rightItem
-      navigationItem.rightBarButtonItem = UIBarButtonItem(image: image,
-                                                          style: style,
-                                                          target: self,
-                                                          action: #selector(choseRightItem(_:)))
+      let (image, style) = leftItem
+      navigationItem.leftBarButtonItem = UIBarButtonItem(image: image,
+                                                        style: style,
+                                                        target: self,
+                                                        action: #selector(choseLeftItem(_:)))
     }
   }
   
-  @objc fileprivate func choseRightItem(_ item: UIBarButtonItem) {
-    didChooseRightItem(item)
+  @objc fileprivate func choseLeftItem(_ item: UIBarButtonItem) {
+    didChooseLeftItem(item)
   }
   
-  var didChooseRightItem: (UIBarButtonItem) -> Void = { _ in }
+  var didChooseLeftItem: (UIBarButtonItem) -> Void = { _ in }
   
   //********************************
   
@@ -162,7 +162,7 @@ class ModelTableViewController<Model>: UITableViewController {
     self.cellDescriptor = cellDescriptor
     self.rowHeight = rowHeight
     
-    self.rightItem = (nil, .plain)
+    self.leftItem = (nil, .plain)
     
     super.init(style: style)
     
