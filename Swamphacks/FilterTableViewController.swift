@@ -42,6 +42,23 @@ final class FilterTableViewController: UITableViewController, FilterCellDelegate
     cell.filterLabel.text = types[indexPath.row].capitalized
     cell.filterSwitch.isOn = filters[types[indexPath.row]] ?? false
     cell.delegate = self
+    
+    let color: UIColor
+    switch types[indexPath.row].lowercased().replacingOccurrences(of: " ", with: "") {
+    case "logistics":
+        color = UIColor(red: 249/255, green: 167/255, blue: 167/255, alpha: 1) // red
+    case "social":
+        color = UIColor(red: 192/255, green: 244/255, blue: 184/255, alpha: 1) // green
+    case "food":
+        color = UIColor(red: 255/255, green: 188/255, blue: 129/255, alpha: 1) // orange
+    case "techtalk":
+        color = UIColor(red: 173/255, green: 178/255, blue: 251/255, alpha: 1) // purple
+    default:
+        color =  .turquoise
+    }
+    
+    cell.filterSwitch.onTintColor = color
+    
     return cell
   }
   
