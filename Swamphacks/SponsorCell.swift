@@ -11,4 +11,9 @@ import UIKit
 final class SponsorCell: UITableViewCell {
   @IBOutlet weak var typeIndicatorView: UIView!
   @IBOutlet weak var sponsorImageView: UIImageView!
+  
+  override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+    super.setHighlighted(highlighted, animated: animated)
+    alpha = highlighted ? 0.4 : 1
+  }
 }
