@@ -71,6 +71,8 @@ final class App {
     scheduleVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     
     let navController = scheduleVC.rooted().styled()
+    navController.isNavigationBarHidden = false
+    
     let image = UIImage(named: "event")!
     
     return (navController, "Events", image)
@@ -108,8 +110,8 @@ final class App {
     filterVC.automaticallyAdjustsScrollViewInsets = false
     filterVC.edgesForExtendedLayout = []
         
-    announcementsVC.rightItem = (UIImage(named: "filter"), .plain)
-    announcementsVC.didChooseRightItem = { [weak announcementsVC, weak filterVC] item in
+    announcementsVC.leftItem = (UIImage(named: "filter"), .plain)
+    announcementsVC.didChooseLeftItem = { [weak announcementsVC, weak filterVC] item in
       guard let vc = filterVC else { return }
       announcementsVC?.present(vc.rooted().styled(), animated: true, completion: nil)
     }
