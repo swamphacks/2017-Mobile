@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,14 +25,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B3t-Y1-9ZO">
-                        <rect key="frame" x="294" y="6" width="51" height="31"/>
+                        <rect key="frame" x="314" y="6" width="51" height="31"/>
+                        <color key="tintColor" red="0.34460216030000002" green="0.62160663059999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="onTintColor" red="0.3495408538" green="0.6243999938" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </switch>
                 </subviews>
                 <constraints>
                     <constraint firstItem="kgo-1W-Ts2" firstAttribute="centerY" secondItem="0Zw-sB-d14" secondAttribute="centerY" id="OsP-ly-aeO"/>
                     <constraint firstItem="B3t-Y1-9ZO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kgo-1W-Ts2" secondAttribute="trailing" constant="8" id="SNk-T7-IO2"/>
                     <constraint firstItem="kgo-1W-Ts2" firstAttribute="leading" secondItem="0Zw-sB-d14" secondAttribute="leading" constant="8" id="Xer-Gd-I0q"/>
-                    <constraint firstAttribute="trailing" secondItem="B3t-Y1-9ZO" secondAttribute="trailing" constant="32" id="dR9-z4-3Mu"/>
+                    <constraint firstAttribute="trailing" secondItem="B3t-Y1-9ZO" secondAttribute="trailing" constant="12" id="dR9-z4-3Mu"/>
                     <constraint firstItem="B3t-Y1-9ZO" firstAttribute="centerY" secondItem="0Zw-sB-d14" secondAttribute="centerY" id="xNW-ie-Nct"/>
                 </constraints>
             </tableViewCellContentView>
@@ -40,7 +42,7 @@
                 <outlet property="filterLabel" destination="kgo-1W-Ts2" id="FwH-Rm-K8q"/>
                 <outlet property="filterSwitch" destination="B3t-Y1-9ZO" id="vze-tg-cZe"/>
             </connections>
-            <point key="canvasLocation" x="164" y="86"/>
+            <point key="canvasLocation" x="163.5" y="86"/>
         </tableViewCell>
     </objects>
 </document>
