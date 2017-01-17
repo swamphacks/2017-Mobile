@@ -7,14 +7,41 @@
 //
 
 import UIKit
+import UserNotifications
+
 import Firebase
+import FirebaseInstanceID
+import FirebaseMessaging
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate {
   var window: UIWindow?
+  let gcmMessageIDKey = "gcm.message_id"
+  
   fileprivate(set) var app: App!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    if #available(iOS 10.0, *) {
+      let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+      UNUserNotificationCenter.current().requestAuthorization(
+        options: authOptions,
+        completionHandler: {_, _ in })
+      
+      // For iOS 10 display notification (sent via APNS)
+      UNUserNotificationCenter.current().delegate = self
+      // For iOS 10 data message (sent via FCM)
+      FIRMessaging.messaging().remoteMessageDelegate = self
+      
+    } else {
+      let settings: UIUserNotificationSettings =
+        UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+      application.registerUserNotificationSettings(settings)
+    }
+    
+    application.registerForRemoteNotifications()
+    
     FIRApp.configure()
     setUpUI()
     
