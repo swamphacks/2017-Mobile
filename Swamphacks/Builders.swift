@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MMMaterialDesignSpinner
 
 struct ModelTableViewControllerBuilder<T> {
   var build: (ModelTableViewController<T>) -> Void

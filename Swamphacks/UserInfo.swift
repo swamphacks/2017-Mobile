@@ -38,19 +38,19 @@ extension UserInfo {
 
 extension FIRUser {
   
-  fileprivate var infoCacheKey: String {
-    return "\(uid)-info"
+  static var infoCacheKey: String {
+    return "user-info"
   }
   
   func prepareInfoIfNeeded() {
-    if let cached = UserDefaults.standard.dictionary(forKey: infoCacheKey), let _ = UserInfo(json: cached) {
+    if let cached = UserDefaults.standard.dictionary(forKey: FIRUser.infoCacheKey), let _ = UserInfo(json: cached) {
       return
     }
     getInfo(completion: nil)
   }
   
   func getInfo(useCache: Bool = true, completion: ((UserInfo?) -> Void)?) {
-    if useCache, let cached = UserDefaults.standard.dictionary(forKey: infoCacheKey), let info = UserInfo(json: cached) {
+    if useCache, let cached = UserDefaults.standard.dictionary(forKey: FIRUser.infoCacheKey), let info = UserInfo(json: cached) {
       completion?(info)
       return
     }
@@ -67,32 +67,32 @@ extension FIRUser {
         return
       }
       
-      UserDefaults.standard.set(json, forKey: self.infoCacheKey)
+      UserDefaults.standard.set(json, forKey: FIRUser.infoCacheKey)
       completion?(userInfo)
     }
   }
   
-  func purgeInfo() {
-    UserDefaults.standard.set(nil, forKey: infoCacheKey)
+  static func purgeInfo() {
+    UserDefaults.standard.set(nil, forKey: FIRUser.infoCacheKey)
   }
   
 }
 
 extension FIRUser {
   
-  fileprivate var qrCodeCacheKey: String {
-    return "\(uid)-qrCode"
+   static var qrCodeCacheKey: String {
+    return "user-qrCode"
   }
   
   func prepareQRCodeIfNeeded() {
-    if let data = UserDefaults.standard.data(forKey: qrCodeCacheKey), let _ = UIImage(data: data) {
+    if let data = UserDefaults.standard.data(forKey: FIRUser.qrCodeCacheKey), let _ = UIImage(data: data) {
       return
     }
     getQRCode(completion: nil)
   }
   
   func getQRCode(useCache: Bool = true, completion: ((UIImage?) -> Void)?) {
-    if useCache, let data = UserDefaults.standard.data(forKey: qrCodeCacheKey), let image = UIImage(data: data) {
+    if useCache, let data = UserDefaults.standard.data(forKey: FIRUser.qrCodeCacheKey), let image = UIImage(data: data) {
       completion?(image)
       return
     }
@@ -107,13 +107,13 @@ extension FIRUser {
       return
     }
     
-    UserDefaults.standard.set(data, forKey: qrCodeCacheKey)
+    UserDefaults.standard.set(data, forKey: FIRUser.qrCodeCacheKey)
     
     completion?(qrCode)
   }
   
-  func purgeQRCode() {
-    UserDefaults.standard.set(nil, forKey: qrCodeCacheKey)
+  static func purgeQRCode() {
+    UserDefaults.standard.set(nil, forKey: FIRUser.qrCodeCacheKey)
   }
   
 }

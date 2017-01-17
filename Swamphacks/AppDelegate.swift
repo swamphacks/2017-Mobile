@@ -23,22 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     FIRApp.configure()
     
     if UserDefaults.standard.object(forKey: "freshOpen") == nil {
-      if let auth = FIRAuth.auth(), let user = auth.currentUser {
-        user.purgeInfo()
-        user.purgeQRCode()
+      FIRUser.purgeInfo()
+      FIRUser.purgeQRCode()
+      
+      if let auth = FIRAuth.auth() {
         try? auth.signOut()
       }
+      
       UserDefaults.standard.set("no", forKey: "freshOpen")
     }
-    
-    /*
-    //Clear keychain on first run in case of reinstallation
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"FirstRun"]) {
-      // Delete values from keychain here
-      [[NSUserDefaults standardUserDefaults] setValue:@"1strun" forKey:@"FirstRun"];
-      [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    */
     
     UNUserNotificationCenter.current().delegate = self
     FIRMessaging.messaging().remoteMessageDelegate = self
@@ -71,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
   func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
   {
     FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: .unknown)
+    connectToFCM()
   }
   
   func tokenRefreshNotification(_ notification: NSNotification)
