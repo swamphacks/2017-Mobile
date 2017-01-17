@@ -14,8 +14,6 @@ struct Event {
   let startTime: Date
   let endTime: Date
   let location: String
-  let attendees: Int
-  let rating: Double
   let type: String
   let mapImage: UIImage?
 }
@@ -27,8 +25,6 @@ extension Event {
           let startEpoch = json["startTime"] as? TimeInterval,
           let endEpoch = json["endTime"] as? TimeInterval,
           let location = json["location"] as? String,
-          let attendees = json["numAttendees"] as? Int,
-          let rating = json["avgRating"] as? Double,
           let type = json["type"] as? String,
           let mapImageStr = json["map"] as? String
     else {
@@ -41,8 +37,6 @@ extension Event {
     self.startTime = Date(timeIntervalSince1970: startEpoch)
     self.endTime = Date(timeIntervalSince1970: endEpoch)
     self.location = location
-    self.attendees = attendees
-    self.rating = rating
     self.type = type
     
     if let data = Data(base64Encoded: mapImageStr, options: [.ignoreUnknownCharacters]) {

@@ -12,7 +12,7 @@ import Firebase
 struct UserInfo {
   let name: String
   let email: String
-  let school: String
+  let school: String?
   let isVolunteer: Bool
 }
 
@@ -20,7 +20,6 @@ extension UserInfo {
   init?(json: JSONDictionary) {
     guard let name = json["name"] as? String,
           let email = json["email"] as? String,
-          let school = json["school"] as? String,
           let isVolunteer = json["volunteer"] as? Bool
     else {
       print("Failed to retrieve UserInfo from json \(json)")
@@ -28,12 +27,12 @@ extension UserInfo {
     }
     self.name = name
     self.email = email
-    self.school = school
+    self.school = json["school"] as? String
     self.isVolunteer = isVolunteer
   }
   
   var json: JSONDictionary {
-    return ["name": name, "email": email, "school": school, "volunteer": isVolunteer]
+    return ["name": name, "email": email, "school": school ?? "", "volunteer": isVolunteer]
   }
 }
 

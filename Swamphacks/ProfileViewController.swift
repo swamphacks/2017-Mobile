@@ -51,6 +51,8 @@ class ProfileViewController: UIViewController {
     
     setUp()
     
+    volunteerContainerView.isHidden = true
+    
     if let user = FIRAuth.auth()?.currentUser {
       user.getInfo(completion: { userInfo in
         self.displayNameLabel.text = userInfo?.name
@@ -129,7 +131,6 @@ class ProfileViewController: UIViewController {
   fileprivate func setQRCode(to image: UIImage?) {
     self.generateQRCodeButton.isHidden = (image != nil)
     self.qrCodeImageView.image = image
-
   }
   
   //MARK: Actions

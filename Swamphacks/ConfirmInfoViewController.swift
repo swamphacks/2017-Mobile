@@ -90,7 +90,7 @@ class ConfirmInfoViewController: UIViewController {
   fileprivate func setUpSchoolLabels() {
     let schoolHeader = headerLabel()
     setUpLabel(label: schoolHeader, text: "University", under: emailLabel, by: 16)
-    setUpLabel(label: schoolLabel, text: userInfo.school, under: schoolHeader)
+    setUpLabel(label: schoolLabel, text: userInfo.school ?? "", under: schoolHeader)
   }
   
   fileprivate func setUpConfirmButton() {
