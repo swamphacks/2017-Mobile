@@ -73,6 +73,7 @@
             <connections>
                 <outlet property="countdownLabel" destination="4Sc-Vo-sIA" id="ARU-m1-kR2"/>
                 <outlet property="progressView" destination="zs4-Ea-pxL" id="KQV-hN-kfb"/>
+                <outlet property="refreshButton" destination="ChE-Jl-xnk" id="XRm-qw-3Uj"/>
             </connections>
         </view>
     </objects>

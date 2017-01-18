@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import UserNotifications
+
 import MMMaterialDesignSpinner
 
 enum RowHeight {
@@ -208,6 +210,14 @@ class ModelTableViewController<Model>: UITableViewController {
     super.viewWillAppear(animated)
     updateHeaderViewIfNeeded()
     localReload()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+    UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
+    UIApplication.shared.registerForRemoteNotifications()
   }
     
   override var preferredStatusBarStyle: UIStatusBarStyle {

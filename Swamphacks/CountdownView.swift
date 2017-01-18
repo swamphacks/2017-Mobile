@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MMMaterialDesignSpinner
 
 final class CountdownView: UIView {
   
@@ -15,6 +16,7 @@ final class CountdownView: UIView {
   
   @IBOutlet weak private var progressView: CircularProgressView!
   @IBOutlet weak private var countdownLabel: UILabel!
+  @IBOutlet weak var refreshButton: UIButton!
   
   override func willMove(toSuperview newSuperview: UIView?) {
     super.willMove(toSuperview: newSuperview)
@@ -31,7 +33,7 @@ final class CountdownView: UIView {
     let timer = Timer(timeInterval: 1, repeats: true, block: updateCountdown)
     RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
     
-    self.timer = timer
+    self.timer = timer    
   }
   
   fileprivate func updateCountdown(_: Timer) {

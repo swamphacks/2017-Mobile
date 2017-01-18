@@ -169,7 +169,7 @@ final class App {
     let navController = happeningNowVC.rooted()
     let image = UIImage(named: "clock")!
     
-    navController.isNavigationBarHidden = true
+    navController.isNavigationBarHidden = false
     
     happeningNowVC.didSelect = { [weak navController] event in
       let eventVC = EventViewController(event: event)

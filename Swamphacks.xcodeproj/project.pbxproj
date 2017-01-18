@@ -163,6 +163,7 @@
 		ABA4A6FF1E299C72005CD9CA /* RepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepCell.xib; sourceTree = "<group>"; };
 		ABA4A7011E29B742005CD9CA /* LabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		ABA4A7031E29B75B005CD9CA /* LabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
+		ABD5DA921E2EBEAB00694FFF /* Swamphacks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Swamphacks.entitlements; sourceTree = "<group>"; };
 		ABD68E091E1738FB00833333 /* Builders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Builders.swift; sourceTree = "<group>"; };
 		ABD68E0B1E18450400833333 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		CF24D3B38A92A6D19BEF9A64 /* Pods_SwamphacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwamphacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +237,7 @@
 		AB5F2A6D1E0D7B3000AF875C /* Swamphacks */ = {
 			isa = PBXGroup;
 			children = (
+				ABD5DA921E2EBEAB00694FFF /* Swamphacks.entitlements */,
 				AB5F2A771E0D7B3000AF875C /* LaunchScreen.storyboard */,
 				AB5F2A751E0D7B3000AF875C /* Assets.xcassets */,
 				AB5F2A7A1E0D7B3000AF875C /* Info.plist */,
@@ -428,6 +430,14 @@
 						DevelopmentTeam = BG3Y5KSHNC;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					AB5F2A7E1E0D7B3100AF875C = {
 						CreatedOnToolsVersion = 8.0;
@@ -769,6 +779,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Swamphacks/Swamphacks.entitlements;
 				DEVELOPMENT_TEAM = BG3Y5KSHNC;
 				INFOPLIST_FILE = Swamphacks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -785,6 +796,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Swamphacks/Swamphacks.entitlements;
 				DEVELOPMENT_TEAM = BG3Y5KSHNC;
 				INFOPLIST_FILE = Swamphacks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
